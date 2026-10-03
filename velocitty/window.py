@@ -204,7 +204,7 @@ class TermWindow(Adw.ApplicationWindow):
         # A tab can come from another window
         tab = page.get_child()
         tab.window = self
-        page.set_title(tab.title)
+        self.show_title(page, tab)
         self.queue_restyle()
 
     def on_page_selected(self, *_):
@@ -264,15 +264,21 @@ class TermWindow(Adw.ApplicationWindow):
     def apply_settings(self):
         for tab in self.tabs():
             tab.apply_settings()
+            tab.update_title()
         self.refresh()
+
+    def show_title(self, page, tab):
+        """The tab bar shows the short title, the tooltip has the whole one."""
+        page.set_title(tab.title)
+        page.set_tooltip(tab.auto_title)
 
     def title_changed(self, tab):
         self.app.queue_session_save()
         if not tab.is_ancestor(self.tab_view):
             return   # the tab is being moved to another window, it is brought up to date when it lands
-        self.tab_view.get_page(tab).set_title(tab.title)
+        self.show_title(self.tab_view.get_page(tab), tab)
         if tab is self.current_tab():
-            self.window_title.set_title(tab.title)
+            self.window_title.set_title(tab.full_title)
 
     def build_style_controls(self):
         """System, light and dark, side by side at the top of the menu."""
@@ -441,7 +447,7 @@ class TermWindow(Adw.ApplicationWindow):
         if tab is not None:
             if tab.style_class():
                 self.add_css_class(tab.style_class())
-            self.window_title.set_title(tab.title)
+            self.window_title.set_title(tab.full_title)
         self.queue_restyle()
 
     def queue_restyle(self):

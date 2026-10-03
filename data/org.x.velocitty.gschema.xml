@@ -21,6 +21,18 @@
       <summary>Restore the last session</summary>
       <description>Reopen the windows and tabs of the last session when the app starts.</description>
     </key>
+    <key name="tab-folders" type="i">
+      <range min="0" max="3"/>
+      <default>1</default>
+      <summary>Folders shown in the title of a tab</summary>
+      <description>How many of the last folders of a path the title of a tab shows. 0 shows the whole path. The tooltip always has it.</description>
+    </key>
+    <key name="prompt-folders" type="i">
+      <range min="0" max="3"/>
+      <default>3</default>
+      <summary>Folders shown in the shell prompt</summary>
+      <description>How many of the last folders of the current directory the prompt of a new shell shows, for shells that follow PROMPT_DIRTRIM, like bash. 0 shows the whole path.</description>
+    </key>
     <key name="highlight-running" type="b">
       <default>true</default>
       <summary>Highlight tabs while a command is running</summary>

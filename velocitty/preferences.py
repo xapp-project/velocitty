@@ -2,7 +2,7 @@ import gi
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Adw, GObject, Gio, Gtk, Pango
+from gi.repository import Adw, GObject, Gio, GLib, Gtk, Pango
 from xapp.util import l10n
 
 from velocitty import GETTEXT_DOMAIN
@@ -14,14 +14,14 @@ _ = l10n(GETTEXT_DOMAIN)
 
 
 def choice_row(settings, key, title, choices):
-    """A drop-down for a string key. choices is [(value, label), ...]"""
+    """A drop-down for a key of any type. choices is [(value, label), ...]"""
     values = [value for value, _label in choices]
     row = Adw.ComboRow(title=title, model=Gtk.StringList.new([label for _value, label in choices]))
-    current = settings.get_string(key)
-    row.set_selected(values.index(current) if current in values else 0)
+    current = settings.get_value(key)
+    row.set_selected(values.index(current.unpack()) if current.unpack() in values else 0)
 
     def selected(row, _param):
-        settings.set_string(key, values[row.get_selected()])
+        settings.set_value(key, GLib.Variant(current.get_type_string(), values[row.get_selected()]))
 
     row.connect("notify::selected", selected)
     return row
@@ -133,6 +133,14 @@ class Preferences(Adw.Window):
         group.add(spin_row(settings, "default-rows", _("Default Rows"), 5, 200))
         group.add(switch_row(settings, "restore-session", _("Restore Session"),
                              _("Reopen the windows and tabs of the last session at start")))
+        page.add(group)
+
+        group = Adw.PreferencesGroup(title=_("Shortened Paths"),
+                                     description=_("The prompt is only shortened in new tabs."))
+        folders = [(0, _("Don't Shorten")), (1, _("Last Folder")), (2, _("Last Two Folders")),
+                   (3, _("Last Three Folders"))]
+        group.add(choice_row(settings, "tab-folders", _("Tabs"), folders))
+        group.add(choice_row(settings, "prompt-folders", _("Prompt"), folders))
         page.add(group)
 
         group = Adw.PreferencesGroup(title=_("Terminal"))

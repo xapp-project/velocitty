@@ -56,6 +56,30 @@ def strip_local_host(title):
     return title[len(prefix):] if title.startswith(prefix) else title
 
 
+def untrim_path(title, shell_pid):
+    """The prompt of bash, which the title follows, starts a path with ".../" when it trims it
+    (PROMPT_DIRTRIM). The titles do their own shortening, so give back the whole path."""
+    if not title.startswith(".../") or shell_pid is None:
+        return title
+    try:
+        path = os.readlink("/proc/%d/cwd" % shell_pid)
+    except OSError:
+        return title
+    home = GLib.get_home_dir()
+    if path == home or path.startswith(home + "/"):
+        return "~" + path[len(home):]
+    return path
+
+
+def shorten_path(title, keep):
+    """The last folders of a path, which tell tabs apart better than its start does. A title
+    that is not a folder, or is short enough, is returned as it is, and so is any if keep is 0."""
+    if not keep or not title.startswith(("/", "~")) or not os.path.isdir(os.path.expanduser(title)):
+        return title
+    folders = [part for part in title.split("/") if part]
+    return title if len(folders) <= keep else "/".join(folders[-keep:])
+
+
 def installed_shells():
     """The shells listed in /etc/shells that are installed, as (path, name),
     one per name (it lists both /bin/bash and /usr/bin/bash on some systems)."""

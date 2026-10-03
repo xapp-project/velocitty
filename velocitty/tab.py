@@ -12,7 +12,7 @@ from xapp.util import l10n
 from velocitty import GETTEXT_DOMAIN
 from velocitty.palette import rgba
 from velocitty.searchbar import SearchBar
-from velocitty.shell import classify, strip_local_host
+from velocitty.shell import classify, shorten_path, strip_local_host, untrim_path
 
 _ = l10n(GETTEXT_DOMAIN)
 
@@ -52,7 +52,7 @@ class TermTab(Gtk.Overlay):
         self.auto_title = _("Terminal")
         self.kind = "idle"
         self.command_line = ""
-        self.title = _("Terminal")
+        self.title = self.full_title = _("Terminal")   # in the tab bar, and in full
         self.shell_pid = None
         self.last_output = None
         self.prompt_row = None
@@ -101,8 +101,9 @@ class TermTab(Gtk.Overlay):
         self.terminal.add_controller(click)
         self.setup_actions()
 
-        env = ["%s=%s" % item for item in os.environ.items() if item[0] != "TERM"]
-        env += ["TERM=xterm-256color", "COLORTERM=truecolor"]
+        env = ["%s=%s" % item for item in os.environ.items() if item[0] not in ("TERM", "PROMPT_DIRTRIM")]
+        env += ["TERM=xterm-256color", "COLORTERM=truecolor",
+                "PROMPT_DIRTRIM=%d" % self.settings.get_int("prompt-folders")]
         self.terminal.spawn_async(
             Vte.PtyFlags.DEFAULT, cwd or GLib.get_home_dir(), command or self.shell_argv(), env,
             GLib.SpawnFlags.DEFAULT, None, None, -1, None, self.on_spawned)
@@ -327,14 +328,22 @@ class TermTab(Gtk.Overlay):
         return "custom-%d" % self.custom_color if self.custom_color else None
 
     def update_title(self):
-        title = strip_local_host(self.terminal.get_window_title() or _("Terminal"))
+        """The automatic title is in full in the tooltip and the headerbar; the tab shows a folder
+        shortened to its last folders, as many as the settings say."""
+        shown = strip_local_host(self.terminal.get_window_title() or _("Terminal"))
+        if self.kind in ("idle", "active"):
+            shown = untrim_path(shown, self.shell_pid)
+        full = shown
+        short = shorten_path(shown, self.settings.get_int("tab-folders"))
         if self.kind == "active" and self.command_line:
-            title += " — " + self.command_line
+            full += " — " + self.command_line
+            short += " — " + self.command_line
         elif self.kind == "idle" and self.restored_command:
             # The command waiting at the prompt, until something is run
-            title = "… " + self.restored_command
-        self.auto_title = title
-        self.title = self.custom_title or title
+            full = short = "… " + self.restored_command
+        self.auto_title = full
+        self.title = self.custom_title or short
+        self.full_title = self.custom_title or full
         self.window.title_changed(self)
 
     # -- drop and paste ----------------------------------------------------
