@@ -165,12 +165,10 @@ class Preferences(Adw.Window):
         if current and current not in [path for path, _name in shells]:
             shells.append((current, current))  # no longer installed, keep showing the choice
         group.add(choice_row(settings, "shell", _("Shell"), shells))
-        page.add(group)
 
-        group = Adw.PreferencesGroup(
-            title=_("Start"),
-            description=_("A command typed into each new terminal, which stays open afterwards."))
-        group.add(entry_row(settings, "startup-command", _("Command to Run at Start"), "fastfetch; echo;"))
+        lines = entry_row(settings, "startup-command", _("Startup Command"), "fastfetch; echo;")
+        lines.set_subtitle(_("Command to Run at Start"))
+        group.add(lines)
         page.add(group)
         self.add_page(page, "behavior")
         self.sidebar.select_row(self.sidebar.get_row_at_index(0))
