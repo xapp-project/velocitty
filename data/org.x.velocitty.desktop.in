@@ -1,0 +1,23 @@
+[Desktop Entry]
+Name=Terminal
+GenericName=Terminal Emulator
+Comment=Use the command line
+Exec=velocitty
+Icon=velocitty
+Terminal=false
+Type=Application
+Categories=System;TerminalEmulator;
+Keywords=terminal;command;prompt;shell;console;ssh;
+StartupWMClass=org.x.velocitty
+StartupNotify=true
+X-ExecArg=--
+X-TerminalArgDir=--working-directory
+Actions=new-window;new-tab;
+
+[Desktop Action new-window]
+Name=New Window
+Exec=velocitty --new-window
+
+[Desktop Action new-tab]
+Name=New Tab
+Exec=velocitty --tab

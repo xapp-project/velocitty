@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.x.velocitty" path="/org/x/velocitty/">
+    <key name="palette" type="s">
+      <default>'Espresso'</default>
+      <summary>Palette</summary>
+      <description>The name of the color palette to use.</description>
+    </key>
+    <key name="color-scheme" type="s">
+      <choices>
+        <choice value="system"/>
+        <choice value="light"/>
+        <choice value="dark"/>
+      </choices>
+      <default>'dark'</default>
+      <summary>Style</summary>
+      <description>Use the light or the dark variant of the palette, or follow the system.</description>
+    </key>
+    <key name="restore-session" type="b">
+      <default>true</default>
+      <summary>Restore the last session</summary>
+      <description>Reopen the windows and tabs of the last session when the app starts.</description>
+    </key>
+    <key name="highlight-running" type="b">
+      <default>true</default>
+      <summary>Highlight tabs while a command is running</summary>
+    </key>
+    <key name="use-system-font" type="b">
+      <default>true</default>
+      <summary>Use the system monospace font</summary>
+    </key>
+    <key name="font" type="s">
+      <default>'Monospace 10'</default>
+      <summary>Custom font</summary>
+      <description>The font to use when the system font is not used.</description>
+    </key>
+    <key name="line-spacing" type="d">
+      <default>1.0</default>
+      <range min="1.0" max="2.0"/>
+      <summary>Line spacing</summary>
+    </key>
+    <key name="column-spacing" type="d">
+      <default>1.0</default>
+      <range min="1.0" max="2.0"/>
+      <summary>Column spacing</summary>
+    </key>
+    <key name="bold-is-bright" type="b">
+      <default>true</default>
+      <summary>Bright colors for bold</summary>
+      <description>Show bold text in the bright variant of its color.</description>
+    </key>
+    <key name="cursor-shape" type="s">
+      <choices>
+        <choice value="block"/>
+        <choice value="ibeam"/>
+        <choice value="underline"/>
+      </choices>
+      <default>'block'</default>
+      <summary>Cursor shape</summary>
+    </key>
+    <key name="cursor-blink" type="s">
+      <choices>
+        <choice value="system"/>
+        <choice value="on"/>
+        <choice value="off"/>
+      </choices>
+      <default>'system'</default>
+      <summary>Cursor blinking</summary>
+    </key>
+    <key name="default-columns" type="i">
+      <default>96</default>
+      <range min="20" max="400"/>
+      <summary>Default columns</summary>
+    </key>
+    <key name="default-rows" type="i">
+      <default>28</default>
+      <range min="5" max="200"/>
+      <summary>Default rows</summary>
+    </key>
+    <key name="zoom" type="d">
+      <default>1.0</default>
+      <range min="0.5" max="4.0"/>
+      <summary>Zoom level</summary>
+      <description>The zoom level of the text, shared by all terminals and remembered between sessions.</description>
+    </key>
+    <key name="scrollbars" type="s">
+      <choices>
+        <choice value="system"/>
+        <choice value="always"/>
+        <choice value="never"/>
+      </choices>
+      <default>'system'</default>
+      <summary>When to show the scrollbar</summary>
+    </key>
+    <key name="scroll-on-keystroke" type="b">
+      <default>true</default>
+      <summary>Scroll to the bottom when a key is pressed</summary>
+    </key>
+    <key name="scroll-on-output" type="b">
+      <default>false</default>
+      <summary>Scroll to the bottom when there is new output</summary>
+    </key>
+    <key name="limit-scrollback" type="b">
+      <default>true</default>
+      <summary>Limit the number of lines saved for scrollback</summary>
+    </key>
+    <key name="scrollback-lines" type="i">
+      <default>10000</default>
+      <range min="0" max="1000000"/>
+      <summary>Scrollback lines</summary>
+    </key>
+    <key name="visual-bell" type="b">
+      <default>true</default>
+      <summary>Visual bell</summary>
+      <description>Flash the headerbar, or mark the tab if it is in the background, when a program rings the bell.</description>
+    </key>
+    <key name="shell" type="s">
+      <default>''</default>
+      <summary>Shell</summary>
+      <description>The path of the shell to run, one of those listed in /etc/shells. Empty means the user's default shell.</description>
+    </key>
+    <key name="startup-command" type="s">
+      <default>''</default>
+      <summary>Command to run at start</summary>
+      <description>A command typed into each new terminal when it starts. The shell stays open afterwards.</description>
+    </key>
+    <key name="search-match-case" type="b">
+      <default>false</default>
+      <summary>Match case when searching</summary>
+    </key>
+    <key name="search-whole-words" type="b">
+      <default>false</default>
+      <summary>Match whole words when searching</summary>
+    </key>
+    <key name="search-regex" type="b">
+      <default>false</default>
+      <summary>Search with regular expressions</summary>
+    </key>
+    <key name="search-wrap" type="b">
+      <default>true</default>
+      <summary>Wrap around when searching</summary>
+    </key>
+</schema>
+</schemalist>

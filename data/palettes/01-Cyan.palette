@@ -1,0 +1,31 @@
+[Palette]
+Name=01 Cyan
+Foreground=#00CCFF
+Background=#00222B
+Titlebar=#002a36
+Color1=#003340
+Color2=#00CCFF
+Color3=#00CCFF
+Color4=#00CCFF
+Color5=#00CCFF
+Color6=#00CCFF
+Color7=#00CCFF
+Color8=#00CCFF
+Color9=#00CCFF
+Color10=#00CCFF
+Color11=#00CCFF
+Color12=#00CCFF
+Color13=#00CCFF
+Color14=#00CCFF
+Color15=#00CCFF
+Color16=#00CCFF
+Admin=#462b29
+Remote=#052858
+Custom1=#00CCFF
+Custom2=#23ED1D
+Custom3=#EDD11D
+Custom4=#ED7E1D
+Custom5=#ED1D7E
+Custom6=#8C1DED
+
+# This file was generated from https://github.com/Gogh-Co/Gogh/tree/master/themes/Mono Cyan.yml

@@ -1,0 +1,31 @@
+[Palette]
+Name=01 Amber
+Foreground=#FF9400
+Background=#2B1900
+Titlebar=#361f00
+Color1=#402500
+Color2=#FF9400
+Color3=#FF9400
+Color4=#FF9400
+Color5=#FF9400
+Color6=#FF9400
+Color7=#FF9400
+Color8=#FF9400
+Color9=#FF9400
+Color10=#FF9400
+Color11=#FF9400
+Color12=#FF9400
+Color13=#FF9400
+Color14=#FF9400
+Color15=#FF9400
+Color16=#FF9400
+Admin=#5c0a06
+Remote=#0c1d34
+Custom1=#1DEDDB
+Custom2=#23ED1D
+Custom3=#EDD11D
+Custom4=#FF9400
+Custom5=#ED1D7E
+Custom6=#8C1DED
+
+# This file was generated from https://github.com/Gogh-Co/Gogh/tree/master/themes/Mono Amber.yml

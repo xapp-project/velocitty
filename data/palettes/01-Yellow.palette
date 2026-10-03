@@ -1,0 +1,31 @@
+[Palette]
+Name=01 Yellow
+Foreground=#FFD300
+Background=#2B2400
+Titlebar=#362d00
+Color1=#403500
+Color2=#FFD300
+Color3=#FFD300
+Color4=#FFD300
+Color5=#FFD300
+Color6=#FFD300
+Color7=#FFD300
+Color8=#FFD300
+Color9=#FFD300
+Color10=#FFD300
+Color11=#FFD300
+Color12=#FFD300
+Color13=#FFD300
+Color14=#FFD300
+Color15=#FFD300
+Color16=#FFD300
+Admin=#3f0501
+Remote=#0c1d34
+Custom1=#1DEDDB
+Custom2=#23ED1D
+Custom3=#FFD300
+Custom4=#ED7E1D
+Custom5=#ED1D7E
+Custom6=#8C1DED
+
+# This file was generated from https://github.com/Gogh-Co/Gogh/tree/master/themes/Mono Yellow.yml

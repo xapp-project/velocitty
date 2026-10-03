@@ -1,0 +1,31 @@
+[Palette]
+Name=01 White
+Foreground=#FAFAFA
+Background=#262626
+Titlebar=#303030
+Color1=#3B3B3B
+Color2=#FAFAFA
+Color3=#FAFAFA
+Color4=#FAFAFA
+Color5=#FAFAFA
+Color6=#FAFAFA
+Color7=#FAFAFA
+Color8=#FAFAFA
+Color9=#FAFAFA
+Color10=#FAFAFA
+Color11=#FAFAFA
+Color12=#FAFAFA
+Color13=#FAFAFA
+Color14=#FAFAFA
+Color15=#FAFAFA
+Color16=#FAFAFA
+Admin=#7f5654
+Remote=#54667f
+Custom1=#90D5CF
+Custom2=#92D590
+Custom3=#D5CC90
+Custom4=#D5B090
+Custom5=#D590B0
+Custom6=#B590D5
+
+# This file was generated from https://github.com/Gogh-Co/Gogh/tree/master/themes/Mono White.yml

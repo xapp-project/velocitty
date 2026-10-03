@@ -1,0 +1,13 @@
+#!/bin/bash
+
+xgettext --language=Desktop \
+    --output=velocitty.pot \
+    data/org.x.velocitty.desktop.in
+
+xgettext --language=Python \
+    --join-existing \
+    --from-code=UTF-8 \
+    --keyword=_ \
+    --keyword=N_ \
+    --output=velocitty.pot \
+    velocitty/*.py

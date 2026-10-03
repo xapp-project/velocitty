@@ -1,0 +1,31 @@
+[Palette]
+Name=01 Green
+Foreground=#0BFF00
+Background=#022B00
+Titlebar=#033600
+Color1=#034000
+Color2=#0BFF00
+Color3=#0BFF00
+Color4=#0BFF00
+Color5=#0BFF00
+Color6=#0BFF00
+Color7=#0BFF00
+Color8=#0BFF00
+Color9=#0BFF00
+Color10=#0BFF00
+Color11=#0BFF00
+Color12=#0BFF00
+Color13=#0BFF00
+Color14=#0BFF00
+Color15=#0BFF00
+Color16=#0BFF00
+Admin=#350401
+Remote=#041a39
+Custom1=#1DEDDB
+Custom2=#0BFF00
+Custom3=#EDD11D
+Custom4=#ED7E1D
+Custom5=#ED1D7E
+Custom6=#8C1DED
+
+# This file was generated from https://github.com/Gogh-Co/Gogh/tree/master/themes/Mono Green.yml

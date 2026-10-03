@@ -1,0 +1,28 @@
+#!/bin/bash
+version=$(sed -n "s/^project('velocitty', version : '\([^']*\)'.*/\1/p" meson.build)
+module=/usr/lib/python3/dist-packages/velocitty
+
+sudo rm -rf $module
+sudo cp -R velocitty $module
+sudo rm -rf $module/__pycache__ $module/config.py.in
+sed "s|@version@|$version|; s|@data_dir@|/usr/share/velocitty|" velocitty/config.py.in > config.py.new
+sudo mv config.py.new $module/config.py
+
+sudo rm -rf /usr/share/velocitty/palettes
+sudo mkdir -p /usr/share/velocitty/palettes
+sudo cp data/palettes/*.palette /usr/share/velocitty/palettes/
+
+sudo cp data/org.x.velocitty.gschema.xml /usr/share/glib-2.0/schemas/
+sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
+
+sudo cp data/velocitty.svg /usr/share/icons/hicolor/scalable/apps/
+sudo gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null
+
+sudo cp data/org.x.velocitty.desktop.in /usr/share/applications/org.x.velocitty.desktop
+sudo update-desktop-database -q /usr/share/applications 2>/dev/null
+
+sudo cp data/velocitty.in /usr/bin/velocitty
+sudo chmod 755 /usr/bin/velocitty
+
+killall velocitty 2>/dev/null
+velocitty &
