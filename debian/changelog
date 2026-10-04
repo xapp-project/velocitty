@@ -1,3 +1,14 @@
+velocitty (1.0.1) adrien; urgency=medium
+
+  * l10n: Update POT
+  * Shorten paths in tabs and prompts
+  * Fix the position of the context menu
+  * Disable scrollback limit by default
+  * prefs: Reorganize sections and pages
+  * l10n: Update POT
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sun, 04 Oct 2026 13:11:55 +0100
+
 velocitty (1.0.0) adrien; urgency=medium
 
   * Initial release
