@@ -467,6 +467,7 @@ class TermTab(Gtk.Overlay):
         popover = Gtk.PopoverMenu.new_from_model(self.menu)
         popover.set_parent(self)
         popover.set_has_arrow(False)
+        popover.set_halign(Gtk.Align.START)
         rect = Gdk.Rectangle()
         rect.x, rect.y, rect.width, rect.height = int(x), int(y), 1, int(height)
         popover.set_pointing_to(rect)
