@@ -11,33 +11,44 @@ _ = l10n(GETTEXT_DOMAIN)
 
 
 class CustomizePopover(Gtk.Popover):
-    """Set the title and the color of a tab."""
+    """Set the title and the color of a tab, and whether it is persistent."""
 
     def __init__(self, tab, window):
         super().__init__()
         self.tab, self.window = tab, window
 
-        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10, margin_top=10, margin_bottom=10,
-                      margin_start=10, margin_end=10)
-        self.entry = Gtk.Entry(width_chars=28, placeholder_text=tab.auto_title,
-                               text=tab.custom_title or "")
+        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12, margin_top=12, margin_bottom=12,
+                      margin_start=12, margin_end=12, width_request=280)
+        self.entry = Gtk.Entry(placeholder_text=_("Name"), text=tab.custom_title or "")
         self.entry.connect("changed", self.on_changed)
         self.entry.connect("activate", lambda e: self.popdown())
         box.append(self.entry)
 
-        swatches = Gtk.Box(spacing=8, halign=Gtk.Align.CENTER)
+        swatches = Gtk.Box(homogeneous=True)
         none = Gtk.ToggleButton(icon_name="xsi-edit-clear-symbolic", css_classes=["circular"],
-                                valign=Gtk.Align.CENTER, tooltip_text=_("No Color"))
+                                halign=Gtk.Align.CENTER, tooltip_text=_("No Color"))
         none.set_active(tab.custom_color == 0)
         none.connect("toggled", self.on_color, 0)
         swatches.append(none)
         for index in range(1, CUSTOM_COUNT + 1):
             button = Gtk.ToggleButton(css_classes=["circular", "custom-swatch", "custom-%d" % index], group=none,
-                                   valign=Gtk.Align.CENTER)
+                                      halign=Gtk.Align.CENTER, valign=Gtk.Align.CENTER)
             button.set_active(tab.custom_color == index)
             button.connect("toggled", self.on_color, index)
             swatches.append(button)
         box.append(swatches)
+        box.append(Gtk.Separator())
+
+        text = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, hexpand=True, valign=Gtk.Align.CENTER)
+        text.append(Gtk.Label(label=_("Persistent Tab"), xalign=0))
+        text.append(Gtk.Label(label=_("Opens when the app starts"), xalign=0,
+                              css_classes=["dim-label", "caption"]))
+        persistent = Gtk.Switch(active=tab.persistent, valign=Gtk.Align.CENTER)
+        persistent.connect("notify::active", lambda switch, _param: window.set_persistent(tab, switch.get_active()))
+        row = Gtk.Box(spacing=12)
+        row.append(text)
+        row.append(persistent)
+        box.append(row)
 
         self.set_child(box)
         self.connect("closed", self.on_closed)

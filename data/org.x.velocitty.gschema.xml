@@ -16,11 +16,6 @@
       <summary>Style</summary>
       <description>Use the light or the dark variant of the palette, or follow the system.</description>
     </key>
-    <key name="restore-session" type="b">
-      <default>true</default>
-      <summary>Restore the last session</summary>
-      <description>Reopen the windows and tabs of the last session when the app starts.</description>
-    </key>
     <key name="tab-folders" type="i">
       <range min="0" max="3"/>
       <default>1</default>

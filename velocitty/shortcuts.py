@@ -15,6 +15,7 @@ SECTIONS = [
         (_("New Window"), "<Ctrl><Shift>n"),
         (_("Close Tab"), "<Ctrl><Shift>w"),
         (_("Customize Tab"), "F2"),
+        (_("Make Tab Persistent"), "F3"),
         (_("View All Tabs"), "<Ctrl><Shift>o"),
         (_("Main Menu"), "F10"),
         (_("Full Screen"), "F11"),

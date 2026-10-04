@@ -44,6 +44,7 @@ class TermTab(Gtk.Overlay):
         self.started_with_command = bool(command)   # not a shell: the command is the whole tab
         self.used = False   # Enter was pressed in this tab
         self.orphan_polls = 0
+        self.persistent = restore is not None   # a restored tab was persistent: it comes back at the next start
         restore = restore or {}
         self.custom_title = restore.get("title") or None   # a title the user chose
         self.custom_color = restore.get("color") or 0      # a custom color the user chose: 0 for none, else its number
@@ -280,11 +281,6 @@ class TermTab(Gtk.Overlay):
         if self.restored_command and self.get_root() is not None:
             self.terminal.feed_child(self.restored_command.encode())
         return GLib.SOURCE_REMOVE
-
-    def is_worthy(self):
-        """Something about this tab is worth keeping a window for: a title or color the user
-        gave it, or something that is running (or waiting to be run) in it."""
-        return bool(self.custom_title or self.custom_color or self.restored_command or self.kind != "idle")
 
     def is_clean_at(self, path):
         """A tab nobody has touched, sitting in this directory: nothing was customized and no

@@ -30,7 +30,7 @@ class TermApp(Adw.Application):
         self.palette = None
         self.preferences = None
         self.shortcuts = None
-        self.session = session.Manager(self.settings)
+        self.session = session.Manager()
         self.launched = False
         self.provider = Gtk.CssProvider()
         self.add_main_option("working-directory", ord("d"), GLib.OptionFlags.NONE,
@@ -70,6 +70,7 @@ class TermApp(Adw.Application):
             "win.zoom-reset": ["<Ctrl>0", "<Ctrl>KP_0"],
             "win.fullscreen": ["F11"],
             "win.customize-tab": ["F2"],
+            "win.toggle-persistent": ["F3"],
             "win.main-menu": ["F10"],
             "win.last-tab": ["<Ctrl>End"],
             "win.shortcuts": ["<Ctrl><Shift>question"],
@@ -138,9 +139,9 @@ class TermApp(Adw.Application):
     # -- session -----------------------------------------------------------
 
     def restore_session(self):
-        """At the first launch, bring back the windows of the last session."""
+        """At the first launch, bring back the persistent tabs of the last session."""
         first, self.launched = not self.launched, True
-        if not first or not self.settings.get_boolean("restore-session"):
+        if not first:
             return None
         saved = self.session.load()
         if not saved:
@@ -150,8 +151,6 @@ class TermApp(Adw.Application):
         for data in saved:
             window = TermWindow(self)
             window.restore(data)
-            if window.tab_view.get_n_pages() == 0:
-                window.new_tab()
             windows.append((data.get("active", False), window))
             window.present()
         # The window that had the focus comes last, so it ends up in front
@@ -167,7 +166,7 @@ class TermApp(Adw.Application):
 
     def window_closing(self, window):
         """A window is going away. When it is the last one, that is the session to keep. Another
-        one is forgotten, unless something in it is worth keeping: closing its tabs is how to forget it."""
+        one is forgotten, unless it has persistent tabs, open or closed."""
         if self.open_windows():
             self.session.keep(window)
             self.queue_session_save()

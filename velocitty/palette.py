@@ -161,6 +161,7 @@ window.terminal revealer.top-bar > windowhandle:backdrop { background-color: $tb
 window.terminal tabbar tab, window.terminal tabbar tabbox > tabboxchild { border-radius: 0; }
 /* no gaps around the headerbar and the tab bar: the tabs fill the bar */
 window.terminal tabbar tabbox { padding: 0; }
+window.terminal tabbar tab.persistent .tab-title { font-weight: bold; }
 window.terminal tabbar .box { padding: 0; }
 window.terminal tabbar tabbox > separator { margin: 0; min-width: 0; opacity: 0; }
 window.terminal revealer.top-bar > windowhandle > box { padding: 0; margin: 0; border-spacing: 0; }

@@ -56,17 +56,13 @@ class TermWindow(Adw.ApplicationWindow):
         self.previous_page = None
         self.tab_view.connect("notify::selected-page", self.on_page_selected)
         self.tab_view.connect("notify::n-pages", self.on_n_pages)
+        self.tab_view.connect("close-page", self.on_close_page)
+        self.closed_persistent = []
         self.tab_view.connect("page-attached", self.on_page_attached)
         # Dragging a tab out of the bar makes a window for it
         self.tab_view.connect("create-window", self.on_create_window)
         for signal in ("page-attached", "page-detached", "page-reordered"):
             self.tab_view.connect(signal, lambda *_: self.app.queue_session_save())
-        # The tab's right-click menu, in the tab bar and in the overview
-        tab_menu = Gio.Menu()
-        tab_menu.append(_("Customize Tab…"), "win.customize-tab")
-        self.tab_view.set_menu_model(tab_menu)
-        self.menu_page = None
-        self.tab_view.connect("setup-menu", self.on_setup_menu)
 
         self.window_title = Adw.WindowTitle(title=_("Terminal"), subtitle="")
         self.header = Adw.HeaderBar(title_widget=self.window_title)
@@ -116,6 +112,11 @@ class TermWindow(Adw.ApplicationWindow):
         self.toolbar.add_top_bar(self.header)
         self.toolbar.add_top_bar(self.tab_bar)
         self.overview.set_child(self.toolbar)
+        # Right-clicking a tab, in the bar or in the overview, edits it
+        for host in (self.tab_bar, self.overview):
+            click = Gtk.GestureClick(button=3, propagation_phase=Gtk.PropagationPhase.CAPTURE)
+            click.connect("pressed", self.on_tab_right_click, host)
+            host.add_controller(click)
         self.set_content(self.overview)
 
         # In full screen the bars hide after a while and come back at the top edge
@@ -135,6 +136,7 @@ class TermWindow(Adw.ApplicationWindow):
             "zoom-reset": lambda *_: self.zoom(0),
             "fullscreen": lambda *_: self.toggle_fullscreen(),
             "customize-tab": lambda *_: self.customize_tab(),
+            "toggle-persistent": lambda *_: self.toggle_persistent(),
             "main-menu": lambda *_: self.menu_button.popup(),
             "last-tab": lambda *_: self.switch_to_previous(),
             "shortcuts": lambda *_: self.get_application().show_shortcuts(),
@@ -173,21 +175,47 @@ class TermWindow(Adw.ApplicationWindow):
         """A tab was dragged out of the bar: it gets a window of its own."""
         return self.app.empty_window().tab_view
 
-    def on_setup_menu(self, view, page):
-        # Which tab the right-click menu is about
-        self.menu_page = page
+    def on_tab_right_click(self, gesture, n_press, x, y, host):
+        widget = host.pick(x, y, Gtk.PickFlags.DEFAULT)
+        while widget is not None and widget.get_css_name() not in ("tab", "tabthumbnail"):
+            widget = widget.get_parent()
+        page = widget.get_property("page") if widget is not None else None
+        if page is not None and isinstance(page.get_child(), TermTab):
+            gesture.set_state(Gtk.EventSequenceState.CLAIMED)
+            self.customize_tab(page.get_child())
 
+    def toggle_persistent(self):
+        """Make the current tab persistent, or not. Only persistent tabs come back when the app is started again."""
+        tab = self.current_tab()
+        if tab is not None:
+            self.set_persistent(tab, not tab.persistent)
+
+    def set_persistent(self, tab, persistent):
+        tab.persistent = persistent
+        self.queue_restyle()
+        self.app.queue_session_save()
     def toggle_overview(self):
         self.overview.set_open(not self.overview.get_open())
 
     def is_worthy(self):
-        return any(tab.is_worthy() for tab in self.tabs())
+        return bool(self.closed_persistent) or any(tab.persistent for tab in self.tabs())
+
+    def on_close_page(self, view, page):
+        """A persistent tab that is closed still comes back at the next start, in its place."""
+        tab = page.get_child()
+        if isinstance(tab, TermTab) and tab.persistent:
+            before = [t for t in self.tabs()[:view.get_page_position(page)] if t.persistent]
+            self.closed_persistent.append((len(before), tab.snapshot()))
+        return False   # the tab is closed as usual
 
     def snapshot(self):
-        """The tabs, in order, and the one in front."""
-        selected = self.tab_view.get_selected_page()
-        return {"tabs": [tab.snapshot() for tab in self.tabs()],
-                "selected": self.tab_view.get_page_position(selected) if selected else 0,
+        """The persistent tabs, open or closed, in order, and the one in front."""
+        entries = [(tab.snapshot(), tab) for tab in self.tabs() if tab.persistent]
+        for place, snapshot in self.closed_persistent:
+            entries.insert(min(place, len(entries)), (snapshot, None))
+        selected = self.current_tab()
+        return {"tabs": [snapshot for snapshot, _tab in entries],
+                "selected": next((i for i, (_s, tab) in enumerate(entries) if tab is selected), 0),
                 "active": self.is_active()}
 
     def restore(self, data):
@@ -382,11 +410,8 @@ class TermWindow(Adw.ApplicationWindow):
             self.show_bars()
 
     def customize_tab(self, tab=None):
-        """Edit the title and color of a tab (the one under the menu, or the current one)."""
-        if tab is None:
-            page = self.menu_page or self.tab_view.get_selected_page()
-            tab = page.get_child() if page else None
-        self.menu_page = None
+        """Edit the title, color and whether it is persistent (the current one by default)."""
+        tab = tab or self.current_tab()
         if tab is None:
             return
         anchor = self.anchor_for(tab)
@@ -463,12 +488,14 @@ class TermWindow(Adw.ApplicationWindow):
             for widget in walk(root):
                 if widget.get_css_name() not in ("tab", "tabthumbnail"):
                     continue
-                for state in STATES + CUSTOM_CLASSES:
+                for state in STATES + CUSTOM_CLASSES + ("persistent",):
                     widget.remove_css_class(state)
                 page = widget.get_property("page")
                 tab = page.get_child() if page else None
                 if isinstance(tab, TermTab) and tab.style_class():
                     widget.add_css_class(tab.style_class())
+                if isinstance(tab, TermTab) and tab.persistent:
+                    widget.add_css_class("persistent")
         return GLib.SOURCE_REMOVE
 
     # -- closing -----------------------------------------------------------

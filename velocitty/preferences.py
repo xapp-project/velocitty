@@ -117,8 +117,6 @@ class Preferences(Adw.Window):
         group = Adw.PreferencesGroup(title=_("Windows"))
         group.add(spin_row(settings, "default-columns", _("Columns"), 20, 400))
         group.add(spin_row(settings, "default-rows", _("Rows"), 5, 200))
-        group.add(switch_row(settings, "restore-session", _("Restore Session"),
-                             _("Reopen the windows and tabs of the last session at start")))
         page.add(group)
 
         group = Adw.PreferencesGroup(title=_("Tabs"))
