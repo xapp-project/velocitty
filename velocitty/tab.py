@@ -109,6 +109,11 @@ class TermTab(Gtk.Overlay):
             GLib.SpawnFlags.DEFAULT, None, None, -1, None, self.on_spawned)
         GLib.timeout_add(500, self.poll)
 
+    def do_grab_focus(self):
+        # GTK hands focus back to the popover's parent when the context menu closes. An
+        # overlay can't take it, and GTK would then focus the first widget in the window.
+        return self.terminal.grab_focus()
+
     def shell_argv(self):
         shell = self.settings.get_string("shell")
         if not shell or not os.access(shell, os.X_OK):
