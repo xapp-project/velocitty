@@ -99,74 +99,53 @@ class Preferences(Adw.Window):
         self.add_controller(escape)
 
         page = Adw.PreferencesPage(title=_("Appearance"), icon_name="xsi-appearance-symbolic")
-
+        
         group = Adw.PreferencesGroup(title=_("Palette"))
         group.add(self.palette_chooser(settings))
         page.add(group)
 
-        group = Adw.PreferencesGroup(title=_("Colors"))
-        group.add(switch_row(settings, "highlight-running", _("Highlight Running Commands"),
-                             _("Color the tab and the headerbar while a command is running")))
+        group = Adw.PreferencesGroup(title=_("Text"))
+        group.add(self.font_row(settings))
+        group.add(spin_double_row(settings, "line-spacing", _("Line Spacing"), 1.0, 2.0, 0.1))
+        group.add(spin_double_row(settings, "column-spacing", _("Column Spacing"), 1.0, 2.0, 0.1))
         group.add(switch_row(settings, "bold-is-bright", _("Bright Colors for Bold")))
         page.add(group)
 
-        group = Adw.PreferencesGroup(title=_("Font"))
-        group.add(self.font_row(settings))
-        page.add(group)
-
-        group = Adw.PreferencesGroup()
-        group.add(spin_double_row(settings, "line-spacing", _("Line Spacing"), 1.0, 2.0, 0.1))
-        group.add(spin_double_row(settings, "column-spacing", _("Column Spacing"), 1.0, 2.0, 0.1))
-        page.add(group)
-
-        group = Adw.PreferencesGroup(title=_("Cursor"))
-        group.add(choice_row(settings, "cursor-shape", _("Cursor Shape"), [
-            ("block", _("Block")), ("ibeam", _("I-Beam")), ("underline", _("Underline"))]))
-        group.add(choice_row(settings, "cursor-blink", _("Cursor Blinking"), [
-            ("system", _("Follow System")), ("on", _("Enabled")), ("off", _("Disabled"))]))
-        page.add(group)
         self.add_page(page, "appearance")
 
-        page = Adw.PreferencesPage(title=_("Behavior"), icon_name="xsi-applications-system-symbolic")
-        group = Adw.PreferencesGroup(title=_("Windows and Tabs"))
-        group.add(spin_row(settings, "default-columns", _("Default Columns"), 20, 400))
-        group.add(spin_row(settings, "default-rows", _("Default Rows"), 5, 200))
+        page = Adw.PreferencesPage(title=_("Windows and Tabs"), icon_name="xsi-tab-new-symbolic")
+        group = Adw.PreferencesGroup(title=_("Windows"))
+        group.add(spin_row(settings, "default-columns", _("Columns"), 20, 400))
+        group.add(spin_row(settings, "default-rows", _("Rows"), 5, 200))
         group.add(switch_row(settings, "restore-session", _("Restore Session"),
                              _("Reopen the windows and tabs of the last session at start")))
         page.add(group)
 
-        group = Adw.PreferencesGroup(title=_("Shortened Paths"),
-                                     description=_("The prompt is only shortened in new tabs."))
-        folders = [(0, _("Don't Shorten")), (1, _("Last Folder")), (2, _("Last Two Folders")),
-                   (3, _("Last Three Folders"))]
-        group.add(choice_row(settings, "tab-folders", _("Tabs"), folders))
-        group.add(choice_row(settings, "prompt-folders", _("Prompt"), folders))
-        page.add(group)
-
-        group = Adw.PreferencesGroup(title=_("Terminal"))
+        group = Adw.PreferencesGroup(title=_("Tabs"))
+        group.add(choice_row(settings, "tab-folders", _("Shorten Paths"), [
+            (0, _("Don't Shorten")), (1, _("Last Folder")), (2, _("Last Two Folders")),
+            (3, _("Last Three Folders"))]))
+        group.add(switch_row(settings, "highlight-running", _("Highlight Running Commands"),
+                             _("Color the tab and the headerbar while a command is running")))
         group.add(switch_row(settings, "visual-bell", _("Visual Bell"),
                              _("Flash the headerbar when a program rings the bell")))
         page.add(group)
+        self.add_page(page, "windows")
 
+        page = Adw.PreferencesPage(title=_("Scrolling"), icon_name="xsi-input-mouse-symbolic")
         group = Adw.PreferencesGroup(title=_("Scrolling"))
-        group.add(choice_row(settings, "scrollbars", _("Use Scrollbars"), [
-            ("system", _("Follow System")), ("always", _("Always")), ("never", _("Never"))]))
+        group.add(choice_row(settings, "scrollbars", _("Scrollbars"), [
+            ("system", _("Use System Scrollbars")), ("always", _("Always visible")), ("never", _("Hidden"))]))
+        group.add(switch_row(settings, "scroll-on-keystroke", _("Scroll to the bottom when you press a key")))
+        group.add(switch_row(settings, "scroll-on-output", _("Scroll to the bottom when new output is printed")))
+        limit = Adw.ExpanderRow(title=_("Limit the number of printed lines"), show_enable_switch=True)
+        settings.bind("limit-scrollback", limit, "enable-expansion", Gio.SettingsBindFlags.DEFAULT)
+        limit.add_row(spin_row(settings, "scrollback-lines", _("Lines"), 0, 1000000, 1000))
+        group.add(limit)
         page.add(group)
-        group = Adw.PreferencesGroup()
-        group.add(switch_row(settings, "scroll-on-keystroke", _("Scroll on Keystroke"),
-                             _("Scroll to the bottom upon input keystroke")))
-        group.add(switch_row(settings, "scroll-on-output", _("Scroll on Output"),
-                             _("Scroll to the bottom when new content is available")))
-        page.add(group)
-        group = Adw.PreferencesGroup()
-        group.add(switch_row(settings, "limit-scrollback", _("Limit Scrollback"),
-                             _("Restrict the number of lines saved for scrollback")))
-        lines = spin_row(settings, "scrollback-lines", _("Scrollback Lines"), 0, 1000000, 1000)
-        lines.set_subtitle(_("The number of lines to keep for scrollback"))
-        settings.bind("limit-scrollback", lines, "sensitive", Gio.SettingsBindFlags.GET)
-        group.add(lines)
-        page.add(group)
+        self.add_page(page, "scrolling")
 
+        page = Adw.PreferencesPage(title=_("Shell"), icon_name="xsi-utilities-terminal-symbolic")
         group = Adw.PreferencesGroup(title=_("Shell"))
         shells = [("", _("System Default"))] + [(path, name) for path, name in installed_shells()]
         current = settings.get_string("shell")
@@ -174,11 +153,23 @@ class Preferences(Adw.Window):
             shells.append((current, current))  # no longer installed, keep showing the choice
         group.add(choice_row(settings, "shell", _("Shell"), shells))
 
-        lines = entry_row(settings, "startup-command", _("Startup Command"), "fastfetch; echo;")
-        lines.set_subtitle(_("Command to Run at Start"))
-        group.add(lines)
+        command = entry_row(settings, "startup-command", _("Startup Command"), "fastfetch; echo;")
+        command.set_subtitle(_("Command to Run at Start"))
+        group.add(command)
         page.add(group)
-        self.add_page(page, "behavior")
+
+        group = Adw.PreferencesGroup(title=_("Prompt"))
+        group.add(choice_row(settings, "cursor-shape", _("Cursor Shape"), [
+            ("block", _("Block")), ("ibeam", _("I-Beam")), ("underline", _("Underline"))]))
+        group.add(choice_row(settings, "cursor-blink", _("Cursor Blinking"), [
+            ("system", _("Follow System")), ("on", _("Enabled")), ("off", _("Disabled"))]))
+        folders = choice_row(settings, "prompt-folders", _("Shorten Paths"), [
+            (0, _("Don't Shorten")), (1, _("Last Folder")), (2, _("Last Two Folders")),
+            (3, _("Last Three Folders"))])
+        folders.set_subtitle(_("Only in new tabs"))
+        group.add(folders)
+        page.add(group)
+        self.add_page(page, "shell")
         self.sidebar.select_row(self.sidebar.get_row_at_index(0))
 
     def font_row(self, settings):
@@ -196,7 +187,7 @@ class Preferences(Adw.Window):
         suffix = Gtk.Box(spacing=12, hexpand=True)
         suffix.append(font_name)
         suffix.append(Gtk.Image(icon_name="xsi-go-next-symbolic"))
-        custom = Adw.ActionRow(title=_("Custom Font"), activatable=True)
+        custom = Adw.ActionRow(title=_("Font"), activatable=True)
         custom.add_suffix(suffix)
         custom.connect("activated", lambda *_: self.choose_font(settings))
         row.add_row(custom)
