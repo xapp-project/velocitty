@@ -113,7 +113,7 @@
       <summary>Scroll to the bottom when there is new output</summary>
     </key>
     <key name="limit-scrollback" type="b">
-      <default>true</default>
+      <default>false</default>
       <summary>Limit the number of lines saved for scrollback</summary>
     </key>
     <key name="scrollback-lines" type="i">
