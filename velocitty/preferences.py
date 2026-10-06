@@ -133,7 +133,7 @@ class Preferences(Adw.Window):
         page = Adw.PreferencesPage(title=_("Scrolling"), icon_name="xsi-input-mouse-symbolic")
         group = Adw.PreferencesGroup(title=_("Scrolling"))
         group.add(choice_row(settings, "scrollbars", _("Scrollbars"), [
-            ("system", _("Use System Scrollbars")), ("always", _("Always visible")), ("never", _("Hidden"))]))
+            ("system", _("Use System Scrollbars")), ("always", _("Always Visible")), ("never", _("Hidden"))]))
         group.add(switch_row(settings, "scroll-on-keystroke", _("Scroll to the bottom when you press a key")))
         group.add(switch_row(settings, "scroll-on-output", _("Scroll to the bottom when new output is printed")))
         limit = Adw.ExpanderRow(title=_("Limit the number of printed lines"), show_enable_switch=True)
@@ -152,7 +152,7 @@ class Preferences(Adw.Window):
         group.add(choice_row(settings, "shell", _("Shell"), shells))
 
         command = entry_row(settings, "startup-command", _("Startup Command"), "fastfetch; echo;")
-        command.set_subtitle(_("Command to Run at Start"))
+        command.set_subtitle(_("Command to run at start"))
         group.add(command)
         page.add(group)
 

@@ -26,7 +26,7 @@ class CustomizePopover(Gtk.Popover):
         self.entry.connect("activate", lambda e: self.popdown())
         box.append(self.entry)
 
-        self.command = Gtk.Entry(placeholder_text=_("Command to run when opened"), text=tab.run_command or "")
+        self.command = Gtk.Entry(placeholder_text=_("Command to run"), text=tab.run_command or "")
         self.command.connect("changed", self.on_command_changed)
         self.command.connect("activate", lambda e: self.popdown())
         box.append(self.command)
