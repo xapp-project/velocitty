@@ -1,3 +1,21 @@
+velocitty (1.0.2) adrien; urgency=medium
+
+  [ Michael Webster ]
+  * tab.py: Override TermTab's grab_focus() vfunc to grab the terminal widget.
+
+  [ Clement Lefebvre ]
+  * Simplify session mechanism
+  * Redesign tab persistence completely
+  * Implement custom commands
+  * custom tabs: Let the user order the list
+  * Redesign the colors
+  * l10n: Update POT
+  * shortcuts: Make F2/F3 also close the customize/custom popover/page
+  * window: Fix tiny window when moving tab out of the window
+  * palette: Don't crash if a palette file is malformed
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 06 Oct 2026 16:12:00 +0100
+
 velocitty (1.0.1) adrien; urgency=medium
 
   * l10n: Update POT
