@@ -58,7 +58,9 @@ class CustomTabsPage(Adw.NavigationPage):
         title = entry.get("title") or os.path.basename(entry["cwd"].rstrip(os.sep)) or folder
         is_open = self.window.app.is_open(entry)
 
-        row = Adw.ActionRow(title=GLib.markup_escape_text(title), subtitle=GLib.markup_escape_text(folder))
+        subtitle = folder + "\n" + entry["run"] if entry.get("run") else folder
+        row = Adw.ActionRow(title=GLib.markup_escape_text(title), subtitle=GLib.markup_escape_text(subtitle),
+                            subtitle_lines=2)
         if entry.get("color"):
             row.add_prefix(Gtk.Box(width_request=4, margin_top=6, margin_bottom=6,
                                    css_classes=["color-bar", "custom-%d" % entry["color"]]))

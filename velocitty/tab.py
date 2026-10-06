@@ -49,7 +49,8 @@ class TermTab(Gtk.Overlay):
         self.entry = None   # the saved copy of this tab, if it has one
         self.custom_title = restore.get("title") or None   # a title the user chose
         self.custom_color = restore.get("color") or 0      # a custom color the user chose: 0 for none, else its number
-        self.restored_command = restore.get("command")     # typed at the prompt, for the user to run
+        self.run_command = restore.get("run") or None      # run when the tab is opened
+        self.restored_command = None if self.run_command else restore.get("command")   # typed at the prompt, for the user to run
         self.last_cwd = cwd
         self.auto_title = _("Terminal")
         self.kind = "idle"
@@ -121,8 +122,8 @@ class TermTab(Gtk.Overlay):
         if not shell or not os.access(shell, os.X_OK):
             shell = os.environ.get("SHELL", "/bin/bash")
         # The command to run at start doesn't apply when the tab was asked to run a specific command
-        startup = self.settings.get_string("startup-command").strip()
-        if startup and self.runs_startup:
+        startup = self.run_command or self.settings.get_string("startup-command").strip()
+        if startup and (self.run_command or self.runs_startup):
             # Run it in an interactive shell (so aliases and the usual setup are there), then
             # replace that shell with a normal one: no prompt is shown for the command.
             return [shell, "-i", "-c", "%s\n exec %s" % (startup, shlex.quote(shell))]
@@ -301,7 +302,7 @@ class TermTab(Gtk.Overlay):
         if not command or "\n" in command or "\r" in command:
             command = None
         return {"cwd": self.last_cwd, "title": self.custom_title, "color": self.custom_color,
-                "command": command, "startup": self.startup}
+                "command": command, "run": self.run_command, "startup": self.startup}
 
     def poll(self):
         # A tab being dragged to another window has none for a while: keep going, and only

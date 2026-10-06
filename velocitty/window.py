@@ -219,7 +219,7 @@ class TermWindow(Adw.ApplicationWindow):
         tab.entry = self.app.custom_tabs.save_open(tab.entry, tab.snapshot())
 
     def update_saved(self, tab):
-        if tab.entry is not None or tab.custom_title or tab.custom_color:
+        if tab.entry is not None or tab.custom_title or tab.custom_color or tab.run_command:
             self.save_tab(tab)
 
     def remove_tab(self, entry):

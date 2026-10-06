@@ -11,7 +11,7 @@ _ = l10n(GETTEXT_DOMAIN)
 
 
 class CustomizePopover(Gtk.Popover):
-    """Give a tab a name or a color, which saves it, and set it to open at launch."""
+    """Give a tab a name, a color or a command, which saves it, and set it to open at launch."""
 
     def __init__(self, tab, window):
         super().__init__()
@@ -23,6 +23,11 @@ class CustomizePopover(Gtk.Popover):
         self.entry.connect("changed", self.on_changed)
         self.entry.connect("activate", lambda e: self.popdown())
         box.append(self.entry)
+
+        self.command = Gtk.Entry(placeholder_text=_("Command to run when opened"), text=tab.run_command or "")
+        self.command.connect("changed", self.on_command_changed)
+        self.command.connect("activate", lambda e: self.popdown())
+        box.append(self.command)
 
         swatches = Gtk.Box(homogeneous=True)
         none = Gtk.ToggleButton(icon_name="xsi-edit-clear-symbolic", css_classes=["circular"],
@@ -68,6 +73,10 @@ class CustomizePopover(Gtk.Popover):
             self.tab.custom_color = index
             self.window.update_saved(self.tab)
             self.window.refresh()  # the headerbar, the tab bar and the overview
+
+    def on_command_changed(self, entry):
+        self.tab.run_command = entry.get_text().strip() or None
+        self.window.update_saved(self.tab)
 
     def on_changed(self, entry):
         """The title applies as you type. An empty field brings back the automatic title."""
