@@ -118,6 +118,7 @@ class TermWindow(Adw.ApplicationWindow):
             click = Gtk.GestureClick(button=3, propagation_phase=Gtk.PropagationPhase.CAPTURE)
             click.connect("pressed", self.on_tab_right_click, host)
             host.add_controller(click)
+        self.customize_popover = None
         self.nav = Adw.NavigationView(pop_on_escape=True)
         self.nav.add(Adw.NavigationPage(child=self.overview, title=_("Terminal"), tag="terminal"))
         self.custom_tabs_page = CustomTabsPage(self)
@@ -196,7 +197,9 @@ class TermWindow(Adw.ApplicationWindow):
         self.custom_tabs_page.refresh()
 
     def show_custom_tabs(self):
-        if self.app.custom_tabs.entries and self.nav.get_visible_page() is not self.custom_tabs_page:
+        if self.nav.get_visible_page() is self.custom_tabs_page:
+            self.nav.pop()
+        elif self.app.custom_tabs.entries:
             self.overview.set_open(False)
             self.custom_tabs_page.refresh()
             self.nav.push(self.custom_tabs_page)
@@ -434,7 +437,12 @@ class TermWindow(Adw.ApplicationWindow):
             self.show_bars()
 
     def customize_tab(self, tab=None):
-        """Edit the title, color and startup of a tab (the current one by default)."""
+        """Edit the title, color and startup of a tab (the current one by default). Asking again
+        for the current tab closes the editor."""
+        if self.customize_popover is not None:
+            self.customize_popover.popdown()
+            if tab is None:
+                return
         tab = tab or self.current_tab()
         if tab is None:
             return
@@ -448,6 +456,8 @@ class TermWindow(Adw.ApplicationWindow):
         else:
             host = self.tab_bar
         popover = CustomizePopover(tab, self)
+        self.customize_popover = popover
+        popover.connect("closed", lambda p: setattr(self, "customize_popover", None) if self.customize_popover is p else None)
         popover.set_parent(host)
         ok, bounds = anchor.compute_bounds(host)
         if ok:

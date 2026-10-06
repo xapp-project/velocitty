@@ -58,6 +58,11 @@ class CustomizePopover(Gtk.Popover):
         box.append(row)
 
         self.set_child(box)
+
+        keys = Gtk.ShortcutController()
+        keys.add_shortcut(Gtk.Shortcut(trigger=Gtk.ShortcutTrigger.parse_string("F2"),
+                                       action=Gtk.CallbackAction.new(lambda *_: self.popdown() or True)))
+        self.add_controller(keys)
         self.connect("closed", self.on_closed)
         self.connect("map", lambda *_: self.entry.grab_focus())
 
