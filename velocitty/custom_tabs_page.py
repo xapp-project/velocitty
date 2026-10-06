@@ -4,7 +4,7 @@ import gi
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Adw, GLib, Gtk
+from gi.repository import Adw, Gdk, GLib, GObject, Gtk
 from xapp.util import l10n
 
 from velocitty import GETTEXT_DOMAIN
@@ -61,9 +61,11 @@ class CustomTabsPage(Adw.NavigationPage):
         subtitle = folder + "\n" + entry["run"] if entry.get("run") else folder
         row = Adw.ActionRow(title=GLib.markup_escape_text(title), subtitle=GLib.markup_escape_text(subtitle),
                             subtitle_lines=2)
+        row.add_prefix(self.build_handle(row, entry))
+        bar = Gtk.Box(width_request=4, margin_top=6, margin_bottom=6, css_classes=["color-bar"])
         if entry.get("color"):
-            row.add_prefix(Gtk.Box(width_request=4, margin_top=6, margin_bottom=6,
-                                   css_classes=["color-bar", "custom-%d" % entry["color"]]))
+            bar.add_css_class("custom-%d" % entry["color"])
+        row.add_prefix(bar)
         check = Gtk.CheckButton(valign=Gtk.Align.CENTER)
         row.add_prefix(check)
         if is_open:
@@ -85,6 +87,29 @@ class CustomTabsPage(Adw.NavigationPage):
         remove.connect("clicked", lambda button: self.window.remove_tab(entry))
         row.add_suffix(remove)
         return row
+
+    def build_handle(self, row, entry):
+        handle = Gtk.Image(icon_name="xsi-list-drag-handle-symbolic", css_classes=["dim-label"])
+        source = Gtk.DragSource(actions=Gdk.DragAction.MOVE)
+        source.connect("prepare", lambda *_: Gdk.ContentProvider.new_for_value(
+            GObject.Value(int, self.custom_tabs.index(entry))))
+        source.connect("drag-begin", lambda source, drag: Gtk.DragIcon.set_from_paintable(
+            drag, Gtk.WidgetPaintable.new(row), 0, 0))
+        handle.add_controller(source)
+
+        target = Gtk.DropTarget.new(int, Gdk.DragAction.MOVE)
+        target.connect("enter", lambda *_: row.add_css_class("drop") or Gdk.DragAction.MOVE)
+        target.connect("leave", lambda *_: row.remove_css_class("drop"))
+        target.connect("drop", lambda target, value, x, y: self.on_drop(row, entry, value))
+        row.add_controller(target)
+        return handle
+
+    def on_drop(self, row, entry, source_index):
+        row.remove_css_class("drop")
+        moved = self.custom_tabs.entries[source_index]
+        if moved is not entry:
+            GLib.idle_add(self.custom_tabs.move, moved, self.custom_tabs.index(entry))
+        return True
 
     def set_startup(self, entry, startup):
         tab = self.window.app.tab_for(entry)

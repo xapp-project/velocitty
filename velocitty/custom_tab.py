@@ -53,11 +53,16 @@ class CustomTabs(GObject.Object):
         return entry
 
     def close(self, entry, snapshot):
-        entry = entry if entry is not None else {}
+        if self.index(entry) < 0:
+            entry = {}
+            self.add_first(entry)
         entry.clear()
         entry.update(snapshot)
-        self.entries = [e for e in self.entries if e is not entry]
-        self.add_first(entry)
+        self.changed()
+
+    def move(self, entry, index):
+        self.entries.remove(entry)
+        self.entries.insert(index, entry)
         self.changed()
 
     def remove(self, entry):
