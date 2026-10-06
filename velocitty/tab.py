@@ -10,7 +10,7 @@ from gi.repository import Gdk, Gio, GLib, Gtk, Pango, Vte
 from xapp.util import l10n
 
 from velocitty import GETTEXT_DOMAIN
-from velocitty.palette import rgba
+from velocitty.palette import rgba, terminal_colors
 from velocitty.searchbar import SearchBar
 from velocitty.shell import classify, shorten_path, strip_local_host, untrim_path
 
@@ -162,8 +162,7 @@ class TermTab(Gtk.Overlay):
             return "Monospace 11"
 
     def apply_colors(self, p):
-        palette = [rgba(p["Color%d" % (i + 1)]) for i in range(16)]
-        self.terminal.set_colors(rgba(p["Foreground"]), rgba(p["Background"]), palette)
+        self.terminal.set_colors(rgba(p["Foreground"]), rgba(p["Background"]), terminal_colors(p))
 
     def current_directory(self):
         """The directory for a new tab opened from this one, or None.

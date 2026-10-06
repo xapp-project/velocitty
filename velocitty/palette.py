@@ -1,4 +1,5 @@
 import os
+import sys
 from string import Template
 
 from gi.repository import Gdk, GLib
@@ -44,9 +45,16 @@ def load_palette(name):
         if path is None:
             continue
         try:
-            return _read(path)
-        except GLib.Error:
-            continue
+            palette = _read(path)
+            # Use it the way the app will, so a palette with something missing or wrong in it
+            # is found here, and not later in a window
+            for variant in palette.values():
+                build_css(variant)
+                terminal_colors(variant)
+            return palette
+        except (GLib.Error, KeyError, ValueError) as error:
+            print("velocitty: the palette %s can't be used: %s %s" % (candidate, type(error).__name__, error),
+                  file=sys.stderr)
     raise RuntimeError("No usable palette found")
 
 
@@ -125,6 +133,10 @@ def _with_text_colors(values):
     # A program is running, and the bell: a faint wash over the titlebar, with its text
     v["ActiveBackground"] = "rgba(255, 255, 255, 0.16)" if _is_dark(_parse(v["Background"])) else "rgba(0, 0, 0, 0.10)"
     return v
+
+
+def terminal_colors(p):
+    return [rgba(p["Color%d" % (i + 1)]) for i in range(16)]
 
 
 def rgba(value):
