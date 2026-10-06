@@ -19,13 +19,16 @@ Color13=#547C99
 Color14=#9F4E85
 Color15=#7DD6CF
 Color16=#F5F5F5
-Admin=#623227
-Remote=#3c5375
-Custom1=#7DD6CF
-Custom2=#50BD4C
-Custom3=#BDAE4C
-Custom4=#D3A04D
-Custom5=#9F4E85
-Custom6=#884CBD
+Admin=#C25353
+Remote=#5381C2
+Blue=#5381C2
+Turquoise=#4DACBF
+Teal=#47ADA9
+Green=#50BD4C
+Red=#C25353
+Purple=#884CBD
+Pink=#9F4E85
+Orange=#D3A04D
+Yellow=#BDAE4C
 
 # This file was generated from https://github.com/Gogh-Co/Gogh/tree/master/themes/Afterglow.yml

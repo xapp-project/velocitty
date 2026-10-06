@@ -19,13 +19,16 @@ Color13=#FF3600
 Color14=#FF3600
 Color15=#FF3600
 Color16=#FF3600
-Admin=#6a1900
-Remote=#0c1d34
-Custom1=#1DEDDB
-Custom2=#23ED1D
-Custom3=#EDD11D
-Custom4=#ED7E1D
-Custom5=#ED1D7E
-Custom6=#8C1DED
+Admin=#ED1D1D
+Remote=#1D74ED
+Blue=#1D74ED
+Turquoise=#1DCAED
+Teal=#1EA19D
+Green=#23ED1D
+Red=#ED1D1D
+Purple=#8C1DED
+Pink=#ED1D7E
+Orange=#ED7E1D
+Yellow=#EDD11D
 
 # This file was generated from https://github.com/Gogh-Co/Gogh/tree/master/themes/Mono Red.yml

@@ -8,9 +8,10 @@ from velocitty.config import DATA_DIR
 DEFAULT_PALETTE = "Espresso"
 LIGHT_TEXT, DARK_TEXT = "#ffffff", "#1e1e1e"
 MIN_TEXT_CONTRAST = 4.5   # WCAG AA for normal text
-STATES = ("remote", "admin", "active")
-CUSTOM_COUNT = 6   # Custom1 to Custom6, the colors a tab can be given
-CUSTOM_CLASSES = tuple("custom-%d" % i for i in range(1, CUSTOM_COUNT + 1))
+STATES = ("remote", "admin")
+# The colors a tab can be given. A palette picks the shade of each that suits it.
+CUSTOM_COLORS = ("blue", "turquoise", "teal", "green", "red", "purple", "pink", "orange", "yellow" )
+CUSTOM_CLASSES = tuple("custom-" + name for name in CUSTOM_COLORS)
 
 
 def palette_dirs():
@@ -122,7 +123,6 @@ def _with_text_colors(values):
     v["RemoteText"] = readable_text(v["Remote"])
     v["AdminText"] = readable_text(v["Admin"])
     # A program is running, and the bell: a faint wash over the titlebar, with its text
-    v["ActiveForeground"] = text
     v["ActiveBackground"] = "rgba(255, 255, 255, 0.16)" if _is_dark(_parse(v["Background"])) else "rgba(0, 0, 0, 0.10)"
     return v
 
@@ -138,7 +138,6 @@ def state_colors(p):
     return {
         "remote": (p["Remote"], p["RemoteText"]),
         "admin": (p["Admin"], p["AdminText"]),
-        "active": (p["ActiveBackground"], p["ActiveForeground"]),
     }
 
 
@@ -213,13 +212,22 @@ COLOR_CSS = Template("""
     row.close-$n { box-shadow: inset 4px 0 0 $bg; }
 """)
 
-# The visual bell flashes the headerbar with the color of the active state, and leaves the
-# text color alone. It comes last, so it is on top of the other colors.
-BELL_CSS = Template("""
-window.terminal.bell headerbar { background-color: $active; }
+# A running program is a shade over the color of the tab, in the headerbar, the tab and the
+# overview. The visual bell is the same shade, doubled so that it shows on a running tab too,
+# over the headerbar only. They come last, so they are on top of the other colors.
+RUNNING_CSS = Template("""
+window.terminal.running headerbar, window.terminal.running headerbar:backdrop {
+    background-image: linear-gradient($shade, $shade);
+}
+window.terminal tabbar tab.running, window.terminal toolbarview.overview tabthumbnail.running {
+    background-image: linear-gradient($shade, $shade);
+}
+window.terminal.bell headerbar, window.terminal.bell headerbar:backdrop {
+    background-image: linear-gradient($shade, $shade), linear-gradient($shade, $shade);
+}
 """)
 
-SWATCH_CSS = Template(".custom-swatch.custom-$index, .color-bar.custom-$index { background-color: $color; }\n")
+SWATCH_CSS = Template(".custom-swatch.custom-$name, .color-bar.custom-$name { background-color: $color; }\n")
 
 
 def build_css(p):
@@ -231,17 +239,17 @@ def build_css(p):
 
     css = BASE_CSS.substitute(bg=p["Background"], fg=p["Foreground"], tb=titlebar, tf=titlebar_text,
                               ov=overview)
-    for index in range(1, CUSTOM_COUNT + 1):
-        css += SWATCH_CSS.substitute(index=index, color=p["Custom%d" % index])
+    for name in CUSTOM_COLORS:
+        css += SWATCH_CSS.substitute(name=name, color=p[name.capitalize()])
 
     # The colors the user can give a tab take the place of the session colors, so they
     # style the same things
     colors = dict(state_colors(p))
-    for index in range(1, CUSTOM_COUNT + 1):
-        color = p["Custom%d" % index]
-        colors["custom-%d" % index] = (color, readable_text(color))
+    for name in CUSTOM_COLORS:
+        color = p[name.capitalize()]
+        colors["custom-" + name] = (color, readable_text(color))
 
     for name, (background, text) in colors.items():
         css += COLOR_CSS.substitute(n=name, bg=background, fg=text, tb=titlebar, tf=titlebar_text,
                                     ov=overview, fg0=p["Foreground"])
-    return css + BELL_CSS.substitute(active=p["ActiveBackground"])
+    return css + RUNNING_CSS.substitute(shade=p["ActiveBackground"])

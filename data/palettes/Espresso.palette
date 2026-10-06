@@ -19,13 +19,16 @@ Color13=#8AB7D9
 Color14=#EFB5F7
 Color15=#DCF4FF
 Color16=#FFFFFF
-Admin=#7f4747
-Remote=#5a708f
-Custom1=#79ECE2
-Custom2=#7DEC79
-Custom3=#E1E48B
-Custom4=#FFC66D
-Custom5=#EC79AF
-Custom6=#EFB5F7
+Admin=#F08484
+Remote=#84B1F0
+Blue=#84B1F0
+Turquoise=#85DFF0
+Teal=#34CDC8
+Green=#82d67c
+Red=#F08484
+Purple=#bf8aff
+Pink=#EFB5F7
+Orange=#fdac4e
+Yellow=#e4d141
 
 # This file was generated from https://github.com/Gogh-Co/Gogh/tree/master/themes/Espresso.yml

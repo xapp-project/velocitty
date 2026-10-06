@@ -1,4 +1,5 @@
 import os
+import traceback
 
 import gi
 
@@ -175,7 +176,11 @@ class TermApp(Adw.Application):
 
         # The first thing a launch does is open the startup tabs. After that, the
         # directory it was started in gets a tab, in the window that was in front.
-        startup_window = self.open_startup_tabs()
+        try:
+            startup_window = self.open_startup_tabs()
+        except Exception:
+            traceback.print_exc()   # a terminal opens whatever is wrong with the saved tabs
+            startup_window = None
         front = startup_window or self.front_window()
         if "new-window" in options or front is None:
             self.new_window(args or None, cwd)

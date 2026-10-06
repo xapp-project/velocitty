@@ -19,13 +19,16 @@ Color13=#0071FF
 Color14=#FF1D62
 Color15=#4BB8FD
 Color16=#A020F0
-Admin=#4d0f0c
-Remote=#134ea1
-Custom1=#25EDDD
-Custom2=#2CED25
-Custom3=#FFD00A
-Custom4=#ED8325
-Custom5=#FF1D62
-Custom6=#A020F0
+Admin=#F41E1E
+Remote=#1E77F4
+Blue=#1E77F4
+Turquoise=#1DD1F5
+Teal=#20A6A1
+Green=#2CED25
+Red=#F41E1E
+Purple=#A020F0
+Pink=#FF1D62
+Orange=#ED8325
+Yellow=#FFD00A
 
 # This file was generated from https://github.com/Gogh-Co/Gogh/tree/master/themes/Elio.yml

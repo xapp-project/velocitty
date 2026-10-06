@@ -5,9 +5,11 @@ from gi.repository import GLib, Gtk
 from xapp.util import l10n
 
 from velocitty import GETTEXT_DOMAIN
-from velocitty.palette import CUSTOM_COUNT
+from velocitty.palette import CUSTOM_COLORS
 
 _ = l10n(GETTEXT_DOMAIN)
+
+SWATCH_COLUMNS = 5
 
 
 class CustomizePopover(Gtk.Popover):
@@ -29,18 +31,18 @@ class CustomizePopover(Gtk.Popover):
         self.command.connect("activate", lambda e: self.popdown())
         box.append(self.command)
 
-        swatches = Gtk.Box(homogeneous=True)
+        swatches = Gtk.Grid(column_homogeneous=True, row_spacing=8)
         none = Gtk.ToggleButton(icon_name="xsi-edit-clear-symbolic", css_classes=["circular"],
                                 halign=Gtk.Align.CENTER, tooltip_text=_("No Color"))
-        none.set_active(tab.custom_color == 0)
-        none.connect("toggled", self.on_color, 0)
-        swatches.append(none)
-        for index in range(1, CUSTOM_COUNT + 1):
-            button = Gtk.ToggleButton(css_classes=["circular", "custom-swatch", "custom-%d" % index], group=none,
+        none.set_active(tab.custom_color is None)
+        none.connect("toggled", self.on_color, None)
+        swatches.attach(none, 0, 0, 1, 1)
+        for index, name in enumerate(CUSTOM_COLORS, 1):
+            button = Gtk.ToggleButton(css_classes=["circular", "custom-swatch", "custom-" + name], group=none,
                                       halign=Gtk.Align.CENTER, valign=Gtk.Align.CENTER)
-            button.set_active(tab.custom_color == index)
-            button.connect("toggled", self.on_color, index)
-            swatches.append(button)
+            button.set_active(tab.custom_color == name)
+            button.connect("toggled", self.on_color, name)
+            swatches.attach(button, index % SWATCH_COLUMNS, index // SWATCH_COLUMNS, 1, 1)
         box.append(swatches)
 
         text = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, hexpand=True, valign=Gtk.Align.CENTER)
@@ -68,9 +70,9 @@ class CustomizePopover(Gtk.Popover):
         self.tab.terminal.grab_focus()
         return GLib.SOURCE_REMOVE
 
-    def on_color(self, button, index):
+    def on_color(self, button, name):
         if button.get_active():
-            self.tab.custom_color = index
+            self.tab.custom_color = name
             self.window.update_saved(self.tab)
             self.window.refresh()  # the headerbar, the tab bar and the overview
 

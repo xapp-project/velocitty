@@ -19,13 +19,16 @@ Color13=#FAFAFA
 Color14=#FAFAFA
 Color15=#FAFAFA
 Color16=#FAFAFA
-Admin=#7f5654
-Remote=#54667f
-Custom1=#90D5CF
-Custom2=#92D590
-Custom3=#D5CC90
-Custom4=#D5B090
-Custom5=#D590B0
-Custom6=#B590D5
+Admin=#F01818
+Remote=#1872F0
+Blue=#1872F0
+Turquoise=#18CCF0
+Teal=#1EA19D
+Green=#23ED1D
+Red=#F01818
+Purple=#8C1DED
+Pink=#ED1D7E
+Orange=#ED7E1D
+Yellow=#FFD300
 
 # This file was generated from https://github.com/Gogh-Co/Gogh/tree/master/themes/Mono White.yml

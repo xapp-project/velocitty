@@ -19,13 +19,16 @@ Color13=#FB605B
 Color14=#975B5A
 Color15=#1EFF8E
 Color16=#F6F5FB
-Admin=#5b2522
-Remote=#2a5ea8
-Custom1=#2FE8D9
-Custom2=#3BFF6F
-Custom3=#EFC31C
-Custom4=#F5DCBE
-Custom5=#E82F85
-Custom6=#922FE8
+Admin=#EE4747
+Remote=#478CEE
+Blue=#478CEE
+Turquoise=#4AD4EF
+Teal=#24A5A1
+Green=#3BFF6F
+Red=#EE4747
+Purple=#922FE8
+Pink=#E82F85
+Orange=#F5DCBE
+Yellow=#EFC31C
 
 # This file was generated from https://github.com/Gogh-Co/Gogh/tree/master/themes/Morada.yml

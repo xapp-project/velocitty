@@ -1,4 +1,5 @@
 import os
+import traceback
 
 import gi
 
@@ -45,7 +46,10 @@ class CustomTabsPage(Adw.NavigationPage):
             self.list.remove(row)
         self.checks = []
         for entry in self.custom_tabs.entries:
-            self.list.append(self.build_row(entry))
+            try:
+                self.list.append(self.build_row(entry))
+            except Exception:
+                traceback.print_exc()   # a broken entry is left out, the rest are listed
         self.update_buttons()
         if not self.custom_tabs.entries and self.window.nav.get_visible_page() is self:
             self.window.nav.pop()
@@ -64,7 +68,7 @@ class CustomTabsPage(Adw.NavigationPage):
         row.add_prefix(self.build_handle(row, entry))
         bar = Gtk.Box(width_request=4, margin_top=6, margin_bottom=6, css_classes=["color-bar"])
         if entry.get("color"):
-            bar.add_css_class("custom-%d" % entry["color"])
+            bar.add_css_class("custom-" + entry["color"])
         row.add_prefix(bar)
         check = Gtk.CheckButton(valign=Gtk.Align.CENTER)
         row.add_prefix(check)

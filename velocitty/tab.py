@@ -48,7 +48,7 @@ class TermTab(Gtk.Overlay):
         self.startup = bool(restore.get("startup"))   # opens when the terminal launches
         self.entry = None   # the saved copy of this tab, if it has one
         self.custom_title = restore.get("title") or None   # a title the user chose
-        self.custom_color = restore.get("color") or 0      # a custom color the user chose: 0 for none, else its number
+        self.custom_color = restore.get("color") or None   # a custom color the user chose, by name
         self.run_command = restore.get("run") or None      # run when the tab is opened
         self.restored_command = None if self.run_command else restore.get("command")   # typed at the prompt, for the user to run
         self.last_cwd = cwd
@@ -323,12 +323,15 @@ class TermTab(Gtk.Overlay):
     # -- title -------------------------------------------------------------
 
     def style_class(self):
-        """The CSS class that colors this tab: the color of its session (ssh, admin, a
-        running program) when it has one, else the custom color the user chose, if any."""
-        if self.kind in ("remote", "admin") or (
-                self.kind == "active" and self.settings.get_boolean("highlight-running")):
-            return self.kind
-        return "custom-%d" % self.custom_color if self.custom_color else None
+        """The CSS class that colors this tab: the custom color the user chose, else the color
+        of its session (ssh, admin)."""
+        if self.custom_color:
+            return "custom-" + self.custom_color
+        return self.kind if self.kind in ("remote", "admin") else None
+
+    def is_running(self):
+        """A program is running, and it is highlighted: a shade over the color of the tab."""
+        return self.kind == "active" and self.settings.get_boolean("highlight-running")
 
     def update_title(self):
         """The automatic title is in full in the tooltip and the headerbar; the tab shows a folder

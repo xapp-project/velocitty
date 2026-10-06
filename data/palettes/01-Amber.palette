@@ -19,13 +19,16 @@ Color13=#FF9400
 Color14=#FF9400
 Color15=#FF9400
 Color16=#FF9400
-Admin=#5c0a06
-Remote=#0c1d34
-Custom1=#1DEDDB
-Custom2=#23ED1D
-Custom3=#EDD11D
-Custom4=#FF9400
-Custom5=#ED1D7E
-Custom6=#8C1DED
+Admin=#F01818
+Remote=#1872F0
+Blue=#1872F0
+Turquoise=#18CCF0
+Teal=#1EA19D
+Green=#23ED1D
+Red=#F01818
+Purple=#8C1DED
+Pink=#ED1D7E
+Orange=#FF9400
+Yellow=#EDD11D
 
 # This file was generated from https://github.com/Gogh-Co/Gogh/tree/master/themes/Mono Amber.yml

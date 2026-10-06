@@ -227,6 +227,8 @@ class TermWindow(Adw.ApplicationWindow):
         if tab is not None:
             tab.entry = None
         self.app.custom_tabs.remove(entry)
+        if tab is not None:
+            tab.window.close_tab(tab)
 
     def record(self, tab):
         if tab.entry is not None:
@@ -488,11 +490,13 @@ class TermWindow(Adw.ApplicationWindow):
         tab = self.current_tab()
         if tab is not None:
             self.tab_view.get_page(tab).set_needs_attention(False)
-        for state in STATES + CUSTOM_CLASSES:
+        for state in STATES + CUSTOM_CLASSES + ("running",):
             self.remove_css_class(state)
         if tab is not None:
             if tab.style_class():
                 self.add_css_class(tab.style_class())
+            if tab.is_running():
+                self.add_css_class("running")
             self.window_title.set_title(tab.full_title)
         self.queue_restyle()
 
@@ -509,12 +513,14 @@ class TermWindow(Adw.ApplicationWindow):
             for widget in walk(root):
                 if widget.get_css_name() not in ("tab", "tabthumbnail"):
                     continue
-                for state in STATES + CUSTOM_CLASSES + ("startup",):
+                for state in STATES + CUSTOM_CLASSES + ("running", "startup"):
                     widget.remove_css_class(state)
                 page = widget.get_property("page")
                 tab = page.get_child() if page else None
                 if isinstance(tab, TermTab) and tab.style_class():
                     widget.add_css_class(tab.style_class())
+                if isinstance(tab, TermTab) and tab.is_running():
+                    widget.add_css_class("running")
                 if isinstance(tab, TermTab) and tab.startup:
                     widget.add_css_class("startup")
         return GLib.SOURCE_REMOVE

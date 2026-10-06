@@ -4,7 +4,7 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Graphene", "1.0")
 from gi.repository import Adw, Graphene, Gtk, Pango
 
-from velocitty.palette import CUSTOM_COUNT, load_palette, rgba, state_colors
+from velocitty.palette import CUSTOM_COLORS, load_palette, rgba, state_colors
 
 WIDTH, HEIGHT = 210, 118
 PADDING = 10
@@ -19,7 +19,7 @@ def rect(x, y, w, h):
 
 class PalettePreview(Gtk.Widget):
     """A small picture of a palette: a prompt, a few colored words, the 16 colors, and along
-    the top the session colors and the six colors a tab can be given. It shows the current
+    the top the session colors and the colors a tab can be given. It shows the current
     light or dark variant."""
 
     def __init__(self, palette_name):
@@ -49,15 +49,15 @@ class PalettePreview(Gtk.Widget):
         snapshot.append_color(rgba(p["Background"]), rect(0, 0, WIDTH, HEIGHT))
 
         # Along the top: the session colors (ssh and root) and
-        # then the six colors a tab can be given
+        # then the colors a tab can be given
         chip_w, chip_h, space = 10, 6, 3
-        x = WIDTH - PADDING - 2 * (chip_w + space) - 8 - CUSTOM_COUNT * (chip_w + space) + space
+        x = WIDTH - PADDING - 2 * (chip_w + space) - 8 - len(CUSTOM_COLORS) * (chip_w + space) + space
         for state in ("remote", "admin"):
             snapshot.append_color(rgba(state_colors(p)[state][0]), rect(x, PADDING, chip_w, chip_h))
             x += chip_w + space
         x += 8 - space
-        for index in range(1, CUSTOM_COUNT + 1):
-            snapshot.append_color(rgba(p["Custom%d" % index]), rect(x, PADDING, chip_w, chip_h))
+        for name in CUSTOM_COLORS:
+            snapshot.append_color(rgba(p[name.capitalize()]), rect(x, PADDING, chip_w, chip_h))
             x += chip_w + space
 
         self.draw_text(snapshot, PADDING, PADDING + 8, [

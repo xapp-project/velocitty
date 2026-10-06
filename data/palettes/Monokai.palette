@@ -19,13 +19,16 @@ Color13=#FC9867
 Color14=#AB9DF2
 Color15=#78DCE8
 Color16=#FDF9F3
-Admin=#8f5b59
-Remote=#597295
-Custom1=#78DCE8
-Custom2=#A9DC76
-Custom3=#F3E272
-Custom4=#F3AE72
-Custom5=#F372AE
-Custom6=#B772F3
+Admin=#EE7373
+Remote=#73A6EE
+Blue=#73A6EE
+Turquoise=#78DCE8
+Teal=#2CD3CE
+Green=#73EE7E
+Red=#EE7373
+Purple=#B772F3
+Pink=#F372AE
+Orange=#F3AE72
+Yellow=#F3E272
 
 # This file was generated from https://github.com/Gogh-Co/Gogh/tree/master/themes/Monokai Pro.yml

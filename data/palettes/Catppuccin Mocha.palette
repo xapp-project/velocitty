@@ -19,13 +19,16 @@ Color13=#89B4FA
 Color14=#F5C2E7
 Color15=#94E2D5
 Color16=#A6ADC8
-Admin=#5f413f
-Remote=#486287
-Custom1=#94E2D5
-Custom2=#A6E3A1
-Custom3=#EBDC7A
-Custom4=#F9E2AF
-Custom5=#F38BA8
-Custom6=#B67AEB
+Admin=#EC9090
+Remote=#90B6EC
+Blue=#90B6EC
+Turquoise=#90DEEE
+Teal=#4FBEBA
+Green=#A6E3A1
+Red=#EC9090
+Purple=#B67AEB
+Pink=#F38BA8
+Orange=#F9E2AF
+Yellow=#EBDC7A
 
 # This file was generated from https://github.com/Gogh-Co/Gogh/tree/master/themes/Catppuccin Mocha.yml

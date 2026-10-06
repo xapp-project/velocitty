@@ -3,6 +3,8 @@ import os
 
 from gi.repository import GLib, GObject
 
+from velocitty.palette import CUSTOM_COLORS
+
 FILE = os.path.join(GLib.get_user_state_dir(), "velocitty", "tabs.json")
 
 
@@ -17,7 +19,11 @@ class CustomTabs(GObject.Object):
     def load(self):
         try:
             with open(FILE) as handle:
-                return [entry for entry in json.load(handle) if entry.get("cwd")]
+                entries = [entry for entry in json.load(handle) if entry.get("cwd")]
+            for entry in entries:
+                if entry.get("color") not in CUSTOM_COLORS:
+                    entry["color"] = None
+            return entries
         except (OSError, ValueError, AttributeError, TypeError):
             return []
 

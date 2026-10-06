@@ -19,13 +19,16 @@ Color13=#00CCFF
 Color14=#00CCFF
 Color15=#00CCFF
 Color16=#00CCFF
-Admin=#462b29
-Remote=#052858
-Custom1=#00CCFF
-Custom2=#23ED1D
-Custom3=#EDD11D
-Custom4=#ED7E1D
-Custom5=#ED1D7E
-Custom6=#8C1DED
+Admin=#F01818
+Remote=#1872F0
+Blue=#1872F0
+Turquoise=#00CCFF
+Teal=#1EA29D
+Green=#23ED1D
+Red=#F01818
+Purple=#8C1DED
+Pink=#ED1D7E
+Orange=#ED7E1D
+Yellow=#EDD11D
 
 # This file was generated from https://github.com/Gogh-Co/Gogh/tree/master/themes/Mono Cyan.yml
