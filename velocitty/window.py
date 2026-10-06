@@ -261,6 +261,8 @@ class TermWindow(Adw.ApplicationWindow):
         tab.window = self
         self.show_title(page, tab)
         self.queue_restyle()
+        if not self.get_visible():
+            self.present()
 
     def on_page_selected(self, *_):
         page = self.tab_view.get_selected_page()

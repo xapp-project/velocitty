@@ -111,9 +111,7 @@ class TermApp(Adw.Application):
 
     def empty_window(self):
         """A window with no tab yet, for one dragged out of another."""
-        window = TermWindow(self)
-        window.present()
-        return window
+        return TermWindow(self)
 
     def open_windows(self):
         """The terminal windows that are not closing, the one used last first."""
