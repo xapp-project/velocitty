@@ -1,5 +1,4 @@
 import os
-import sys
 
 import gi
 
@@ -10,7 +9,7 @@ from setproctitle import setproctitle
 from xapp.util import l10n
 
 from velocitty import APP_ID, GETTEXT_DOMAIN, SETTINGS_SCHEMA
-from velocitty import session
+from velocitty.custom_tab import CustomTabs
 from velocitty.config import VERSION
 from velocitty.palette import build_css, load_palette
 from velocitty.preferences import Preferences
@@ -30,7 +29,7 @@ class TermApp(Adw.Application):
         self.palette = None
         self.preferences = None
         self.shortcuts = None
-        self.session = session.Manager()
+        self.custom_tabs = CustomTabs()
         self.launched = False
         self.provider = Gtk.CssProvider()
         self.add_main_option("working-directory", ord("d"), GLib.OptionFlags.NONE,
@@ -64,13 +63,13 @@ class TermApp(Adw.Application):
             "app.preferences": ["<Ctrl>comma"],
             "win.new-tab": ["<Ctrl><Shift>t"],
             "win.close-tab": ["<Ctrl><Shift>w"],
-            "win.overview": ["<Ctrl><Shift>o"],
+            "win.custom-tabs": ["F3"],
+            "win.overview": ["F4"],
             "win.zoom-in": ["<Ctrl>plus", "<Ctrl>equal", "<Ctrl>KP_Add"],
             "win.zoom-out": ["<Ctrl>minus", "<Ctrl>KP_Subtract"],
             "win.zoom-reset": ["<Ctrl>0", "<Ctrl>KP_0"],
             "win.fullscreen": ["F11"],
             "win.customize-tab": ["F2"],
-            "win.toggle-persistent": ["F3"],
             "win.main-menu": ["F10"],
             "win.last-tab": ["<Ctrl>End"],
             "win.shortcuts": ["<Ctrl><Shift>question"],
@@ -136,52 +135,35 @@ class TermApp(Adw.Application):
         front.new_tab(None, cwd, at_end=True)
         front.present()
 
-    # -- session -----------------------------------------------------------
+    # -- custom tabs -------------------------------------------------------
 
-    def restore_session(self):
-        """At the first launch, bring back the persistent tabs of the last session."""
+    def open_startup_tabs(self):
+        """At the first launch, open the startup tabs in a window of their own, and return it."""
         first, self.launched = not self.launched, True
         if not first:
             return None
-        saved = self.session.load()
-        if not saved:
+        entries = [entry for entry in self.custom_tabs.entries
+                   if entry.get("startup") and not self.is_open(entry)]
+        if not entries:
             return None
-        self.session.clear_kept()
-        windows = []
-        for data in saved:
-            window = TermWindow(self)
-            window.restore(data)
-            windows.append((data.get("active", False), window))
-            window.present()
-        # The window that had the focus comes last, so it ends up in front
-        front = windows[-1][1]
-        for active, window in windows:
-            if active:
-                front = window
-        front.present()
-        return front
+        # The window is shown once it has its tabs: it takes its size from the terminal
+        window = TermWindow(self)
+        for entry in entries:
+            window.reopen(entry)
+        window.tab_view.set_selected_page(window.tab_view.get_nth_page(0))
+        window.present()
+        return window
 
-    def queue_session_save(self):
-        self.session.note(sorted(self.open_windows(), key=lambda window: window.serial))
+    def tab_for(self, entry):
+        return next((tab for window in self.open_windows() for tab in window.tabs() if tab.entry is entry), None)
 
-    def window_closing(self, window):
-        """A window is going away. When it is the last one, that is the session to keep. Another
-        one is forgotten, unless it has persistent tabs, open or closed."""
-        if self.open_windows():
-            self.session.keep(window)
-            self.queue_session_save()
-        else:
-            self.session.note([window])
-            self.session.freeze()
+    def is_open(self, entry):
+        return self.tab_for(entry) is not None
 
     def quit_app(self):
-        self.queue_session_save()
-        self.session.freeze()
+        for window in self.open_windows():
+            window.record_tabs()
         self.quit()
-
-    def do_shutdown(self):
-        self.session.flush()
-        Adw.Application.do_shutdown(self)
 
     def do_command_line(self, cmdline):
         options = cmdline.get_options_dict().end().unpack()
@@ -191,18 +173,18 @@ class TermApp(Adw.Application):
             # Relative to where the command was typed, not to where the running app is
             cwd = os.path.join(cwd or "", os.path.expanduser(options["working-directory"]))
 
-        # The first thing a launch does is bring back the last session. After that, the
+        # The first thing a launch does is open the startup tabs. After that, the
         # directory it was started in gets a tab, in the window that was in front.
-        restored = self.restore_session()
-        front = restored or self.front_window()
+        startup_window = self.open_startup_tabs()
+        front = startup_window or self.front_window()
         if "new-window" in options or front is None:
             self.new_window(args or None, cwd)
         elif args or "tab" in options:
             front.new_tab(args or None, cwd, at_end=True)
             front.present()
-        elif restored is not None and "working-directory" not in options and (
+        elif startup_window is not None and "working-directory" not in options and (
                 not cwd or os.path.realpath(cwd) == os.path.realpath(GLib.get_home_dir())):
-            pass   # started from the home directory, where launchers start: just the session
+            pass   # started from the home directory, where launchers start: just the startup tabs
         else:
             self.open_directory(front, cwd)
         return 0

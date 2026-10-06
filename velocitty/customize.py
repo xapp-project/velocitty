@@ -11,7 +11,7 @@ _ = l10n(GETTEXT_DOMAIN)
 
 
 class CustomizePopover(Gtk.Popover):
-    """Set the title and the color of a tab, and whether it is persistent."""
+    """Give a tab a name or a color, which saves it, and set it to open at launch."""
 
     def __init__(self, tab, window):
         super().__init__()
@@ -37,17 +37,17 @@ class CustomizePopover(Gtk.Popover):
             button.connect("toggled", self.on_color, index)
             swatches.append(button)
         box.append(swatches)
-        box.append(Gtk.Separator())
 
         text = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, hexpand=True, valign=Gtk.Align.CENTER)
-        text.append(Gtk.Label(label=_("Persistent Tab"), xalign=0))
-        text.append(Gtk.Label(label=_("Opens when the app starts"), xalign=0,
+        text.append(Gtk.Label(label=_("Startup Tab"), xalign=0))
+        text.append(Gtk.Label(label=_("Opens when the terminal launches"), xalign=0,
                               css_classes=["dim-label", "caption"]))
-        persistent = Gtk.Switch(active=tab.persistent, valign=Gtk.Align.CENTER)
-        persistent.connect("notify::active", lambda switch, _param: window.set_persistent(tab, switch.get_active()))
+        startup = Gtk.Switch(active=tab.startup, valign=Gtk.Align.CENTER)
+        startup.connect("notify::active", lambda switch, _param: window.set_startup(tab, switch.get_active()))
         row = Gtk.Box(spacing=12)
         row.append(text)
-        row.append(persistent)
+        row.append(startup)
+        box.append(Gtk.Separator())
         box.append(row)
 
         self.set_child(box)
@@ -66,6 +66,7 @@ class CustomizePopover(Gtk.Popover):
     def on_color(self, button, index):
         if button.get_active():
             self.tab.custom_color = index
+            self.window.update_saved(self.tab)
             self.window.refresh()  # the headerbar, the tab bar and the overview
 
     def on_changed(self, entry):
@@ -73,4 +74,5 @@ class CustomizePopover(Gtk.Popover):
         text = entry.get_text()
         self.tab.custom_title = text if text.strip() else None
         self.tab.update_title()
+        self.window.update_saved(self.tab)
         self.window.queue_restyle()

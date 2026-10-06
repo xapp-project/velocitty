@@ -161,7 +161,7 @@ window.terminal revealer.top-bar > windowhandle:backdrop { background-color: $tb
 window.terminal tabbar tab, window.terminal tabbar tabbox > tabboxchild { border-radius: 0; }
 /* no gaps around the headerbar and the tab bar: the tabs fill the bar */
 window.terminal tabbar tabbox { padding: 0; }
-window.terminal tabbar tab.persistent .tab-title { font-weight: bold; }
+window.terminal tabbar tab.startup .tab-title { font-weight: bold; }
 window.terminal tabbar .box { padding: 0; }
 window.terminal tabbar tabbox > separator { margin: 0; min-width: 0; opacity: 0; }
 window.terminal revealer.top-bar > windowhandle > box { padding: 0; margin: 0; border-spacing: 0; }
@@ -183,6 +183,7 @@ window.terminal toolbarview.overview tabthumbnail .tab-close-button:hover > imag
 window.terminal toolbarview.overview tabthumbnail .tab-close-button:active > image {
     background-color: color-mix(in srgb, $fg 55%, transparent);
 }
+window.terminal .custom-tabs { background-color: $ov; color: $fg; }
 window.terminal popover > contents { background-color: $tb; color: $tf; }
 window.terminal popover > arrow { background-color: $tb; }
 .close-list list, .close-list row { border-radius: 0; }
@@ -217,7 +218,7 @@ BELL_CSS = Template("""
 window.terminal.bell headerbar { background-color: $active; }
 """)
 
-SWATCH_CSS = Template(".custom-swatch.custom-$index { background-color: $color; }\n")
+SWATCH_CSS = Template(".custom-swatch.custom-$index, .color-bar.custom-$index { background-color: $color; }\n")
 
 
 def build_css(p):

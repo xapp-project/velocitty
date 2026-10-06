@@ -44,8 +44,9 @@ class TermTab(Gtk.Overlay):
         self.started_with_command = bool(command)   # not a shell: the command is the whole tab
         self.used = False   # Enter was pressed in this tab
         self.orphan_polls = 0
-        self.persistent = restore is not None   # a restored tab was persistent: it comes back at the next start
         restore = restore or {}
+        self.startup = bool(restore.get("startup"))   # opens when the terminal launches
+        self.entry = None   # the saved copy of this tab, if it has one
         self.custom_title = restore.get("title") or None   # a title the user chose
         self.custom_color = restore.get("color") or 0      # a custom color the user chose: 0 for none, else its number
         self.restored_command = restore.get("command")     # typed at the prompt, for the user to run
@@ -300,7 +301,7 @@ class TermTab(Gtk.Overlay):
         if not command or "\n" in command or "\r" in command:
             command = None
         return {"cwd": self.last_cwd, "title": self.custom_title, "color": self.custom_color,
-                "command": command}
+                "command": command, "startup": self.startup}
 
     def poll(self):
         # A tab being dragged to another window has none for a while: keep going, and only

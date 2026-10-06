@@ -9,6 +9,7 @@ from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 from xapp.util import l10n
 
 from velocitty import GETTEXT_DOMAIN
+from velocitty.custom_tabs_page import CustomTabsPage
 from velocitty.customize import CustomizePopover
 from velocitty.palette import CUSTOM_CLASSES, STATES
 from velocitty.tab import TermTab
@@ -57,18 +58,18 @@ class TermWindow(Adw.ApplicationWindow):
         self.tab_view.connect("notify::selected-page", self.on_page_selected)
         self.tab_view.connect("notify::n-pages", self.on_n_pages)
         self.tab_view.connect("close-page", self.on_close_page)
-        self.closed_persistent = []
         self.tab_view.connect("page-attached", self.on_page_attached)
         # Dragging a tab out of the bar makes a window for it
         self.tab_view.connect("create-window", self.on_create_window)
-        for signal in ("page-attached", "page-detached", "page-reordered"):
-            self.tab_view.connect(signal, lambda *_: self.app.queue_session_save())
 
         self.window_title = Adw.WindowTitle(title=_("Terminal"), subtitle="")
         self.header = Adw.HeaderBar(title_widget=self.window_title)
         new_tab = Gtk.Button(icon_name="xsi-tab-new-symbolic", tooltip_text=_("New Tab"))
         new_tab.set_action_name("win.new-tab")
         self.header.pack_start(new_tab)
+        self.custom_tabs_button = Gtk.Button(icon_name="xsi-user-bookmarks-symbolic", tooltip_text=_("Custom Tabs"),
+                                             action_name="win.custom-tabs", visible=False)
+        self.header.pack_start(self.custom_tabs_button)
 
         # Shown in full screen only, in place of the window buttons, to leave it
         self.unfullscreen_button = Gtk.Button(icon_name="xsi-view-restore-symbolic", action_name="win.fullscreen",
@@ -117,7 +118,13 @@ class TermWindow(Adw.ApplicationWindow):
             click = Gtk.GestureClick(button=3, propagation_phase=Gtk.PropagationPhase.CAPTURE)
             click.connect("pressed", self.on_tab_right_click, host)
             host.add_controller(click)
-        self.set_content(self.overview)
+        self.nav = Adw.NavigationView(pop_on_escape=True)
+        self.nav.add(Adw.NavigationPage(child=self.overview, title=_("Terminal"), tag="terminal"))
+        self.custom_tabs_page = CustomTabsPage(self)
+        self.nav.connect("popped", lambda *_: self.focus_terminal())
+        self.set_content(self.nav)
+        self.custom_tabs_handler = self.app.custom_tabs.connect("changed", lambda *_: self.on_custom_tabs_changed())
+        self.on_custom_tabs_changed()
 
         # In full screen the bars hide after a while and come back at the top edge
         self.bars_source = 0
@@ -136,7 +143,7 @@ class TermWindow(Adw.ApplicationWindow):
             "zoom-reset": lambda *_: self.zoom(0),
             "fullscreen": lambda *_: self.toggle_fullscreen(),
             "customize-tab": lambda *_: self.customize_tab(),
-            "toggle-persistent": lambda *_: self.toggle_persistent(),
+            "custom-tabs": lambda *_: self.show_custom_tabs(),
             "main-menu": lambda *_: self.menu_button.popup(),
             "last-tab": lambda *_: self.switch_to_previous(),
             "shortcuts": lambda *_: self.get_application().show_shortcuts(),
@@ -184,49 +191,64 @@ class TermWindow(Adw.ApplicationWindow):
             gesture.set_state(Gtk.EventSequenceState.CLAIMED)
             self.customize_tab(page.get_child())
 
-    def toggle_persistent(self):
-        """Make the current tab persistent, or not. Only persistent tabs come back when the app is started again."""
-        tab = self.current_tab()
-        if tab is not None:
-            self.set_persistent(tab, not tab.persistent)
+    def on_custom_tabs_changed(self):
+        self.custom_tabs_button.set_visible(bool(self.app.custom_tabs.entries))
+        self.custom_tabs_page.refresh()
 
-    def set_persistent(self, tab, persistent):
-        tab.persistent = persistent
+    def show_custom_tabs(self):
+        if self.app.custom_tabs.entries and self.nav.get_visible_page() is not self.custom_tabs_page:
+            self.overview.set_open(False)
+            self.custom_tabs_page.refresh()
+            self.nav.push(self.custom_tabs_page)
+
+    def set_startup(self, tab, startup):
+        tab.startup = startup
+        self.save_tab(tab)
         self.queue_restyle()
-        self.app.queue_session_save()
+
     def toggle_overview(self):
         self.overview.set_open(not self.overview.get_open())
 
-    def is_worthy(self):
-        return bool(self.closed_persistent) or any(tab.persistent for tab in self.tabs())
-
     def on_close_page(self, view, page):
-        """A persistent tab that is closed still comes back at the next start, in its place."""
         tab = page.get_child()
-        if isinstance(tab, TermTab) and tab.persistent:
-            before = [t for t in self.tabs()[:view.get_page_position(page)] if t.persistent]
-            self.closed_persistent.append((len(before), tab.snapshot()))
+        if isinstance(tab, TermTab) and not self.closing:
+            self.record(tab)
         return False   # the tab is closed as usual
 
-    def snapshot(self):
-        """The persistent tabs, open or closed, in order, and the one in front."""
-        entries = [(tab.snapshot(), tab) for tab in self.tabs() if tab.persistent]
-        for place, snapshot in self.closed_persistent:
-            entries.insert(min(place, len(entries)), (snapshot, None))
-        selected = self.current_tab()
-        return {"tabs": [snapshot for snapshot, _tab in entries],
-                "selected": next((i for i, (_s, tab) in enumerate(entries) if tab is selected), 0),
-                "active": self.is_active()}
+    def save_tab(self, tab):
+        tab.entry = self.app.custom_tabs.save_open(tab.entry, tab.snapshot())
 
-    def restore(self, data):
-        for tab in data["tabs"]:
-            self.new_tab(None, existing_directory(tab.get("cwd")), restore=tab)
-        selected = data.get("selected", 0)
-        if 0 <= selected < self.tab_view.get_n_pages():
-            self.tab_view.set_selected_page(self.tab_view.get_nth_page(selected))
-        current = self.current_tab()
-        if current is not None:
-            current.terminal.grab_focus()
+    def update_saved(self, tab):
+        if tab.entry is not None or tab.custom_title or tab.custom_color:
+            self.save_tab(tab)
+
+    def remove_tab(self, entry):
+        tab = self.app.tab_for(entry)
+        if tab is not None:
+            tab.entry = None
+        self.app.custom_tabs.remove(entry)
+
+    def record(self, tab):
+        if tab.entry is not None:
+            self.app.custom_tabs.close(tab.entry, tab.snapshot())
+        tab.entry = None
+
+    def record_tabs(self):
+        # The first tab goes in last, to end up first in the list
+        for tab in reversed(self.tabs()):
+            self.record(tab)
+
+    def reopen(self, entry):
+        page = self.new_tab(None, existing_directory(entry.get("cwd")), restore=entry, at_end=True)
+        page.get_child().entry = entry
+        return page
+
+    def open_custom_tabs(self, entries):
+        pages = [self.reopen(entry) for entry in entries if not self.app.is_open(entry)]
+        self.app.custom_tabs.changed()
+        self.nav.pop()
+        if pages:
+            self.tab_view.set_selected_page(pages[0])
 
     def on_page_attached(self, view, page, position):
         # A tab can come from another window
@@ -293,6 +315,7 @@ class TermWindow(Adw.ApplicationWindow):
         for tab in self.tabs():
             tab.apply_settings()
             tab.update_title()
+        self.queue_restyle()
         self.refresh()
 
     def show_title(self, page, tab):
@@ -301,7 +324,6 @@ class TermWindow(Adw.ApplicationWindow):
         page.set_tooltip(tab.auto_title)
 
     def title_changed(self, tab):
-        self.app.queue_session_save()
         if not tab.is_ancestor(self.tab_view):
             return   # the tab is being moved to another window, it is brought up to date when it lands
         self.show_title(self.tab_view.get_page(tab), tab)
@@ -410,7 +432,7 @@ class TermWindow(Adw.ApplicationWindow):
             self.show_bars()
 
     def customize_tab(self, tab=None):
-        """Edit the title, color and whether it is persistent (the current one by default)."""
+        """Edit the title, color and startup of a tab (the current one by default)."""
         tab = tab or self.current_tab()
         if tab is None:
             return
@@ -463,7 +485,6 @@ class TermWindow(Adw.ApplicationWindow):
         return GLib.SOURCE_REMOVE
 
     def refresh(self):
-        self.app.queue_session_save()
         tab = self.current_tab()
         if tab is not None:
             self.tab_view.get_page(tab).set_needs_attention(False)
@@ -488,14 +509,14 @@ class TermWindow(Adw.ApplicationWindow):
             for widget in walk(root):
                 if widget.get_css_name() not in ("tab", "tabthumbnail"):
                     continue
-                for state in STATES + CUSTOM_CLASSES + ("persistent",):
+                for state in STATES + CUSTOM_CLASSES + ("startup",):
                     widget.remove_css_class(state)
                 page = widget.get_property("page")
                 tab = page.get_child() if page else None
                 if isinstance(tab, TermTab) and tab.style_class():
                     widget.add_css_class(tab.style_class())
-                if isinstance(tab, TermTab) and tab.persistent:
-                    widget.add_css_class("persistent")
+                if isinstance(tab, TermTab) and tab.startup:
+                    widget.add_css_class("startup")
         return GLib.SOURCE_REMOVE
 
     # -- closing -----------------------------------------------------------
@@ -504,7 +525,8 @@ class TermWindow(Adw.ApplicationWindow):
         busy = [tab for tab in self.tabs() if tab.kind != "idle"]
         if self.force_close or not busy:
             self.closing = True
-            self.app.window_closing(self)
+            self.record_tabs()
+            self.app.custom_tabs.disconnect(self.custom_tabs_handler)
             return False
 
         dialog = Adw.AlertDialog(heading=_("Close Window?"), body=_("Some processes are still running."))
