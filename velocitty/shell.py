@@ -51,9 +51,10 @@ def classify(pty, shell_pid):
 
 
 def strip_local_host(title):
-    """Remove a leading "user@host: " when it is about this machine."""
-    prefix = "%s@%s: " % (GLib.get_user_name(), socket.gethostname().split(".")[0])
-    return title[len(prefix):] if title.startswith(prefix) else title
+    """Remove a leading "user@host:" when it is about this machine. The default bash prompt
+    puts a space after the colon, vte.sh doesn't."""
+    prefix = "%s@%s:" % (GLib.get_user_name(), socket.gethostname().split(".")[0])
+    return title[len(prefix):].lstrip() if title.startswith(prefix) else title
 
 
 def untrim_path(title, shell_pid):

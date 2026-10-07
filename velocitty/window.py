@@ -335,7 +335,12 @@ class TermWindow(Adw.ApplicationWindow):
             return   # the tab is being moved to another window, it is brought up to date when it lands
         self.show_title(self.tab_view.get_page(tab), tab)
         if tab is self.current_tab():
-            self.window_title.set_title(tab.full_title)
+            self.set_titles(tab)
+
+    def set_titles(self, tab):
+        """The headerbar and the window itself (for the window list) show the current tab's title."""
+        self.window_title.set_title(tab.full_title)
+        self.set_title(tab.full_title)
 
     def build_style_controls(self):
         """System, light and dark, side by side at the top of the menu."""
@@ -509,7 +514,7 @@ class TermWindow(Adw.ApplicationWindow):
                 self.add_css_class(tab.style_class())
             if tab.is_running():
                 self.add_css_class("running")
-            self.window_title.set_title(tab.full_title)
+            self.set_titles(tab)
         self.queue_restyle()
 
     def queue_restyle(self):
