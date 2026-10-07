@@ -1,15 +1,22 @@
 import os
+import shlex
 import traceback
 
 import gi
+from gi.repository import GLib
+
+from velocitty import APP_ID, GETTEXT_DOMAIN, SETTINGS_SCHEMA
+
+# Before Gtk: the windows take their class (X11) and app id (Wayland) from the program name,
+# which is how the desktop file is matched
+GLib.set_prgname(APP_ID)
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Adw, Gdk, Gio, GLib, Gtk
+from gi.repository import Adw, Gdk, Gio, Gtk
 from setproctitle import setproctitle
 from xapp.util import l10n
 
-from velocitty import APP_ID, GETTEXT_DOMAIN, SETTINGS_SCHEMA
 from velocitty.custom_tab import CustomTabs
 from velocitty.config import VERSION
 from velocitty.palette import build_css, load_palette
@@ -21,6 +28,15 @@ _ = l10n(GETTEXT_DOMAIN)
 
 COLOR_SCHEMES = {"system": Adw.ColorScheme.DEFAULT, "light": Adw.ColorScheme.FORCE_LIGHT,
                  "dark": Adw.ColorScheme.FORCE_DARK}
+# (name, short, argument type, description, placeholder)
+OPTIONS = [
+    ("working-directory", "d", GLib.OptionArg.STRING, "Use DIR for the new terminal", "DIR"),
+    ("tab", None, GLib.OptionArg.NONE, "Always open a new tab", None),
+    ("new-window", None, GLib.OptionArg.NONE, "Open a new window", None),
+    ("title", "T", GLib.OptionArg.STRING, "Give the new tab this title", "TITLE"),
+    ("command", "e", GLib.OptionArg.STRING, "Run COMMAND instead of the shell, with the rest of the line as its arguments",
+     "COMMAND"),
+]
 
 
 class TermApp(Adw.Application):
@@ -33,14 +49,16 @@ class TermApp(Adw.Application):
         self.custom_tabs = CustomTabs()
         self.launched = False
         self.provider = Gtk.CssProvider()
-        self.add_main_option("working-directory", ord("d"), GLib.OptionFlags.NONE,
-                             GLib.OptionArg.STRING, "Use DIR for the new terminal", "DIR")
-        self.add_main_option("tab", 0, GLib.OptionFlags.NONE, GLib.OptionArg.NONE,
-                             "Always open a new tab", None)
-        self.add_main_option("new-window", 0, GLib.OptionFlags.NONE, GLib.OptionArg.NONE,
-                             "Open a new window", None)
+        for name, short, arg, description, placeholder in OPTIONS:
+            self.add_main_option(name, ord(short) if short else 0, GLib.OptionFlags.NONE, arg,
+                                 description, placeholder)
+
+    def do_local_command_line(self, arguments):
+        GLib.set_prgname("velocitty")   # for --help, while the arguments are parsed
+        return Adw.Application.do_local_command_line(self, arguments)
 
     def do_startup(self):
+        GLib.set_prgname(APP_ID)   # parsed: the windows are made from here on
         Adw.Application.do_startup(self)
         Gtk.StyleContext.add_provider_for_display(
             Gdk.Display.get_default(), self.provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
@@ -166,7 +184,13 @@ class TermApp(Adw.Application):
 
     def do_command_line(self, cmdline):
         options = cmdline.get_options_dict().end().unpack()
-        args = cmdline.get_arguments()[1:]
+        try:
+            command = shlex.split(options["command"]) if "command" in options else cmdline.get_arguments()[1:]
+        except ValueError as error:
+            cmdline.printerr_literal("velocitty: %s\n" % error)
+            return 1
+        command = command or None
+        title = options.get("title")
         cwd = cmdline.get_cwd()
         if options.get("working-directory"):
             # Relative to where the command was typed, not to where the running app is
@@ -180,16 +204,20 @@ class TermApp(Adw.Application):
             traceback.print_exc()   # a terminal opens whatever is wrong with the saved tabs
             startup_window = None
         front = startup_window or self.front_window()
+        tab = None
         if "new-window" in options or front is None:
-            self.new_window(args or None, cwd)
-        elif args or "tab" in options:
-            front.new_tab(args or None, cwd, at_end=True)
+            tab = self.new_window(command, cwd).current_tab()
+        elif command or title or "tab" in options:
+            tab = front.new_tab(command, cwd, at_end=True).get_child()
             front.present()
         elif startup_window is not None and "working-directory" not in options and (
                 not cwd or os.path.realpath(cwd) == os.path.realpath(GLib.get_home_dir())):
             pass   # started from the home directory, where launchers start: just the startup tabs
         else:
             self.open_directory(front, cwd)
+        if tab is not None and title:
+            tab.custom_title = title
+            tab.update_title()
         return 0
 
     def show_preferences(self):
@@ -219,8 +247,24 @@ class TermApp(Adw.Application):
         about.present(self.get_active_window())
 
 
+def with_command_option(argv):
+    """The command follows -e, --command or --, and as with xterm the rest of the line belongs to
+    it: that part must not be parsed as options. It is folded into one --command= option, quoted
+    for do_command_line to split. A single argument with spaces in it is a whole command line
+    already (that is gnome-terminal's -e)."""
+    for i, arg in enumerate(argv[1:], 1):
+        if arg not in ("-e", "--command", "--") and not arg.startswith("--command="):
+            continue
+        command = argv[i + 1:]
+        if arg.startswith("--command="):
+            command.insert(0, arg[len("--command="):])
+        if not command:
+            return argv[:i]
+        return argv[:i] + ["--command=" + (shlex.join(command) if len(command) > 1 else command[0])]
+    return argv
+
+
 def main(argv):
     setproctitle("velocitty")
-    GLib.set_prgname(APP_ID)
     GLib.set_application_name(_("Terminal"))
-    return TermApp().run(argv)
+    return TermApp().run(with_command_option(argv))
