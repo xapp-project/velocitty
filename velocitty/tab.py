@@ -17,9 +17,6 @@ from velocitty.shell import classify, shorten_path, strip_local_host, untrim_pat
 _ = l10n(GETTEXT_DOMAIN)
 
 MAX_LAST_OUTPUT_ROWS = 10000
-MODIFIER_KEYS = {Gdk.KEY_Shift_L, Gdk.KEY_Shift_R, Gdk.KEY_Control_L, Gdk.KEY_Control_R,
-                 Gdk.KEY_Alt_L, Gdk.KEY_Alt_R, Gdk.KEY_Meta_L, Gdk.KEY_Meta_R, Gdk.KEY_Super_L,
-                 Gdk.KEY_Super_R, Gdk.KEY_ISO_Level3_Shift, Gdk.KEY_Caps_Lock, Gdk.KEY_Num_Lock}
 ORPHAN_POLLS = 120   # half a second each: a minute without a window
 SETTLE_USEC = 700000
 ZOOM_LEVELS = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.25, 1.5, 1.75, 2.0, 2.5, 3.0, 4.0]
@@ -50,7 +47,6 @@ class TermTab(Gtk.Overlay):
         self.custom_title = restore.get("title") or None   # a title the user chose
         self.custom_color = restore.get("color") or None   # a custom color the user chose, by name
         self.run_command = restore.get("run") or None      # run when the tab is opened
-        self.restored_command = None if self.run_command else restore.get("command")   # typed at the prompt, for the user to run
         self.last_cwd = cwd
         self.auto_title = _("Terminal")
         self.kind = "idle"
@@ -260,34 +256,17 @@ class TermTab(Gtk.Overlay):
 
     def on_spawned(self, terminal, pid, error):
         self.shell_pid = pid
-        if self.restored_command and not error:
-            # Typed, not run: the user presses Enter if they want it again
-            GLib.timeout_add(300, self.type_restored_command)
 
     def on_key_pressed(self, controller, keyval, keycode, state):
         if keyval in (Gdk.KEY_Return, Gdk.KEY_KP_Enter):
             self.used = True   # something was run here, even if it is over by now
-        if self.restored_command and keyval not in MODIFIER_KEYS:
-            self.forget_restored_command()
         return False
 
-    def forget_restored_command(self):
-        """The user is typing: the command that was waiting at the prompt is no longer remembered."""
-        if self.restored_command:
-            self.restored_command = None
-            self.update_title()
-            self.window.title_changed(self)
-
-    def type_restored_command(self):
-        if self.restored_command and self.get_root() is not None:
-            self.terminal.feed_child(self.restored_command.encode())
-        return GLib.SOURCE_REMOVE
-
     def is_clean_at(self, path):
-        """A tab nobody has touched, sitting in this directory: nothing was customized and no
-        command is waiting or running."""
+        """A tab nobody has touched, sitting in this directory: nothing was customized and
+        nothing is running."""
         if (self.started_with_command or self.used or self.custom_title or self.custom_color
-                or self.restored_command or self.kind != "idle"):
+                or self.kind != "idle"):
             return False
         directory = self.current_directory() or self.last_cwd
         return bool(directory) and os.path.realpath(directory) == os.path.realpath(path)
@@ -297,11 +276,8 @@ class TermTab(Gtk.Overlay):
         directory = self.current_directory()
         if directory:
             self.last_cwd = directory
-        command = self.command_line if self.kind != "idle" else self.restored_command
-        if not command or "\n" in command or "\r" in command:
-            command = None
         return {"cwd": self.last_cwd, "title": self.custom_title, "color": self.custom_color,
-                "command": command, "run": self.run_command, "startup": self.startup}
+                "run": self.run_command, "startup": self.startup}
 
     def poll(self):
         # A tab being dragged to another window has none for a while: keep going, and only
@@ -313,8 +289,6 @@ class TermTab(Gtk.Overlay):
         state = classify(self.terminal.get_pty(), self.shell_pid)
         if state != (self.kind, self.command_line):
             self.kind, self.command_line = state
-            if self.kind != "idle":
-                self.restored_command = None   # something was run, the typed command is no longer waiting
             self.update_title()
             self.window.refresh()
         return GLib.SOURCE_CONTINUE
@@ -343,9 +317,6 @@ class TermTab(Gtk.Overlay):
         if self.kind == "active" and self.command_line:
             full += " — " + self.command_line
             short += " — " + self.command_line
-        elif self.kind == "idle" and self.restored_command:
-            # The command waiting at the prompt, until something is run
-            full = short = "… " + self.restored_command
         self.auto_title = full
         self.title = self.custom_title or short
         self.full_title = self.custom_title or full
@@ -367,7 +338,6 @@ class TermTab(Gtk.Overlay):
         return True
 
     def paste(self):
-        self.forget_restored_command()
         self.terminal.paste_clipboard()
 
     # -- prompt and last output --------------------------------------------
