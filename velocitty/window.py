@@ -328,7 +328,7 @@ class TermWindow(Adw.ApplicationWindow):
     def show_title(self, page, tab):
         """The tab bar shows the short title, the tooltip has the whole one."""
         page.set_title(tab.title)
-        page.set_tooltip(tab.auto_title)
+        page.set_tooltip(GLib.markup_escape_text(tab.auto_title))
 
     def title_changed(self, tab):
         if not tab.is_ancestor(self.tab_view):
