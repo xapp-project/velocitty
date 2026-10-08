@@ -109,6 +109,8 @@ class TermWindow(Adw.ApplicationWindow):
         self.header.pack_end(Adw.TabButton(view=self.tab_view, action_name="win.overview"))
 
         self.tab_bar = Adw.TabBar(view=self.tab_view, autohide=True)
+        self.tab_bar.get_first_child().set_can_focus(False)
+
         self.toolbar = Adw.ToolbarView(content=self.tab_view)
         self.toolbar.add_top_bar(self.header)
         self.toolbar.add_top_bar(self.tab_bar)
