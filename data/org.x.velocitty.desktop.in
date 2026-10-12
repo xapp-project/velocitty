@@ -2,7 +2,7 @@
 Name=Terminal
 GenericName=Terminal Emulator
 Comment=Use the command line
-Exec=velocitty
+Exec=velocitty --new-window
 Icon=velocitty
 Terminal=false
 Type=Application
