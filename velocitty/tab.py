@@ -1,6 +1,8 @@
 import os
+import shlex
 import signal
 import socket
+import tempfile
 
 import gi
 
@@ -123,6 +125,14 @@ class TermTab(Gtk.Overlay):
         if self.pending_command and os.path.basename(shell) == "fish":
             startup, self.pending_command = self.pending_command, ""
             return [shell, "--init-command", startup]
+        if self.pending_command and os.path.basename(shell) == "bash":
+            startup, self.pending_command = self.pending_command, ""
+            handle, path = tempfile.mkstemp(prefix="velocitty-", suffix=".rc", dir=GLib.get_user_runtime_dir())
+            with os.fdopen(handle, "w") as rcfile:
+                rcfile.write("rm -f %s\n" % shlex.quote(path))
+                rcfile.write("[ -f ~/.bashrc ] && . ~/.bashrc\n")
+                rcfile.write(startup + "\n")
+            return [shell, "--rcfile", path, "-i"]
         return [shell]
 
     def startup_command(self):
