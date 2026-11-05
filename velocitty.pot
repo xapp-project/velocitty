@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 12:02+0000\n"
+"POT-Creation-Date: 2026-11-05 12:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/org.x.velocitty.desktop.in:2 velocitty/application.py:274
-#: velocitty/shortcuts.py:26 velocitty/tab.py:56 velocitty/tab.py:59
-#: velocitty/tab.py:375 velocitty/window.py:49 velocitty/window.py:68
+#: velocitty/shortcuts.py:26 velocitty/tab.py:61 velocitty/tab.py:64
+#: velocitty/tab.py:389 velocitty/window.py:49 velocitty/window.py:68
 #: velocitty/window.py:128 velocitty/window.py:175
 msgid "Terminal"
 msgstr ""
@@ -37,12 +37,12 @@ msgid "terminal;command;prompt;shell;console;ssh;"
 msgstr ""
 
 #: data/org.x.velocitty.desktop.in:18 velocitty/shortcuts.py:15
-#: velocitty/tab.py:476 velocitty/window.py:95
+#: velocitty/tab.py:493 velocitty/window.py:95
 msgid "New Window"
 msgstr ""
 
 #: data/org.x.velocitty.desktop.in:22 velocitty/shortcuts.py:14
-#: velocitty/tab.py:475 velocitty/window.py:70 velocitty/window.py:94
+#: velocitty/tab.py:492 velocitty/window.py:70 velocitty/window.py:94
 msgid "New Tab"
 msgstr ""
 
@@ -75,7 +75,7 @@ msgid "Open"
 msgstr ""
 
 #: velocitty/custom_tabs_page.py:32 velocitty/custom_tabs_page.py:131
-#: velocitty/shortcuts.py:29 velocitty/tab.py:484
+#: velocitty/shortcuts.py:29 velocitty/tab.py:501
 msgid "Select All"
 msgstr ""
 
@@ -370,11 +370,11 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
-#: velocitty/shortcuts.py:27 velocitty/tab.py:479
+#: velocitty/shortcuts.py:27 velocitty/tab.py:496
 msgid "Copy"
 msgstr ""
 
-#: velocitty/shortcuts.py:28 velocitty/tab.py:481
+#: velocitty/shortcuts.py:28 velocitty/tab.py:498
 msgid "Paste"
 msgstr ""
 
@@ -458,11 +458,15 @@ msgstr ""
 msgid "Switch to Tab 10"
 msgstr ""
 
-#: velocitty/tab.py:480
+#: velocitty/tab.py:489
+msgid "Open Link"
+msgstr ""
+
+#: velocitty/tab.py:497
 msgid "Copy Last Output"
 msgstr ""
 
-#: velocitty/tab.py:485
+#: velocitty/tab.py:502
 msgid "Find…"
 msgstr ""
 
