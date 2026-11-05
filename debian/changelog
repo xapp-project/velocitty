@@ -1,3 +1,16 @@
+velocitty (1.0.5) adrien; urgency=medium
+
+  * Only calculate the size indicator during resizing
+  * Update README
+  * shell: Fix path shortening for long home dirs
+  * window: Add path shortening to headerbar
+  * tab: Don't read the shell startup files twice
+  * tab: Don't show the startup command when using fish
+  * tab: Don't show the startup command when using bash
+  * l10n: Update POT
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 05 Nov 2026 12:03:22 +0000
+
 velocitty (1.0.4) adrien; urgency=medium
 
   * window: Fix startup crash with older PyGObject.
