@@ -1,5 +1,4 @@
 import os
-import shlex
 import signal
 import socket
 
@@ -18,6 +17,8 @@ from velocitty.shell import classify, shorten_path, strip_local_host, untrim_pat
 _ = l10n(GETTEXT_DOMAIN)
 
 MAX_LAST_OUTPUT_ROWS = 10000
+FIRST_PROMPT_WAIT = 2000   # milliseconds a shell that gives no prompt signal is waited for
+PROMPT_SETTLE = 60   # milliseconds after the signal for the prompt to be drawn
 ORPHAN_POLLS = 120   # half a second each: a minute without a window
 SETTLE_USEC = 700000
 ZOOM_LEVELS = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.25, 1.5, 1.75, 2.0, 2.5, 3.0, 4.0]
@@ -101,6 +102,7 @@ class TermTab(Gtk.Overlay):
         self.terminal.add_controller(click)
         self.setup_actions()
 
+        self.pending_command = self.startup_command()
         env = ["%s=%s" % item for item in os.environ.items() if item[0] not in ("TERM", "PROMPT_DIRTRIM")]
         env += ["TERM=xterm-256color", "COLORTERM=truecolor",
                 "PROMPT_DIRTRIM=%d" % self.settings.get_int("prompt-folders")]
@@ -118,13 +120,15 @@ class TermTab(Gtk.Overlay):
         shell = self.settings.get_string("shell")
         if not shell or not os.access(shell, os.X_OK):
             shell = os.environ.get("SHELL", "/bin/bash")
-        # The command to run at start doesn't apply when the tab was asked to run a specific command
-        startup = self.run_command or self.settings.get_string("startup-command").strip()
-        if startup and (self.run_command or self.runs_startup):
-            # Run it in an interactive shell (so aliases and the usual setup are there), then
-            # replace that shell with a normal one: no prompt is shown for the command.
-            return [shell, "-i", "-c", "%s\n exec %s" % (startup, shlex.quote(shell))]
         return [shell]
+
+    def startup_command(self):
+        """What is typed in the shell when it starts: the command of a saved tab, else the startup
+        command of the settings. That one doesn't apply to restored tabs, nor to a tab asked to run
+        a specific command."""
+        if self.run_command:
+            return self.run_command
+        return self.settings.get_string("startup-command").strip() if self.runs_startup else ""
 
     # -- settings and colors -----------------------------------------------
 
@@ -292,6 +296,16 @@ class TermTab(Gtk.Overlay):
 
     def on_spawned(self, terminal, pid, error):
         self.shell_pid = pid
+        # The shell starts once, so its startup files are read once. The command is typed when the
+        # first prompt is shown, or after a while for a shell that doesn't tell us
+        if self.pending_command and not error:
+            GLib.timeout_add(FIRST_PROMPT_WAIT, self.type_pending_command)
+
+    def type_pending_command(self):
+        command, self.pending_command = self.pending_command, ""
+        if command and self.get_root() is not None:
+            self.terminal.feed_child((command + "\n").encode())
+        return GLib.SOURCE_REMOVE
 
     def on_key_pressed(self, controller, keyval, keycode, state):
         if keyval in (Gdk.KEY_Return, Gdk.KEY_KP_Enter):
@@ -384,6 +398,9 @@ class TermTab(Gtk.Overlay):
     def on_precmd(self, terminal, *args):
         """The shell is about to prompt: everything since the previous prompt
         is the last command and its output."""
+        if self.pending_command:
+            # Once the prompt is on screen, so that the terminal doesn't echo the command twice
+            GLib.timeout_add(PROMPT_SETTLE, self.type_pending_command)
         column, row = terminal.get_cursor_position()
         if self.prompt_row is not None and row - 1 >= self.prompt_row:
             start = max(self.prompt_row, row - MAX_LAST_OUTPUT_ROWS)
