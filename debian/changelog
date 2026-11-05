@@ -1,3 +1,10 @@
+velocitty (1.0.7) adrien; urgency=medium
+
+  * Add highlights for remote/admin sessions in the prefs
+  * l10n: Update POT
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 05 Nov 2026 15:39:41 +0000
+
 velocitty (1.0.6) adrien; urgency=medium
 
   * Add support for links
