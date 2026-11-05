@@ -58,9 +58,10 @@ def strip_local_host(title):
 
 
 def untrim_path(title, shell_pid):
-    """The prompt of bash, which the title follows, starts a path with ".../" when it trims it
-    (PROMPT_DIRTRIM). The titles do their own shortening, so give back the whole path."""
-    if not title.startswith(".../") or shell_pid is None:
+    """The prompt of bash, which the title follows, starts a path with ".../" (or "~/.../" inside
+    the home folder) when it trims it (PROMPT_DIRTRIM). The titles do their own shortening, so
+    give back the whole path."""
+    if not title.startswith((".../", "~/.../")) or shell_pid is None:
         return title
     try:
         path = os.readlink("/proc/%d/cwd" % shell_pid)
