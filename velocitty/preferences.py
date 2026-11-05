@@ -119,6 +119,9 @@ class Preferences(Adw.Window):
         group.add(spin_row(settings, "default-rows", _("Rows"), 5, 200))
         group.add(choice_row(settings, "launch-action", _("New Terminal Opens"), [
             ("tab", _("In a Tab")), ("window", _("In a Window"))]))
+        group.add(choice_row(settings, "window-folders", _("Shorten Paths"), [
+            (0, _("Don't Shorten")), (1, _("Last Folder")), (2, _("Last Two Folders")),
+            (3, _("Last Three Folders"))]))
         page.add(group)
 
         group = Adw.PreferencesGroup(title=_("Tabs"))

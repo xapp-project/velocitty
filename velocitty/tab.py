@@ -53,7 +53,7 @@ class TermTab(Gtk.Overlay):
         self.auto_title = _("Terminal")
         self.kind = "idle"
         self.command_line = ""
-        self.title = self.full_title = _("Terminal")   # in the tab bar, and in full
+        self.title = self.window_title = _("Terminal")   # in the tab bar, and in the headerbar
         self.shell_pid = None
         self.last_output = None
         self.prompt_row = None
@@ -343,19 +343,15 @@ class TermTab(Gtk.Overlay):
         return self.kind == "active" and self.settings.get_boolean("highlight-running")
 
     def update_title(self):
-        """The automatic title is in full in the tooltip and the headerbar; the tab shows a folder
+        """The automatic title is in full in the tooltip. The tab and the window show a folder
         shortened to its last folders, as many as the settings say."""
         shown = strip_local_host(self.terminal.get_window_title() or _("Terminal"))
         if self.kind in ("idle", "active"):
             shown = untrim_path(shown, self.shell_pid)
-        full = shown
-        short = shorten_path(shown, self.settings.get_int("tab-folders"))
-        if self.kind == "active" and self.command_line:
-            full += " — " + self.command_line
-            short += " — " + self.command_line
-        self.auto_title = full
-        self.title = self.custom_title or short
-        self.full_title = self.custom_title or full
+        suffix = " — " + self.command_line if self.kind == "active" and self.command_line else ""
+        self.auto_title = shown + suffix
+        self.title = self.custom_title or shorten_path(shown, self.settings.get_int("tab-folders")) + suffix
+        self.window_title = self.custom_title or shorten_path(shown, self.settings.get_int("window-folders")) + suffix
         self.window.title_changed(self)
 
     # -- drop and paste ----------------------------------------------------

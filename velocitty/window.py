@@ -392,8 +392,8 @@ class TermWindow(Adw.ApplicationWindow):
 
     def set_titles(self, tab):
         """The headerbar and the window itself (for the window list) show the current tab's title."""
-        self.window_title.set_title(tab.full_title)
-        self.set_title(tab.full_title)
+        self.window_title.set_title(tab.window_title)
+        self.set_title(tab.window_title)
 
     def build_style_controls(self):
         """System, light and dark, side by side at the top of the menu."""

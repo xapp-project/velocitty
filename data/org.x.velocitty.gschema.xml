@@ -25,6 +25,12 @@
       <summary>Where a new terminal opens</summary>
       <description>What starting the terminal does when it is already running: open a tab in the window that is in front, or a new window. Starting it with --tab or --new-window always does that.</description>
     </key>
+    <key name="window-folders" type="i">
+      <range min="0" max="3"/>
+      <default>1</default>
+      <summary>Folders shown in the title of a window</summary>
+      <description>How many of the last folders of a path the title of a window shows, in its headerbar and wherever the desktop lists it. 0 shows the whole path. The tooltip of a tab always has it.</description>
+    </key>
     <key name="tab-folders" type="i">
       <range min="0" max="3"/>
       <default>1</default>
