@@ -377,7 +377,9 @@ class TermTab(Gtk.Overlay):
         of its session (ssh, admin)."""
         if self.custom_color:
             return "custom-" + self.custom_color
-        return self.kind if self.kind in ("remote", "admin") else None
+        if self.kind in ("remote", "admin") and self.settings.get_boolean("highlight-sessions"):
+            return self.kind
+        return None
 
     def is_running(self):
         """A program is running, and it is highlighted: a shade over the color of the tab."""

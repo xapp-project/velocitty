@@ -47,6 +47,11 @@
       <default>true</default>
       <summary>Highlight tabs while a command is running</summary>
     </key>
+    <key name="highlight-sessions" type="b">
+      <default>true</default>
+      <summary>Highlight remote and administrator sessions</summary>
+      <description>Color a tab, and the headerbar while it is in front, during an ssh session or when what runs in it is run as root. A color given to a tab always wins.</description>
+    </key>
     <key name="use-system-font" type="b">
       <default>true</default>
       <summary>Use the system monospace font</summary>

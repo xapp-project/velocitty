@@ -130,6 +130,8 @@ class Preferences(Adw.Window):
             (3, _("Last Three Folders"))]))
         group.add(switch_row(settings, "highlight-running", _("Highlight Running Commands"),
                              _("Color the tab and the headerbar while a command is running")))
+        group.add(switch_row(settings, "highlight-sessions", _("Highlight Remote and Admin Sessions"),
+                             _("Color the tab and the headerbar for remote and admin sessions")))
         group.add(switch_row(settings, "visual-bell", _("Visual Bell"),
                              _("Flash the headerbar when a program rings the bell")))
         page.add(group)
