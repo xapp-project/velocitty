@@ -1,3 +1,10 @@
+velocitty (1.0.6) adrien; urgency=medium
+
+  * Add support for links
+  * l10n: Update POT
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 05 Nov 2026 12:41:51 +0000
+
 velocitty (1.0.5) adrien; urgency=medium
 
   * Only calculate the size indicator during resizing
