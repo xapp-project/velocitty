@@ -21,6 +21,11 @@ _ = l10n(GETTEXT_DOMAIN)
 MAX_LAST_OUTPUT_ROWS = 10000
 FIRST_PROMPT_WAIT = 2000   # milliseconds a shell that gives no prompt signal is waited for
 PROMPT_SETTLE = 60   # milliseconds after the signal for the prompt to be drawn
+# Links are found in the text, or given by the program (OSC 8). Only these kinds are opened.
+LINK_PATTERN = r"(?:(?:https?|ftp)://|www\.|mailto:)[^\s<>\"'`{}|\\^\[\]]+[^\s<>\"'`{}|\\^\[\].,;:!?)]"
+LINK_SCHEMES = ("http", "https", "ftp", "mailto")
+PCRE2_CASELESS = 0x00000008
+PCRE2_MULTILINE = 0x00000400
 ORPHAN_POLLS = 120   # half a second each: a minute without a window
 SETTLE_USEC = 700000
 ZOOM_LEVELS = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.25, 1.5, 1.75, 2.0, 2.5, 3.0, 4.0]
@@ -102,6 +107,15 @@ class TermTab(Gtk.Overlay):
         click = Gtk.GestureClick(button=3)
         click.connect("pressed", self.on_context_menu)
         self.terminal.add_controller(click)
+        # Ctrl+click opens a link. This is in the capture phase so that it comes before the
+        # terminal starts a selection.
+        link_click = Gtk.GestureClick(button=1, propagation_phase=Gtk.PropagationPhase.CAPTURE)
+        link_click.connect("pressed", self.on_link_click)
+        self.terminal.add_controller(link_click)
+        self.terminal.set_allow_hyperlink(True)
+        regex = Vte.Regex.new_for_match(LINK_PATTERN, -1, PCRE2_MULTILINE | PCRE2_CASELESS)
+        self.terminal.match_set_cursor_name(self.terminal.match_add_regex(regex, 0), "pointer")
+        self.link = None   # the link under the pointer when the context menu was opened
         self.setup_actions()
 
         self.pending_command = self.startup_command()
@@ -453,6 +467,7 @@ class TermTab(Gtk.Overlay):
             "select-all": lambda *_: self.terminal.select_all(),
             "find": lambda *_: self.show_search(),
             "menu": lambda *_: self.popup_menu_at_cursor(),
+            "open-link": lambda *_: self.open_link(self.link),
         }
         for name, handler in handlers.items():
             action = Gio.SimpleAction.new(name, None)
@@ -470,6 +485,8 @@ class TermTab(Gtk.Overlay):
                                                     Gtk.NamedAction.new("term." + name)))
         self.add_controller(shortcuts)
 
+        self.link_menu = Gio.Menu()
+        self.link_menu.append(_("Open Link"), "term.open-link")
         self.menu = Gio.Menu()
         section = Gio.Menu()
         section.append(_("New Tab"), "win.new-tab")
@@ -486,17 +503,54 @@ class TermTab(Gtk.Overlay):
         self.menu.append_section(None, section)
 
     def on_context_menu(self, gesture, n_press, x, y):
+        self.link = self.link_at(x, y)
         self.popup_menu(x, y)
+
+    def link_at(self, x, y):
+        """The link, if any, under this point of the terminal. Only the kinds we open are returned."""
+        uri = self.terminal.check_hyperlink_at(x, y)
+        if not uri:
+            uri = self.terminal.check_match_at(x, y)[0]
+            if uri and uri.lower().startswith("www."):
+                uri = "http://" + uri
+        return uri if uri and uri.split(":", 1)[0].lower() in LINK_SCHEMES else None
+
+    def on_link_click(self, gesture, n_press, x, y):
+        if not gesture.get_current_event_state() & Gdk.ModifierType.CONTROL_MASK:
+            return
+        uri = self.link_at(x, y)
+        if uri:
+            gesture.set_state(Gtk.EventSequenceState.CLAIMED)
+            self.open_link(uri)
+
+    def open_link(self, uri):
+        if uri:
+            Gtk.UriLauncher.new(uri).launch(self.get_root(), None, self.on_link_opened)
+
+    def on_link_opened(self, launcher, result):
+        try:
+            launcher.launch_finish(result)
+        except GLib.Error:
+            pass   # nothing to open it, or cancelled
 
     def popup_menu_at_cursor(self):
         """Shift+F10 or the Menu key: open the menu at the text cursor."""
+        self.link = None
         column, row = self.terminal.get_cursor_position()
         height = self.terminal.get_char_height()
         self.popup_menu(TERMINAL_MARGIN + (column + 1) * self.terminal.get_char_width(),
                         TERMINAL_MARGIN + row * height, height)
 
+    def on_menu_closed(self, popover, has_link):
+        if has_link:
+            self.menu.remove(0)   # the link entries are only in the menu of a link
+        GLib.idle_add(popover.unparent)
+
     def popup_menu(self, x, y, height=1):
         self.actions.lookup_action("copy").set_enabled(self.terminal.get_has_selection())
+        has_link = self.link is not None
+        if has_link:
+            self.menu.insert_section(0, None, self.link_menu)
         popover = Gtk.PopoverMenu.new_from_model(self.menu)
         popover.set_parent(self)
         popover.set_has_arrow(False)
@@ -504,5 +558,5 @@ class TermTab(Gtk.Overlay):
         rect = Gdk.Rectangle()
         rect.x, rect.y, rect.width, rect.height = int(x), int(y), 1, int(height)
         popover.set_pointing_to(rect)
-        popover.connect("closed", lambda p: GLib.idle_add(p.unparent))
+        popover.connect("closed", self.on_menu_closed, has_link)
         popover.popup()
