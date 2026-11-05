@@ -120,6 +120,9 @@ class TermTab(Gtk.Overlay):
         shell = self.settings.get_string("shell")
         if not shell or not os.access(shell, os.X_OK):
             shell = os.environ.get("SHELL", "/bin/bash")
+        if self.pending_command and os.path.basename(shell) == "fish":
+            startup, self.pending_command = self.pending_command, ""
+            return [shell, "--init-command", startup]
         return [shell]
 
     def startup_command(self):
