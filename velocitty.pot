@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-26 14:46+0000\n"
+"POT-Creation-Date: 2026-11-05 12:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/org.x.velocitty.desktop.in:2 velocitty/application.py:274
-#: velocitty/shortcuts.py:26 velocitty/tab.py:53 velocitty/tab.py:56
-#: velocitty/tab.py:349 velocitty/window.py:49 velocitty/window.py:68
-#: velocitty/window.py:128 velocitty/window.py:174
+#: velocitty/shortcuts.py:26 velocitty/tab.py:56 velocitty/tab.py:59
+#: velocitty/tab.py:375 velocitty/window.py:49 velocitty/window.py:68
+#: velocitty/window.py:128 velocitty/window.py:175
 msgid "Terminal"
 msgstr ""
 
@@ -37,12 +37,12 @@ msgid "terminal;command;prompt;shell;console;ssh;"
 msgstr ""
 
 #: data/org.x.velocitty.desktop.in:18 velocitty/shortcuts.py:15
-#: velocitty/tab.py:455 velocitty/window.py:95
+#: velocitty/tab.py:476 velocitty/window.py:95
 msgid "New Window"
 msgstr ""
 
 #: data/org.x.velocitty.desktop.in:22 velocitty/shortcuts.py:14
-#: velocitty/tab.py:454 velocitty/window.py:70 velocitty/window.py:94
+#: velocitty/tab.py:475 velocitty/window.py:70 velocitty/window.py:94
 msgid "New Tab"
 msgstr ""
 
@@ -75,7 +75,7 @@ msgid "Open"
 msgstr ""
 
 #: velocitty/custom_tabs_page.py:32 velocitty/custom_tabs_page.py:131
-#: velocitty/shortcuts.py:29 velocitty/tab.py:463
+#: velocitty/shortcuts.py:29 velocitty/tab.py:484
 msgid "Select All"
 msgstr ""
 
@@ -148,184 +148,189 @@ msgstr ""
 msgid "In a Window"
 msgstr ""
 
-#: velocitty/preferences.py:124 velocitty/shortcuts.py:36
-msgid "Tabs"
-msgstr ""
-
-#: velocitty/preferences.py:125 velocitty/preferences.py:166
+#: velocitty/preferences.py:122 velocitty/preferences.py:128
+#: velocitty/preferences.py:169
 msgid "Shorten Paths"
 msgstr ""
 
-#: velocitty/preferences.py:126 velocitty/preferences.py:167
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:170
 msgid "Don't Shorten"
 msgstr ""
 
-#: velocitty/preferences.py:126 velocitty/preferences.py:167
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:170
 msgid "Last Folder"
 msgstr ""
 
-#: velocitty/preferences.py:126 velocitty/preferences.py:167
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:170
 msgid "Last Two Folders"
 msgstr ""
 
-#: velocitty/preferences.py:127 velocitty/preferences.py:168
+#: velocitty/preferences.py:124 velocitty/preferences.py:130
+#: velocitty/preferences.py:171
 msgid "Last Three Folders"
 msgstr ""
 
-#: velocitty/preferences.py:128
-msgid "Highlight Running Commands"
-msgstr ""
-
-#: velocitty/preferences.py:129
-msgid "Color the tab and the headerbar while a command is running"
-msgstr ""
-
-#: velocitty/preferences.py:130
-msgid "Visual Bell"
+#: velocitty/preferences.py:127 velocitty/shortcuts.py:36
+msgid "Tabs"
 msgstr ""
 
 #: velocitty/preferences.py:131
+msgid "Highlight Running Commands"
+msgstr ""
+
+#: velocitty/preferences.py:132
+msgid "Color the tab and the headerbar while a command is running"
+msgstr ""
+
+#: velocitty/preferences.py:133
+msgid "Visual Bell"
+msgstr ""
+
+#: velocitty/preferences.py:134
 msgid "Flash the headerbar when a program rings the bell"
 msgstr ""
 
-#: velocitty/preferences.py:135 velocitty/preferences.py:136
+#: velocitty/preferences.py:138 velocitty/preferences.py:139
 msgid "Scrolling"
 msgstr ""
 
-#: velocitty/preferences.py:137
+#: velocitty/preferences.py:140
 msgid "Scrollbars"
 msgstr ""
 
-#: velocitty/preferences.py:138
+#: velocitty/preferences.py:141
 msgid "Use System Scrollbars"
 msgstr ""
 
-#: velocitty/preferences.py:138
+#: velocitty/preferences.py:141
 msgid "Always Visible"
 msgstr ""
 
-#: velocitty/preferences.py:138
+#: velocitty/preferences.py:141
 msgid "Hidden"
 msgstr ""
 
-#: velocitty/preferences.py:139
+#: velocitty/preferences.py:142
 msgid "Scroll to the bottom when you press a key"
 msgstr ""
 
-#: velocitty/preferences.py:140
+#: velocitty/preferences.py:143
 msgid "Scroll to the bottom when new output is printed"
 msgstr ""
 
-#: velocitty/preferences.py:141
+#: velocitty/preferences.py:144
 msgid "Limit the number of printed lines"
 msgstr ""
 
-#: velocitty/preferences.py:143
+#: velocitty/preferences.py:146
 msgid "Lines"
 msgstr ""
 
-#: velocitty/preferences.py:148 velocitty/preferences.py:149
-#: velocitty/preferences.py:154
+#: velocitty/preferences.py:151 velocitty/preferences.py:152
+#: velocitty/preferences.py:157
 msgid "Shell"
 msgstr ""
 
-#: velocitty/preferences.py:150
+#: velocitty/preferences.py:153
 msgid "System Default"
 msgstr ""
 
-#: velocitty/preferences.py:156
+#: velocitty/preferences.py:159
 msgid "Startup Command"
 msgstr ""
 
-#: velocitty/preferences.py:157
+#: velocitty/preferences.py:160
 msgid "Command to run at start"
 msgstr ""
 
-#: velocitty/preferences.py:161
+#: velocitty/preferences.py:164
 msgid "Prompt"
 msgstr ""
 
-#: velocitty/preferences.py:162
+#: velocitty/preferences.py:165
 msgid "Cursor Shape"
 msgstr ""
 
-#: velocitty/preferences.py:163
+#: velocitty/preferences.py:166
 msgid "Block"
 msgstr ""
 
-#: velocitty/preferences.py:163
+#: velocitty/preferences.py:166
 msgid "I-Beam"
 msgstr ""
 
-#: velocitty/preferences.py:163
+#: velocitty/preferences.py:166
 msgid "Underline"
 msgstr ""
 
-#: velocitty/preferences.py:164
+#: velocitty/preferences.py:167
 msgid "Cursor Blinking"
 msgstr ""
 
-#: velocitty/preferences.py:165
+#: velocitty/preferences.py:168
 msgid "Follow System"
 msgstr ""
 
-#: velocitty/preferences.py:165
+#: velocitty/preferences.py:168
 msgid "Enabled"
 msgstr ""
 
-#: velocitty/preferences.py:165
+#: velocitty/preferences.py:168
 msgid "Disabled"
 msgstr ""
 
-#: velocitty/preferences.py:169
+#: velocitty/preferences.py:172
 msgid "Only in new tabs"
 msgstr ""
 
-#: velocitty/preferences.py:177
+#: velocitty/preferences.py:180
 msgid "Use System _Font"
 msgstr ""
 
-#: velocitty/preferences.py:190
+#: velocitty/preferences.py:193
 msgid "Font"
 msgstr ""
 
-#: velocitty/preferences.py:197
+#: velocitty/preferences.py:200
 msgid "Select Font"
 msgstr ""
 
-#: velocitty/searchbar.py:28
+#: velocitty/searchbar.py:26
 msgid "Search"
 msgstr ""
 
-#: velocitty/searchbar.py:29
+#: velocitty/searchbar.py:27
 msgid "Previous Match"
 msgstr ""
 
-#: velocitty/searchbar.py:30
+#: velocitty/searchbar.py:28
 msgid "Next Match"
 msgstr ""
 
-#: velocitty/searchbar.py:40
+#: velocitty/searchbar.py:38
 msgid "Case Sensitive"
 msgstr ""
 
-#: velocitty/searchbar.py:41
+#: velocitty/searchbar.py:39
 msgid "Whole Word"
 msgstr ""
 
-#: velocitty/searchbar.py:42
+#: velocitty/searchbar.py:40
 msgid "Wrap Around"
 msgstr ""
 
-#: velocitty/searchbar.py:43
+#: velocitty/searchbar.py:41
 msgid "Regular Expression"
 msgstr ""
 
-#: velocitty/searchbar.py:45
+#: velocitty/searchbar.py:43
 msgid "Search Options"
 msgstr ""
 
-#: velocitty/searchbar.py:50
+#: velocitty/searchbar.py:48
 msgid "Close"
 msgstr ""
 
@@ -365,11 +370,11 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
-#: velocitty/shortcuts.py:27 velocitty/tab.py:458
+#: velocitty/shortcuts.py:27 velocitty/tab.py:479
 msgid "Copy"
 msgstr ""
 
-#: velocitty/shortcuts.py:28 velocitty/tab.py:460
+#: velocitty/shortcuts.py:28 velocitty/tab.py:481
 msgid "Paste"
 msgstr ""
 
@@ -381,15 +386,15 @@ msgstr ""
 msgid "Context Menu"
 msgstr ""
 
-#: velocitty/shortcuts.py:32 velocitty/window.py:420
+#: velocitty/shortcuts.py:32 velocitty/window.py:432
 msgid "Zoom In"
 msgstr ""
 
-#: velocitty/shortcuts.py:33 velocitty/window.py:418
+#: velocitty/shortcuts.py:33 velocitty/window.py:430
 msgid "Zoom Out"
 msgstr ""
 
-#: velocitty/shortcuts.py:34 velocitty/window.py:422
+#: velocitty/shortcuts.py:34 velocitty/window.py:434
 msgid "Reset Zoom"
 msgstr ""
 
@@ -453,11 +458,11 @@ msgstr ""
 msgid "Switch to Tab 10"
 msgstr ""
 
-#: velocitty/tab.py:459
+#: velocitty/tab.py:480
 msgid "Copy Last Output"
 msgstr ""
 
-#: velocitty/tab.py:464
+#: velocitty/tab.py:485
 msgid "Find…"
 msgstr ""
 
@@ -469,34 +474,34 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: velocitty/window.py:232
+#: velocitty/window.py:244
 msgid "Close Tab?"
 msgstr ""
 
-#: velocitty/window.py:246
+#: velocitty/window.py:258
 msgid "Some processes are still running."
 msgstr ""
 
-#: velocitty/window.py:247
+#: velocitty/window.py:259
 msgid "_Cancel"
 msgstr ""
 
-#: velocitty/window.py:248
+#: velocitty/window.py:260
 msgid "_Close"
 msgstr ""
 
-#: velocitty/window.py:392
+#: velocitty/window.py:404
 msgid "Follow System Style"
 msgstr ""
 
-#: velocitty/window.py:393
+#: velocitty/window.py:405
 msgid "Light Style"
 msgstr ""
 
-#: velocitty/window.py:394
+#: velocitty/window.py:406
 msgid "Dark Style"
 msgstr ""
 
-#: velocitty/window.py:598
+#: velocitty/window.py:610
 msgid "Close Window?"
 msgstr ""
