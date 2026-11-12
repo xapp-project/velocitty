@@ -24,10 +24,10 @@ SECTIONS = [
         (_("Quit"), "<Ctrl><Shift>q"),
     ]),
     (_("Terminal"), [
-        (_("Copy"), "<Ctrl><Shift>c"),
-        (_("Paste"), "<Ctrl><Shift>v"),
-        (_("Select All"), "<Ctrl><Shift>a"),
-        (_("Find"), "<Ctrl><Shift>f"),
+        (_("Copy"), "<Ctrl>c <Ctrl><Shift>c"),
+        (_("Paste"), "<Ctrl>v <Ctrl><Shift>v"),
+        (_("Select All"), "<Ctrl>a <Ctrl><Shift>a"),
+        (_("Find"), "<Ctrl>f <Ctrl><Shift>f"),
         (_("Context Menu"), "<Shift>F10"),
         (_("Zoom In"), "<Ctrl>plus"),
         (_("Zoom Out"), "<Ctrl>minus"),
@@ -64,7 +64,11 @@ class ShortcutsWindow(Adw.Window):
             group = Adw.PreferencesGroup(title=title)
             for name, accelerator in items:
                 row = Adw.ActionRow(title=name)
-                row.add_suffix(Adw.ShortcutLabel(accelerator=accelerator, valign=Gtk.Align.CENTER))
+                box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6,
+                              valign=Gtk.Align.CENTER)
+                for alternative in accelerator.split():
+                    box.append(Adw.ShortcutLabel(accelerator=alternative, halign=Gtk.Align.END))
+                row.add_suffix(box)
                 group.add(row)
             page.add(group)
         view = Adw.ToolbarView(content=page)
