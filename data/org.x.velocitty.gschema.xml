@@ -21,7 +21,7 @@
         <choice value="tab"/>
         <choice value="window"/>
       </choices>
-      <default>'tab'</default>
+      <default>'window'</default>
       <summary>Where a new terminal opens</summary>
       <description>What starting the terminal does when it is already running: open a tab in the window that is in front, or a new window. Starting it with --tab or --new-window always does that.</description>
     </key>
