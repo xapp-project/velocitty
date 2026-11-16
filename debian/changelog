@@ -1,3 +1,9 @@
+velocitty (1.0.9) adrien; urgency=medium
+
+  * l10n: Update translations
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 16 Nov 2026 13:51:54 +0000
+
 velocitty (1.0.8) adrien; urgency=medium
 
   * Change default action to window
