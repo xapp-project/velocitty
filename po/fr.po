@@ -1,0 +1,525 @@
+# French translation for linuxmint
+# Copyright (c) 2026 Rosetta Contributors and Canonical Ltd 2026
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-11-05 15:38+0000\n"
+"PO-Revision-Date: 2026-11-15 00:42+0000\n"
+"Last-Translator: AO <Unknown>\n"
+"Language-Team: French <fr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:02+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+"Language: fr\n"
+
+#: data/org.x.velocitty.desktop.in:2 velocitty/application.py:274
+#: velocitty/shortcuts.py:26 velocitty/tab.py:61 velocitty/tab.py:64
+#: velocitty/tab.py:391 velocitty/window.py:49 velocitty/window.py:68
+#: velocitty/window.py:128 velocitty/window.py:175
+msgid "Terminal"
+msgstr "Terminal"
+
+#: data/org.x.velocitty.desktop.in:3
+msgid "Terminal Emulator"
+msgstr "Émulateur de terminal"
+
+#: data/org.x.velocitty.desktop.in:4
+msgid "Use the command line"
+msgstr "Utiliser la ligne de commande"
+
+#: data/org.x.velocitty.desktop.in:10
+msgid "terminal;command;prompt;shell;console;ssh;"
+msgstr "terminal;commande;invite;interpréteur;console;ssh;"
+
+#: data/org.x.velocitty.desktop.in:18 velocitty/shortcuts.py:15
+#: velocitty/tab.py:495 velocitty/window.py:95
+msgid "New Window"
+msgstr "Nouvelle fenêtre"
+
+#: data/org.x.velocitty.desktop.in:22 velocitty/shortcuts.py:14
+#: velocitty/tab.py:494 velocitty/window.py:70 velocitty/window.py:94
+msgid "New Tab"
+msgstr "Nouvel onglet"
+
+#: velocitty/customize.py:24
+msgid "Name"
+msgstr "Nom"
+
+#: velocitty/customize.py:29
+msgid "Command to run"
+msgstr "Commande à exécuter"
+
+#: velocitty/customize.py:36
+msgid "No Color"
+msgstr "Aucune couleur"
+
+#: velocitty/customize.py:49 velocitty/custom_tabs_page.py:87
+msgid "Startup Tab"
+msgstr "Onglet de démarrage"
+
+#: velocitty/customize.py:50 velocitty/custom_tabs_page.py:85
+msgid "Opens when the terminal launches"
+msgstr "Cet onglet s’ouvre au démarrage du terminal."
+
+#: velocitty/custom_tabs_page.py:19 velocitty/window.py:73
+msgid "Custom Tabs"
+msgstr "Onglets personnalisés"
+
+#: velocitty/custom_tabs_page.py:30
+msgid "Open"
+msgstr "Ouvrir"
+
+#: velocitty/custom_tabs_page.py:32 velocitty/custom_tabs_page.py:131
+#: velocitty/shortcuts.py:29 velocitty/tab.py:503
+msgid "Select All"
+msgstr "Tout sélectionner"
+
+#: velocitty/custom_tabs_page.py:78
+msgid "Already open"
+msgstr "Déjà ouverts"
+
+#: velocitty/custom_tabs_page.py:90
+msgid "Remove"
+msgstr "Supprimer"
+
+#: velocitty/custom_tabs_page.py:131
+msgid "Select None"
+msgstr "Ne rien sélectionner"
+
+#: velocitty/preferences.py:75 velocitty/preferences.py:85
+#: velocitty/shortcuts.py:22 velocitty/window.py:98
+msgid "Preferences"
+msgstr "Préférences"
+
+#: velocitty/preferences.py:101
+msgid "Appearance"
+msgstr "Apparence"
+
+#: velocitty/preferences.py:103
+msgid "Palette"
+msgstr "Palette"
+
+#: velocitty/preferences.py:107
+msgid "Text"
+msgstr "Texte"
+
+#: velocitty/preferences.py:109
+msgid "Line Spacing"
+msgstr "Interligne"
+
+#: velocitty/preferences.py:110
+msgid "Column Spacing"
+msgstr "Espacement des colonnes"
+
+#: velocitty/preferences.py:111
+msgid "Bright Colors for Bold"
+msgstr "Couleurs vives pour le texte en gras"
+
+#: velocitty/preferences.py:116
+msgid "Windows and Tabs"
+msgstr "Fenêtres et onglets"
+
+#: velocitty/preferences.py:117
+msgid "Windows"
+msgstr "Fenêtres"
+
+#: velocitty/preferences.py:118
+msgid "Columns"
+msgstr "Colonnes"
+
+#: velocitty/preferences.py:119
+msgid "Rows"
+msgstr "Lignes"
+
+#: velocitty/preferences.py:120
+msgid "New Terminal Opens"
+msgstr "Un nouveau terminal s’ouvre"
+
+#: velocitty/preferences.py:121
+msgid "In a Tab"
+msgstr "Dans un onglet"
+
+#: velocitty/preferences.py:121
+msgid "In a Window"
+msgstr "Dans une fenêtre"
+
+#: velocitty/preferences.py:122 velocitty/preferences.py:128
+#: velocitty/preferences.py:171
+msgid "Shorten Paths"
+msgstr "Chemins raccourcis"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Don't Shorten"
+msgstr "Ne pas raccourcir"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Last Folder"
+msgstr "Dernier dossier"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Last Two Folders"
+msgstr "Deux derniers dossiers"
+
+#: velocitty/preferences.py:124 velocitty/preferences.py:130
+#: velocitty/preferences.py:173
+msgid "Last Three Folders"
+msgstr "Trois derniers dossiers"
+
+#: velocitty/preferences.py:127 velocitty/shortcuts.py:36
+msgid "Tabs"
+msgstr "Onglets"
+
+#: velocitty/preferences.py:131
+msgid "Highlight Running Commands"
+msgstr "Mettre en évidence les commandes en cours"
+
+#: velocitty/preferences.py:132
+msgid "Color the tab and the headerbar while a command is running"
+msgstr ""
+"Colorer l’onglet et la barre d’en-tête pendant l’exécution d’une commande"
+
+#: velocitty/preferences.py:133
+msgid "Highlight Remote and Admin Sessions"
+msgstr ""
+"Mettre en évidence les sessions à distance et les sessions d’administration"
+
+#: velocitty/preferences.py:134
+msgid "Color the tab and the headerbar for remote and admin sessions"
+msgstr ""
+"Colorer l’onglet et la barre d’en-tête pour les sessions à distance et les "
+"sessions d’administration"
+
+#: velocitty/preferences.py:135
+msgid "Visual Bell"
+msgstr "Alerte visuelle"
+
+#: velocitty/preferences.py:136
+msgid "Flash the headerbar when a program rings the bell"
+msgstr ""
+"Faire clignoter la barre d’en-tête si un programme émet un signal d’alerte"
+
+#: velocitty/preferences.py:140 velocitty/preferences.py:141
+msgid "Scrolling"
+msgstr "Défilement"
+
+#: velocitty/preferences.py:142
+msgid "Scrollbars"
+msgstr "Barres de défilement"
+
+#: velocitty/preferences.py:143
+msgid "Use System Scrollbars"
+msgstr "Utiliser les barres de défilement du système"
+
+#: velocitty/preferences.py:143
+msgid "Always Visible"
+msgstr "Toujours visible"
+
+#: velocitty/preferences.py:143
+msgid "Hidden"
+msgstr "Cachées"
+
+#: velocitty/preferences.py:144
+msgid "Scroll to the bottom when you press a key"
+msgstr "Faire défiler jusqu’en bas si vous appuyez sur une touche"
+
+#: velocitty/preferences.py:145
+msgid "Scroll to the bottom when new output is printed"
+msgstr "Faire défiler jusqu’en bas si une nouvelle sortie est imprimée"
+
+#: velocitty/preferences.py:146
+msgid "Limit the number of printed lines"
+msgstr "Limiter le nombre de lignes imprimées"
+
+#: velocitty/preferences.py:148
+msgid "Lines"
+msgstr "Lignes"
+
+#: velocitty/preferences.py:153 velocitty/preferences.py:154
+#: velocitty/preferences.py:159
+msgid "Shell"
+msgstr "Interpréteur de commandes"
+
+#: velocitty/preferences.py:155
+msgid "System Default"
+msgstr "Valeur par défaut du système"
+
+#: velocitty/preferences.py:161
+msgid "Startup Command"
+msgstr "Commande de démarrage"
+
+#: velocitty/preferences.py:162
+msgid "Command to run at start"
+msgstr "Commande à exécuter au démarrage"
+
+#: velocitty/preferences.py:166
+msgid "Prompt"
+msgstr "Invite"
+
+#: velocitty/preferences.py:167
+msgid "Cursor Shape"
+msgstr "Forme du curseur"
+
+#: velocitty/preferences.py:168
+msgid "Block"
+msgstr "Bloc"
+
+#: velocitty/preferences.py:168
+msgid "I-Beam"
+msgstr "Barre verticale"
+
+#: velocitty/preferences.py:168
+msgid "Underline"
+msgstr "Trait de soulignement"
+
+#: velocitty/preferences.py:169
+msgid "Cursor Blinking"
+msgstr "Clignotement du curseur"
+
+#: velocitty/preferences.py:170
+msgid "Follow System"
+msgstr "Selon les paramètres du système"
+
+#: velocitty/preferences.py:170
+msgid "Enabled"
+msgstr "Activé"
+
+#: velocitty/preferences.py:170
+msgid "Disabled"
+msgstr "Désactivé"
+
+#: velocitty/preferences.py:174
+msgid "Only in new tabs"
+msgstr "Dans les nouveaux onglets seulement"
+
+#: velocitty/preferences.py:182
+msgid "Use System _Font"
+msgstr "Utiliser la _police du système"
+
+#: velocitty/preferences.py:195
+msgid "Font"
+msgstr "Police"
+
+#: velocitty/preferences.py:202
+msgid "Select Font"
+msgstr "Choisir une police"
+
+#: velocitty/searchbar.py:26
+msgid "Search"
+msgstr "Recherche"
+
+#: velocitty/searchbar.py:27
+msgid "Previous Match"
+msgstr "Correspondance précédente"
+
+#: velocitty/searchbar.py:28
+msgid "Next Match"
+msgstr "Correspondance suivante"
+
+#: velocitty/searchbar.py:38
+msgid "Case Sensitive"
+msgstr "Sensible à la casse"
+
+#: velocitty/searchbar.py:39
+msgid "Whole Word"
+msgstr "Mots entiers"
+
+#: velocitty/searchbar.py:40
+msgid "Wrap Around"
+msgstr "Recherche circulaire"
+
+#: velocitty/searchbar.py:41
+msgid "Regular Expression"
+msgstr "Expression rationnelle"
+
+#: velocitty/searchbar.py:43
+msgid "Search Options"
+msgstr "Options de recherche"
+
+#: velocitty/searchbar.py:48
+msgid "Close"
+msgstr "Fermer"
+
+#: velocitty/shortcuts.py:13
+msgid "General"
+msgstr "Général"
+
+#: velocitty/shortcuts.py:16
+msgid "Close Tab"
+msgstr "Fermer l’onglet"
+
+#: velocitty/shortcuts.py:17
+msgid "Customize Tab"
+msgstr "Personnaliser l’onglet"
+
+#: velocitty/shortcuts.py:18
+msgid "View Custom Tabs"
+msgstr "Afficher les onglets personnalisés"
+
+#: velocitty/shortcuts.py:19
+msgid "View All Tabs"
+msgstr "Afficher tous les onglets"
+
+#: velocitty/shortcuts.py:20
+msgid "Main Menu"
+msgstr "Menu principal"
+
+#: velocitty/shortcuts.py:21
+msgid "Full Screen"
+msgstr "Plein écran"
+
+#: velocitty/shortcuts.py:23 velocitty/shortcuts.py:60 velocitty/window.py:99
+msgid "Keyboard Shortcuts"
+msgstr "Raccourcis-clavier"
+
+#: velocitty/shortcuts.py:24
+msgid "Quit"
+msgstr "Fermer"
+
+#: velocitty/shortcuts.py:27 velocitty/tab.py:498
+msgid "Copy"
+msgstr "Copier"
+
+#: velocitty/shortcuts.py:28 velocitty/tab.py:500
+msgid "Paste"
+msgstr "Coller"
+
+#: velocitty/shortcuts.py:30
+msgid "Find"
+msgstr "Trouver"
+
+#: velocitty/shortcuts.py:31
+msgid "Context Menu"
+msgstr "Menu contextuel"
+
+#: velocitty/shortcuts.py:32 velocitty/window.py:432
+msgid "Zoom In"
+msgstr "Agrandir"
+
+#: velocitty/shortcuts.py:33 velocitty/window.py:430
+msgid "Zoom Out"
+msgstr "Réduire"
+
+#: velocitty/shortcuts.py:34 velocitty/window.py:434
+msgid "Reset Zoom"
+msgstr "Rétablir la taille normale"
+
+#: velocitty/shortcuts.py:37
+msgid "Previous Tab"
+msgstr "Onglet précédent"
+
+#: velocitty/shortcuts.py:38
+msgid "Next Tab"
+msgstr "Onglet suivant"
+
+#: velocitty/shortcuts.py:39
+msgid "Last Active Tab"
+msgstr "Dernier onglet actif"
+
+#: velocitty/shortcuts.py:40
+msgid "Move Tab Left"
+msgstr "Déplacer l’onglet vers la gauche"
+
+#: velocitty/shortcuts.py:41
+msgid "Move Tab Right"
+msgstr "Déplacer l’onglet vers la droite"
+
+#: velocitty/shortcuts.py:42
+msgid "Switch to Tab 1"
+msgstr "Passer à l’onglet 1"
+
+#: velocitty/shortcuts.py:43
+msgid "Switch to Tab 2"
+msgstr "Passer à l’onglet 2"
+
+#: velocitty/shortcuts.py:44
+msgid "Switch to Tab 3"
+msgstr "Passer à l’onglet 3"
+
+#: velocitty/shortcuts.py:45
+msgid "Switch to Tab 4"
+msgstr "Passer à l’onglet 4"
+
+#: velocitty/shortcuts.py:46
+msgid "Switch to Tab 5"
+msgstr "Passer à l’onglet 5"
+
+#: velocitty/shortcuts.py:47
+msgid "Switch to Tab 6"
+msgstr "Passer à l’onglet 6"
+
+#: velocitty/shortcuts.py:48
+msgid "Switch to Tab 7"
+msgstr "Passer à l’onglet 7"
+
+#: velocitty/shortcuts.py:49
+msgid "Switch to Tab 8"
+msgstr "Passer à l’onglet 8"
+
+#: velocitty/shortcuts.py:50
+msgid "Switch to Tab 9"
+msgstr "Passer à l’onglet 9"
+
+#: velocitty/shortcuts.py:51
+msgid "Switch to Tab 10"
+msgstr "Passer à l’onglet 10"
+
+#: velocitty/tab.py:491
+msgid "Open Link"
+msgstr "Ouvrir le lien"
+
+#: velocitty/tab.py:499
+msgid "Copy Last Output"
+msgstr "Copier la dernière sortie"
+
+#: velocitty/tab.py:504
+msgid "Find…"
+msgstr "Trouver…"
+
+#: velocitty/window.py:79
+msgid "Leave Full Screen"
+msgstr "Quitter le plein écran"
+
+#: velocitty/window.py:100
+msgid "About"
+msgstr "À propos"
+
+#: velocitty/window.py:244
+msgid "Close Tab?"
+msgstr "Fermer l’onglet ?"
+
+#: velocitty/window.py:258
+msgid "Some processes are still running."
+msgstr "Des processus sont en cours d’exécution."
+
+#: velocitty/window.py:259
+msgid "_Cancel"
+msgstr "_Annuler"
+
+#: velocitty/window.py:260
+msgid "_Close"
+msgstr "_Fermer"
+
+#: velocitty/window.py:404
+msgid "Follow System Style"
+msgstr "Utiliser le style du système"
+
+#: velocitty/window.py:405
+msgid "Light Style"
+msgstr "Style clair"
+
+#: velocitty/window.py:406
+msgid "Dark Style"
+msgstr "Style sombre"
+
+#: velocitty/window.py:610
+msgid "Close Window?"
+msgstr "Fermer la fenêtre ?"

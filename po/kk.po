@@ -1,0 +1,522 @@
+# Kazakh translation for linuxmint
+# Copyright (c) 2026 Rosetta Contributors and Canonical Ltd 2026
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-11-05 15:38+0000\n"
+"PO-Revision-Date: 2026-11-07 14:15+0000\n"
+"Last-Translator: Baurzhan Muftakhidinov <Unknown>\n"
+"Language-Team: Kazakh <kk@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:02+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+"Language: kk\n"
+
+#: data/org.x.velocitty.desktop.in:2 velocitty/application.py:274
+#: velocitty/shortcuts.py:26 velocitty/tab.py:61 velocitty/tab.py:64
+#: velocitty/tab.py:391 velocitty/window.py:49 velocitty/window.py:68
+#: velocitty/window.py:128 velocitty/window.py:175
+msgid "Terminal"
+msgstr "Терминал"
+
+#: data/org.x.velocitty.desktop.in:3
+msgid "Terminal Emulator"
+msgstr "Терминал эмуляторы"
+
+#: data/org.x.velocitty.desktop.in:4
+msgid "Use the command line"
+msgstr "Командалық жолды қолдану"
+
+#: data/org.x.velocitty.desktop.in:10
+msgid "terminal;command;prompt;shell;console;ssh;"
+msgstr "терминал;команда;сұрау;қоршам;консоль;"
+
+#: data/org.x.velocitty.desktop.in:18 velocitty/shortcuts.py:15
+#: velocitty/tab.py:495 velocitty/window.py:95
+msgid "New Window"
+msgstr "Жаңа терезе"
+
+#: data/org.x.velocitty.desktop.in:22 velocitty/shortcuts.py:14
+#: velocitty/tab.py:494 velocitty/window.py:70 velocitty/window.py:94
+msgid "New Tab"
+msgstr "Жаңа бет"
+
+#: velocitty/customize.py:24
+msgid "Name"
+msgstr "Аты"
+
+#: velocitty/customize.py:29
+msgid "Command to run"
+msgstr "Орындалатын команда"
+
+#: velocitty/customize.py:36
+msgid "No Color"
+msgstr "Түсі жоқ"
+
+#: velocitty/customize.py:49 velocitty/custom_tabs_page.py:87
+msgid "Startup Tab"
+msgstr "Іске қосылу беті"
+
+#: velocitty/customize.py:50 velocitty/custom_tabs_page.py:85
+msgid "Opens when the terminal launches"
+msgstr "Терминал іске қосылғанда ашылады"
+
+#: velocitty/custom_tabs_page.py:19 velocitty/window.py:73
+msgid "Custom Tabs"
+msgstr "Пайдаланушылық беттер"
+
+#: velocitty/custom_tabs_page.py:30
+msgid "Open"
+msgstr "Ашу"
+
+#: velocitty/custom_tabs_page.py:32 velocitty/custom_tabs_page.py:131
+#: velocitty/shortcuts.py:29 velocitty/tab.py:503
+msgid "Select All"
+msgstr "Барлығын таңдау"
+
+#: velocitty/custom_tabs_page.py:78
+msgid "Already open"
+msgstr "Әлдеқашан ашылған"
+
+#: velocitty/custom_tabs_page.py:90
+msgid "Remove"
+msgstr "Өшіру"
+
+#: velocitty/custom_tabs_page.py:131
+msgid "Select None"
+msgstr "Таңдауды алып тастау"
+
+#: velocitty/preferences.py:75 velocitty/preferences.py:85
+#: velocitty/shortcuts.py:22 velocitty/window.py:98
+msgid "Preferences"
+msgstr "Баптаулар"
+
+#: velocitty/preferences.py:101
+msgid "Appearance"
+msgstr "Сыртқы көрінісі"
+
+#: velocitty/preferences.py:103
+msgid "Palette"
+msgstr "Палитра"
+
+#: velocitty/preferences.py:107
+msgid "Text"
+msgstr "Мәтін"
+
+#: velocitty/preferences.py:109
+msgid "Line Spacing"
+msgstr "Жол аралығы"
+
+#: velocitty/preferences.py:110
+msgid "Column Spacing"
+msgstr "Баған аралығы"
+
+#: velocitty/preferences.py:111
+msgid "Bright Colors for Bold"
+msgstr "Жуан қаріп үшін ашық түстер"
+
+#: velocitty/preferences.py:116
+msgid "Windows and Tabs"
+msgstr "Терезелер мен беттер"
+
+#: velocitty/preferences.py:117
+msgid "Windows"
+msgstr "Терезелер"
+
+#: velocitty/preferences.py:118
+msgid "Columns"
+msgstr "Бағандар"
+
+#: velocitty/preferences.py:119
+msgid "Rows"
+msgstr "Жолдар"
+
+#: velocitty/preferences.py:120
+msgid "New Terminal Opens"
+msgstr "Жаңа терминал ашылады"
+
+#: velocitty/preferences.py:121
+msgid "In a Tab"
+msgstr "Бетте"
+
+#: velocitty/preferences.py:121
+msgid "In a Window"
+msgstr "Терезеде"
+
+#: velocitty/preferences.py:122 velocitty/preferences.py:128
+#: velocitty/preferences.py:171
+msgid "Shorten Paths"
+msgstr "Жолдарды қысқарту"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Don't Shorten"
+msgstr "Қысқартпау"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Last Folder"
+msgstr "Соңғы бума"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Last Two Folders"
+msgstr "Соңғы екі бума"
+
+#: velocitty/preferences.py:124 velocitty/preferences.py:130
+#: velocitty/preferences.py:173
+msgid "Last Three Folders"
+msgstr "Соңғы үш бума"
+
+#: velocitty/preferences.py:127 velocitty/shortcuts.py:36
+msgid "Tabs"
+msgstr "Беттер"
+
+#: velocitty/preferences.py:131
+msgid "Highlight Running Commands"
+msgstr "Орындалып жатқан командаларды түспен ерекшелеу"
+
+#: velocitty/preferences.py:132
+msgid "Color the tab and the headerbar while a command is running"
+msgstr "Команда орындалып жатқанда, бет пен тақырып жолағын түспен бояу"
+
+#: velocitty/preferences.py:133
+msgid "Highlight Remote and Admin Sessions"
+msgstr "Қашықтағы және әкімші сессияларын түспен ерекшелеу"
+
+#: velocitty/preferences.py:134
+msgid "Color the tab and the headerbar for remote and admin sessions"
+msgstr ""
+"Қашықтағы және әкімші сессиялар үшін бетті және тақырыптама жолағын түспен "
+"белгілеу"
+
+#: velocitty/preferences.py:135
+msgid "Visual Bell"
+msgstr "Визуалды қоңырау"
+
+#: velocitty/preferences.py:136
+msgid "Flash the headerbar when a program rings the bell"
+msgstr "Бағдарлама қоңырау соққанда тақырып жолағын жыпылықтату"
+
+#: velocitty/preferences.py:140 velocitty/preferences.py:141
+msgid "Scrolling"
+msgstr "Айналдыру"
+
+#: velocitty/preferences.py:142
+msgid "Scrollbars"
+msgstr "Айналдыру жолақтары"
+
+#: velocitty/preferences.py:143
+msgid "Use System Scrollbars"
+msgstr "Жүйелік айналдыру жолақтарын қолдану"
+
+#: velocitty/preferences.py:143
+msgid "Always Visible"
+msgstr "Әрқашан көрінетін"
+
+#: velocitty/preferences.py:143
+msgid "Hidden"
+msgstr "Жасырын"
+
+#: velocitty/preferences.py:144
+msgid "Scroll to the bottom when you press a key"
+msgstr "Пернені басқанда ең төменге айналдыру"
+
+#: velocitty/preferences.py:145
+msgid "Scroll to the bottom when new output is printed"
+msgstr "Жаңа шығыс пайда болғанда ең төменге айналдыру"
+
+#: velocitty/preferences.py:146
+msgid "Limit the number of printed lines"
+msgstr "Көрсетілетін жолдар санын шектеу"
+
+#: velocitty/preferences.py:148
+msgid "Lines"
+msgstr "Жолдар"
+
+#: velocitty/preferences.py:153 velocitty/preferences.py:154
+#: velocitty/preferences.py:159
+msgid "Shell"
+msgstr "Қоршам"
+
+#: velocitty/preferences.py:155
+msgid "System Default"
+msgstr "Жүйелік үнсіз келісім бойынша"
+
+#: velocitty/preferences.py:161
+msgid "Startup Command"
+msgstr "Іске қосылу командасы"
+
+#: velocitty/preferences.py:162
+msgid "Command to run at start"
+msgstr "Іске қосылғанда орындалатын команда"
+
+#: velocitty/preferences.py:166
+msgid "Prompt"
+msgstr "Шақыру"
+
+#: velocitty/preferences.py:167
+msgid "Cursor Shape"
+msgstr "Курсор пішіні"
+
+#: velocitty/preferences.py:168
+msgid "Block"
+msgstr "Блок"
+
+#: velocitty/preferences.py:168
+msgid "I-Beam"
+msgstr "I-тәрізді"
+
+#: velocitty/preferences.py:168
+msgid "Underline"
+msgstr "Астын сызу"
+
+#: velocitty/preferences.py:169
+msgid "Cursor Blinking"
+msgstr "Курсордың жыпылықтауы"
+
+#: velocitty/preferences.py:170
+msgid "Follow System"
+msgstr "Жүйе бойынша"
+
+#: velocitty/preferences.py:170
+msgid "Enabled"
+msgstr "Іске қосылған"
+
+#: velocitty/preferences.py:170
+msgid "Disabled"
+msgstr "Сөндірілген"
+
+#: velocitty/preferences.py:174
+msgid "Only in new tabs"
+msgstr "Тек жаңа беттерде"
+
+#: velocitty/preferences.py:182
+msgid "Use System _Font"
+msgstr "Жүйелік қа_ріпті қолдану"
+
+#: velocitty/preferences.py:195
+msgid "Font"
+msgstr "Қаріп"
+
+#: velocitty/preferences.py:202
+msgid "Select Font"
+msgstr "Қаріпті таңдау"
+
+#: velocitty/searchbar.py:26
+msgid "Search"
+msgstr "Іздеу"
+
+#: velocitty/searchbar.py:27
+msgid "Previous Match"
+msgstr "Алдыңғы сәйкестік"
+
+#: velocitty/searchbar.py:28
+msgid "Next Match"
+msgstr "Келесі сәйкестік"
+
+#: velocitty/searchbar.py:38
+msgid "Case Sensitive"
+msgstr "Регистрді ескеру"
+
+#: velocitty/searchbar.py:39
+msgid "Whole Word"
+msgstr "Тұтас сөз"
+
+#: velocitty/searchbar.py:40
+msgid "Wrap Around"
+msgstr "Шектерден өтіп іздеу"
+
+#: velocitty/searchbar.py:41
+msgid "Regular Expression"
+msgstr "Тұрақты өрнек"
+
+#: velocitty/searchbar.py:43
+msgid "Search Options"
+msgstr "Іздеу опциялары"
+
+#: velocitty/searchbar.py:48
+msgid "Close"
+msgstr "Жабу"
+
+#: velocitty/shortcuts.py:13
+msgid "General"
+msgstr "Жалпы"
+
+#: velocitty/shortcuts.py:16
+msgid "Close Tab"
+msgstr "Бетті жабу"
+
+#: velocitty/shortcuts.py:17
+msgid "Customize Tab"
+msgstr "Бетті баптау"
+
+#: velocitty/shortcuts.py:18
+msgid "View Custom Tabs"
+msgstr "Пайдаланушылық беттерді қарау"
+
+#: velocitty/shortcuts.py:19
+msgid "View All Tabs"
+msgstr "Барлық беттерді қарау"
+
+#: velocitty/shortcuts.py:20
+msgid "Main Menu"
+msgstr "Негізгі мәзір"
+
+#: velocitty/shortcuts.py:21
+msgid "Full Screen"
+msgstr "Толық экран"
+
+#: velocitty/shortcuts.py:23 velocitty/shortcuts.py:60 velocitty/window.py:99
+msgid "Keyboard Shortcuts"
+msgstr "Пернетақта жарлықтары"
+
+#: velocitty/shortcuts.py:24
+msgid "Quit"
+msgstr "Шығу"
+
+#: velocitty/shortcuts.py:27 velocitty/tab.py:498
+msgid "Copy"
+msgstr "Көшіру"
+
+#: velocitty/shortcuts.py:28 velocitty/tab.py:500
+msgid "Paste"
+msgstr "Кірістіру"
+
+#: velocitty/shortcuts.py:30
+msgid "Find"
+msgstr "Табу"
+
+#: velocitty/shortcuts.py:31
+msgid "Context Menu"
+msgstr "Контексттік мәзір"
+
+#: velocitty/shortcuts.py:32 velocitty/window.py:432
+msgid "Zoom In"
+msgstr "Үлкейту"
+
+#: velocitty/shortcuts.py:33 velocitty/window.py:430
+msgid "Zoom Out"
+msgstr "Кішірейту"
+
+#: velocitty/shortcuts.py:34 velocitty/window.py:434
+msgid "Reset Zoom"
+msgstr "Масштабты бастапқы күйге келтіру"
+
+#: velocitty/shortcuts.py:37
+msgid "Previous Tab"
+msgstr "Алдыңғы бет"
+
+#: velocitty/shortcuts.py:38
+msgid "Next Tab"
+msgstr "Келесі бет"
+
+#: velocitty/shortcuts.py:39
+msgid "Last Active Tab"
+msgstr "Соңғы белсенді бет"
+
+#: velocitty/shortcuts.py:40
+msgid "Move Tab Left"
+msgstr "Бетті солға жылжыту"
+
+#: velocitty/shortcuts.py:41
+msgid "Move Tab Right"
+msgstr "Бетті оңға жылжыту"
+
+#: velocitty/shortcuts.py:42
+msgid "Switch to Tab 1"
+msgstr "1-бетке ауысу"
+
+#: velocitty/shortcuts.py:43
+msgid "Switch to Tab 2"
+msgstr "2-бетке ауысу"
+
+#: velocitty/shortcuts.py:44
+msgid "Switch to Tab 3"
+msgstr "3-бетке ауысу"
+
+#: velocitty/shortcuts.py:45
+msgid "Switch to Tab 4"
+msgstr "4-бетке ауысу"
+
+#: velocitty/shortcuts.py:46
+msgid "Switch to Tab 5"
+msgstr "5-бетке ауысу"
+
+#: velocitty/shortcuts.py:47
+msgid "Switch to Tab 6"
+msgstr "6-бетке ауысу"
+
+#: velocitty/shortcuts.py:48
+msgid "Switch to Tab 7"
+msgstr "7-бетке ауысу"
+
+#: velocitty/shortcuts.py:49
+msgid "Switch to Tab 8"
+msgstr "8-бетке ауысу"
+
+#: velocitty/shortcuts.py:50
+msgid "Switch to Tab 9"
+msgstr "9-бетке ауысу"
+
+#: velocitty/shortcuts.py:51
+msgid "Switch to Tab 10"
+msgstr "10-бетке ауысу"
+
+#: velocitty/tab.py:491
+msgid "Open Link"
+msgstr "Сілтемені ашу"
+
+#: velocitty/tab.py:499
+msgid "Copy Last Output"
+msgstr "Соңғы шығысты көшіру"
+
+#: velocitty/tab.py:504
+msgid "Find…"
+msgstr "Табу…"
+
+#: velocitty/window.py:79
+msgid "Leave Full Screen"
+msgstr "Толық экраннан шығу"
+
+#: velocitty/window.py:100
+msgid "About"
+msgstr "Туралы"
+
+#: velocitty/window.py:244
+msgid "Close Tab?"
+msgstr "Бетті жабу керек пе?"
+
+#: velocitty/window.py:258
+msgid "Some processes are still running."
+msgstr "Кейбір процестер әлі орындалуда."
+
+#: velocitty/window.py:259
+msgid "_Cancel"
+msgstr "_Бас тарту"
+
+#: velocitty/window.py:260
+msgid "_Close"
+msgstr "_Жабу"
+
+#: velocitty/window.py:404
+msgid "Follow System Style"
+msgstr "Жүйелік стиль бойынша"
+
+#: velocitty/window.py:405
+msgid "Light Style"
+msgstr "Ашық стиль"
+
+#: velocitty/window.py:406
+msgid "Dark Style"
+msgstr "Қараңғы стиль"
+
+#: velocitty/window.py:610
+msgid "Close Window?"
+msgstr "Терезені жабу керек пе?"

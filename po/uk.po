@@ -1,0 +1,520 @@
+# Ukrainian translation for linuxmint
+# Copyright (c) 2026 Rosetta Contributors and Canonical Ltd 2026
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-11-05 15:38+0000\n"
+"PO-Revision-Date: 2026-11-13 12:38+0000\n"
+"Last-Translator: Rostyslav Haitkulov <Unknown>\n"
+"Language-Team: Ukrainian <uk@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:02+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+
+#: data/org.x.velocitty.desktop.in:2 velocitty/application.py:274
+#: velocitty/shortcuts.py:26 velocitty/tab.py:61 velocitty/tab.py:64
+#: velocitty/tab.py:391 velocitty/window.py:49 velocitty/window.py:68
+#: velocitty/window.py:128 velocitty/window.py:175
+msgid "Terminal"
+msgstr "Термінал"
+
+#: data/org.x.velocitty.desktop.in:3
+msgid "Terminal Emulator"
+msgstr "Емулятор терміналу"
+
+#: data/org.x.velocitty.desktop.in:4
+msgid "Use the command line"
+msgstr "Використовувати командний рядок"
+
+#: data/org.x.velocitty.desktop.in:10
+msgid "terminal;command;prompt;shell;console;ssh;"
+msgstr "terminal;command;prompt;shell;console;ssh;"
+
+#: data/org.x.velocitty.desktop.in:18 velocitty/shortcuts.py:15
+#: velocitty/tab.py:495 velocitty/window.py:95
+msgid "New Window"
+msgstr "Нове Вікно"
+
+#: data/org.x.velocitty.desktop.in:22 velocitty/shortcuts.py:14
+#: velocitty/tab.py:494 velocitty/window.py:70 velocitty/window.py:94
+msgid "New Tab"
+msgstr "Нова вкладка"
+
+#: velocitty/customize.py:24
+msgid "Name"
+msgstr "Ім’я"
+
+#: velocitty/customize.py:29
+msgid "Command to run"
+msgstr "Команда для запуску"
+
+#: velocitty/customize.py:36
+msgid "No Color"
+msgstr "Без кольору"
+
+#: velocitty/customize.py:49 velocitty/custom_tabs_page.py:87
+msgid "Startup Tab"
+msgstr "Вкладка запуску"
+
+#: velocitty/customize.py:50 velocitty/custom_tabs_page.py:85
+msgid "Opens when the terminal launches"
+msgstr "Відкривається під час запуску терміналу"
+
+#: velocitty/custom_tabs_page.py:19 velocitty/window.py:73
+msgid "Custom Tabs"
+msgstr "Користувацькі вкладки"
+
+#: velocitty/custom_tabs_page.py:30
+msgid "Open"
+msgstr "Відкрити"
+
+#: velocitty/custom_tabs_page.py:32 velocitty/custom_tabs_page.py:131
+#: velocitty/shortcuts.py:29 velocitty/tab.py:503
+msgid "Select All"
+msgstr "Виділити все"
+
+#: velocitty/custom_tabs_page.py:78
+msgid "Already open"
+msgstr "Вже відкрито"
+
+#: velocitty/custom_tabs_page.py:90
+msgid "Remove"
+msgstr "Видалити"
+
+#: velocitty/custom_tabs_page.py:131
+msgid "Select None"
+msgstr "Зняти вибір"
+
+#: velocitty/preferences.py:75 velocitty/preferences.py:85
+#: velocitty/shortcuts.py:22 velocitty/window.py:98
+msgid "Preferences"
+msgstr "Налаштування"
+
+#: velocitty/preferences.py:101
+msgid "Appearance"
+msgstr "Зовнішній вигляд"
+
+#: velocitty/preferences.py:103
+msgid "Palette"
+msgstr "Палітра"
+
+#: velocitty/preferences.py:107
+msgid "Text"
+msgstr "Текст"
+
+#: velocitty/preferences.py:109
+msgid "Line Spacing"
+msgstr "Міжрядковий Інтервал"
+
+#: velocitty/preferences.py:110
+msgid "Column Spacing"
+msgstr "Інтервал між Стовпчиками"
+
+#: velocitty/preferences.py:111
+msgid "Bright Colors for Bold"
+msgstr "Яскраві кольори для жирного шрифту"
+
+#: velocitty/preferences.py:116
+msgid "Windows and Tabs"
+msgstr "Вікна та Вкладки"
+
+#: velocitty/preferences.py:117
+msgid "Windows"
+msgstr "Вікна"
+
+#: velocitty/preferences.py:118
+msgid "Columns"
+msgstr "Стовпчики"
+
+#: velocitty/preferences.py:119
+msgid "Rows"
+msgstr "Рядки"
+
+#: velocitty/preferences.py:120
+msgid "New Terminal Opens"
+msgstr "Нові термінали відкриваються"
+
+#: velocitty/preferences.py:121
+msgid "In a Tab"
+msgstr "У вкладці"
+
+#: velocitty/preferences.py:121
+msgid "In a Window"
+msgstr "В вікні"
+
+#: velocitty/preferences.py:122 velocitty/preferences.py:128
+#: velocitty/preferences.py:171
+msgid "Shorten Paths"
+msgstr "Скорочені шляхи"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Don't Shorten"
+msgstr "Не скорочувати"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Last Folder"
+msgstr "Остання Тека"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Last Two Folders"
+msgstr "Останні Дві Теки"
+
+#: velocitty/preferences.py:124 velocitty/preferences.py:130
+#: velocitty/preferences.py:173
+msgid "Last Three Folders"
+msgstr "Останні Три Теки"
+
+#: velocitty/preferences.py:127 velocitty/shortcuts.py:36
+msgid "Tabs"
+msgstr "Вкладки"
+
+#: velocitty/preferences.py:131
+msgid "Highlight Running Commands"
+msgstr "Виділити виконувані команди"
+
+#: velocitty/preferences.py:132
+msgid "Color the tab and the headerbar while a command is running"
+msgstr "Зафарбувати вкладку та панель заголовку під час виконання команди"
+
+#: velocitty/preferences.py:133
+msgid "Highlight Remote and Admin Sessions"
+msgstr "Виділяти віддалені та адміністративні сесії"
+
+#: velocitty/preferences.py:134
+msgid "Color the tab and the headerbar for remote and admin sessions"
+msgstr ""
+"Фарбування вкладки та заголовка для віддалених і адміністративних сесій"
+
+#: velocitty/preferences.py:135
+msgid "Visual Bell"
+msgstr "Видимий дзвінок"
+
+#: velocitty/preferences.py:136
+msgid "Flash the headerbar when a program rings the bell"
+msgstr "Блимати панеллю заголовка, коли програма подає звуковий сигнал."
+
+#: velocitty/preferences.py:140 velocitty/preferences.py:141
+msgid "Scrolling"
+msgstr "Прокручування"
+
+#: velocitty/preferences.py:142
+msgid "Scrollbars"
+msgstr "Смужки прокручування"
+
+#: velocitty/preferences.py:143
+msgid "Use System Scrollbars"
+msgstr "Використовувати системні смужки прокручування"
+
+#: velocitty/preferences.py:143
+msgid "Always Visible"
+msgstr "Завжди відображати"
+
+#: velocitty/preferences.py:143
+msgid "Hidden"
+msgstr "Прихований"
+
+#: velocitty/preferences.py:144
+msgid "Scroll to the bottom when you press a key"
+msgstr "Прокручувати донизу при натисканні клавіші"
+
+#: velocitty/preferences.py:145
+msgid "Scroll to the bottom when new output is printed"
+msgstr "Прокручувати донизу при виведенні нових даних"
+
+#: velocitty/preferences.py:146
+msgid "Limit the number of printed lines"
+msgstr "Обмежити кількість виведених рядків"
+
+#: velocitty/preferences.py:148
+msgid "Lines"
+msgstr "Рядки"
+
+#: velocitty/preferences.py:153 velocitty/preferences.py:154
+#: velocitty/preferences.py:159
+msgid "Shell"
+msgstr "Оболонка"
+
+#: velocitty/preferences.py:155
+msgid "System Default"
+msgstr "Системний"
+
+#: velocitty/preferences.py:161
+msgid "Startup Command"
+msgstr "Початкова команда"
+
+#: velocitty/preferences.py:162
+msgid "Command to run at start"
+msgstr "Команда під час запуску"
+
+#: velocitty/preferences.py:166
+msgid "Prompt"
+msgstr "Запрошення"
+
+#: velocitty/preferences.py:167
+msgid "Cursor Shape"
+msgstr "Форма вказівника"
+
+#: velocitty/preferences.py:168
+msgid "Block"
+msgstr "Блок"
+
+#: velocitty/preferences.py:168
+msgid "I-Beam"
+msgstr "I-подібний"
+
+#: velocitty/preferences.py:168
+msgid "Underline"
+msgstr "Підкреслення"
+
+#: velocitty/preferences.py:169
+msgid "Cursor Blinking"
+msgstr "Блимання курсора"
+
+#: velocitty/preferences.py:170
+msgid "Follow System"
+msgstr "Використовувати системний"
+
+#: velocitty/preferences.py:170
+msgid "Enabled"
+msgstr "Увімкнено"
+
+#: velocitty/preferences.py:170
+msgid "Disabled"
+msgstr "Вимкнено"
+
+#: velocitty/preferences.py:174
+msgid "Only in new tabs"
+msgstr "Тільки в нових вкладках"
+
+#: velocitty/preferences.py:182
+msgid "Use System _Font"
+msgstr "Загальносистемний _шрифт"
+
+#: velocitty/preferences.py:195
+msgid "Font"
+msgstr "Шрифт"
+
+#: velocitty/preferences.py:202
+msgid "Select Font"
+msgstr "Обрати Шрифт"
+
+#: velocitty/searchbar.py:26
+msgid "Search"
+msgstr "Пошук"
+
+#: velocitty/searchbar.py:27
+msgid "Previous Match"
+msgstr "Попередній збіг"
+
+#: velocitty/searchbar.py:28
+msgid "Next Match"
+msgstr "Наступний збіг"
+
+#: velocitty/searchbar.py:38
+msgid "Case Sensitive"
+msgstr "Враховувати регістр"
+
+#: velocitty/searchbar.py:39
+msgid "Whole Word"
+msgstr "Слово цілком"
+
+#: velocitty/searchbar.py:40
+msgid "Wrap Around"
+msgstr "Досягнувши кінця, починати спочатку"
+
+#: velocitty/searchbar.py:41
+msgid "Regular Expression"
+msgstr "Регулярний вираз"
+
+#: velocitty/searchbar.py:43
+msgid "Search Options"
+msgstr "Параметри пошуку"
+
+#: velocitty/searchbar.py:48
+msgid "Close"
+msgstr "Закрити"
+
+#: velocitty/shortcuts.py:13
+msgid "General"
+msgstr "Загальне"
+
+#: velocitty/shortcuts.py:16
+msgid "Close Tab"
+msgstr "Закрити вкладку"
+
+#: velocitty/shortcuts.py:17
+msgid "Customize Tab"
+msgstr "Налаштувати Вкладку"
+
+#: velocitty/shortcuts.py:18
+msgid "View Custom Tabs"
+msgstr "Переглянути користувацькі вкладки"
+
+#: velocitty/shortcuts.py:19
+msgid "View All Tabs"
+msgstr "Переглянути всі вкладки"
+
+#: velocitty/shortcuts.py:20
+msgid "Main Menu"
+msgstr "Головне меню"
+
+#: velocitty/shortcuts.py:21
+msgid "Full Screen"
+msgstr "На весь екран"
+
+#: velocitty/shortcuts.py:23 velocitty/shortcuts.py:60 velocitty/window.py:99
+msgid "Keyboard Shortcuts"
+msgstr "Клавіатурні скорочення"
+
+#: velocitty/shortcuts.py:24
+msgid "Quit"
+msgstr "Вихід"
+
+#: velocitty/shortcuts.py:27 velocitty/tab.py:498
+msgid "Copy"
+msgstr "Копіювати"
+
+#: velocitty/shortcuts.py:28 velocitty/tab.py:500
+msgid "Paste"
+msgstr "Вставити"
+
+#: velocitty/shortcuts.py:30
+msgid "Find"
+msgstr "Знайти"
+
+#: velocitty/shortcuts.py:31
+msgid "Context Menu"
+msgstr "Контекстне меню"
+
+#: velocitty/shortcuts.py:32 velocitty/window.py:432
+msgid "Zoom In"
+msgstr "Збільшити"
+
+#: velocitty/shortcuts.py:33 velocitty/window.py:430
+msgid "Zoom Out"
+msgstr "Зменшити"
+
+#: velocitty/shortcuts.py:34 velocitty/window.py:434
+msgid "Reset Zoom"
+msgstr "Відновити початковий масштаб"
+
+#: velocitty/shortcuts.py:37
+msgid "Previous Tab"
+msgstr "Попередня вкладка"
+
+#: velocitty/shortcuts.py:38
+msgid "Next Tab"
+msgstr "Наступна вкладка"
+
+#: velocitty/shortcuts.py:39
+msgid "Last Active Tab"
+msgstr "Остання активна вкладка"
+
+#: velocitty/shortcuts.py:40
+msgid "Move Tab Left"
+msgstr "Перемістити вкладку ліворуч"
+
+#: velocitty/shortcuts.py:41
+msgid "Move Tab Right"
+msgstr "Перемістити вкладку праворуч"
+
+#: velocitty/shortcuts.py:42
+msgid "Switch to Tab 1"
+msgstr "Перемкнутися на вкладку 1"
+
+#: velocitty/shortcuts.py:43
+msgid "Switch to Tab 2"
+msgstr "Перемкнутися на вкладку 2"
+
+#: velocitty/shortcuts.py:44
+msgid "Switch to Tab 3"
+msgstr "Перемкнутися на вкладку 3"
+
+#: velocitty/shortcuts.py:45
+msgid "Switch to Tab 4"
+msgstr "Перемкнутися на вкладку 4"
+
+#: velocitty/shortcuts.py:46
+msgid "Switch to Tab 5"
+msgstr "Перемкнутися на вкладку 5"
+
+#: velocitty/shortcuts.py:47
+msgid "Switch to Tab 6"
+msgstr "Перемкнутися на вкладку 6"
+
+#: velocitty/shortcuts.py:48
+msgid "Switch to Tab 7"
+msgstr "Перемкнутися на вкладку 7"
+
+#: velocitty/shortcuts.py:49
+msgid "Switch to Tab 8"
+msgstr "Перемкнутися на вкладку 8"
+
+#: velocitty/shortcuts.py:50
+msgid "Switch to Tab 9"
+msgstr "Перемкнутися на вкладку 9"
+
+#: velocitty/shortcuts.py:51
+msgid "Switch to Tab 10"
+msgstr "Перемкнутися на вкладку 10"
+
+#: velocitty/tab.py:491
+msgid "Open Link"
+msgstr "Відкрити посилання"
+
+#: velocitty/tab.py:499
+msgid "Copy Last Output"
+msgstr "Скопіювати останній вивід"
+
+#: velocitty/tab.py:504
+msgid "Find…"
+msgstr "Знайти…"
+
+#: velocitty/window.py:79
+msgid "Leave Full Screen"
+msgstr "Вийти з повноекранного режиму"
+
+#: velocitty/window.py:100
+msgid "About"
+msgstr "Про застосунок"
+
+#: velocitty/window.py:244
+msgid "Close Tab?"
+msgstr "Закрити вкладку?"
+
+#: velocitty/window.py:258
+msgid "Some processes are still running."
+msgstr "Деякі процеси все ще виконуються."
+
+#: velocitty/window.py:259
+msgid "_Cancel"
+msgstr "_Скасувати"
+
+#: velocitty/window.py:260
+msgid "_Close"
+msgstr "_Закрити"
+
+#: velocitty/window.py:404
+msgid "Follow System Style"
+msgstr "Використовувати стиль системи"
+
+#: velocitty/window.py:405
+msgid "Light Style"
+msgstr "Світлий стиль"
+
+#: velocitty/window.py:406
+msgid "Dark Style"
+msgstr "Темний стиль"
+
+#: velocitty/window.py:610
+msgid "Close Window?"
+msgstr "Закрити вікно?"

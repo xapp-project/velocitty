@@ -1,0 +1,520 @@
+# Afrikaans translation for linuxmint
+# Copyright (c) 2026 Rosetta Contributors and Canonical Ltd 2026
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-11-05 15:38+0000\n"
+"PO-Revision-Date: 2026-10-07 13:14+0000\n"
+"Last-Translator: Stéfan Driaan Turvey <Unknown>\n"
+"Language-Team: Afrikaans <af@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:02+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+
+#: data/org.x.velocitty.desktop.in:2 velocitty/application.py:274
+#: velocitty/shortcuts.py:26 velocitty/tab.py:61 velocitty/tab.py:64
+#: velocitty/tab.py:391 velocitty/window.py:49 velocitty/window.py:68
+#: velocitty/window.py:128 velocitty/window.py:175
+msgid "Terminal"
+msgstr "Terminaal"
+
+#: data/org.x.velocitty.desktop.in:3
+msgid "Terminal Emulator"
+msgstr "Terminaalemulator"
+
+#: data/org.x.velocitty.desktop.in:4
+msgid "Use the command line"
+msgstr "Gebruik die opdraglyn"
+
+#: data/org.x.velocitty.desktop.in:10
+msgid "terminal;command;prompt;shell;console;ssh;"
+msgstr ""
+"terminal;command;prompt;shell;console;ssh;terminaal;opdrag;dop;konsole;"
+
+#: data/org.x.velocitty.desktop.in:18 velocitty/shortcuts.py:15
+#: velocitty/tab.py:495 velocitty/window.py:95
+msgid "New Window"
+msgstr "Nuwe venster"
+
+#: data/org.x.velocitty.desktop.in:22 velocitty/shortcuts.py:14
+#: velocitty/tab.py:494 velocitty/window.py:70 velocitty/window.py:94
+msgid "New Tab"
+msgstr "Nuwe oortjie"
+
+#: velocitty/customize.py:24
+msgid "Name"
+msgstr "Naam"
+
+#: velocitty/customize.py:29
+msgid "Command to run"
+msgstr "Opdrag om uit te voer"
+
+#: velocitty/customize.py:36
+msgid "No Color"
+msgstr "Geen kleur"
+
+#: velocitty/customize.py:49 velocitty/custom_tabs_page.py:87
+msgid "Startup Tab"
+msgstr "Aanvangoortjie"
+
+#: velocitty/customize.py:50 velocitty/custom_tabs_page.py:85
+msgid "Opens when the terminal launches"
+msgstr "Maak oop wanneer die terminaal begin"
+
+#: velocitty/custom_tabs_page.py:19 velocitty/window.py:73
+msgid "Custom Tabs"
+msgstr "Pasgemaakte oortjies"
+
+#: velocitty/custom_tabs_page.py:30
+msgid "Open"
+msgstr "Open"
+
+#: velocitty/custom_tabs_page.py:32 velocitty/custom_tabs_page.py:131
+#: velocitty/shortcuts.py:29 velocitty/tab.py:503
+msgid "Select All"
+msgstr "Kies alles"
+
+#: velocitty/custom_tabs_page.py:78
+msgid "Already open"
+msgstr "Reeds oop"
+
+#: velocitty/custom_tabs_page.py:90
+msgid "Remove"
+msgstr "Verwyder"
+
+#: velocitty/custom_tabs_page.py:131
+msgid "Select None"
+msgstr "Kies niks"
+
+#: velocitty/preferences.py:75 velocitty/preferences.py:85
+#: velocitty/shortcuts.py:22 velocitty/window.py:98
+msgid "Preferences"
+msgstr "Voorkeure"
+
+#: velocitty/preferences.py:101
+msgid "Appearance"
+msgstr "Voorkoms"
+
+#: velocitty/preferences.py:103
+msgid "Palette"
+msgstr "Palet"
+
+#: velocitty/preferences.py:107
+msgid "Text"
+msgstr "Teks"
+
+#: velocitty/preferences.py:109
+msgid "Line Spacing"
+msgstr "Reëlspasiëring"
+
+#: velocitty/preferences.py:110
+msgid "Column Spacing"
+msgstr "Kolomspasiëring"
+
+#: velocitty/preferences.py:111
+msgid "Bright Colors for Bold"
+msgstr "Helder kleure vir vetdruk"
+
+#: velocitty/preferences.py:116
+msgid "Windows and Tabs"
+msgstr "Vensters en oortjies"
+
+#: velocitty/preferences.py:117
+msgid "Windows"
+msgstr "Vensters"
+
+#: velocitty/preferences.py:118
+msgid "Columns"
+msgstr "Kolomme"
+
+#: velocitty/preferences.py:119
+msgid "Rows"
+msgstr "Rye"
+
+#: velocitty/preferences.py:120
+msgid "New Terminal Opens"
+msgstr ""
+
+#: velocitty/preferences.py:121
+msgid "In a Tab"
+msgstr ""
+
+#: velocitty/preferences.py:121
+msgid "In a Window"
+msgstr ""
+
+#: velocitty/preferences.py:122 velocitty/preferences.py:128
+#: velocitty/preferences.py:171
+msgid "Shorten Paths"
+msgstr "Verkort paaie"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Don't Shorten"
+msgstr "Moenie verkort nie"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Last Folder"
+msgstr "Laaste gids"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Last Two Folders"
+msgstr "Laaste twee gidse"
+
+#: velocitty/preferences.py:124 velocitty/preferences.py:130
+#: velocitty/preferences.py:173
+msgid "Last Three Folders"
+msgstr "Laaste drie gidse"
+
+#: velocitty/preferences.py:127 velocitty/shortcuts.py:36
+msgid "Tabs"
+msgstr "Oortjies"
+
+#: velocitty/preferences.py:131
+msgid "Highlight Running Commands"
+msgstr "Lig lopende opdragte uit"
+
+#: velocitty/preferences.py:132
+msgid "Color the tab and the headerbar while a command is running"
+msgstr "Kleur die oortjie en die kopbalk terwyl 'n opdrag loop"
+
+#: velocitty/preferences.py:133
+msgid "Highlight Remote and Admin Sessions"
+msgstr ""
+
+#: velocitty/preferences.py:134
+msgid "Color the tab and the headerbar for remote and admin sessions"
+msgstr ""
+
+#: velocitty/preferences.py:135
+msgid "Visual Bell"
+msgstr "Visuele bel"
+
+#: velocitty/preferences.py:136
+msgid "Flash the headerbar when a program rings the bell"
+msgstr "Laat die kopbalk flits wanneer 'n program die bel lui"
+
+#: velocitty/preferences.py:140 velocitty/preferences.py:141
+msgid "Scrolling"
+msgstr "Skuif"
+
+#: velocitty/preferences.py:142
+msgid "Scrollbars"
+msgstr "Skuifbalke"
+
+#: velocitty/preferences.py:143
+msgid "Use System Scrollbars"
+msgstr "Gebruik stelselskuifbalke"
+
+#: velocitty/preferences.py:143
+msgid "Always Visible"
+msgstr "Altyd sigbaar"
+
+#: velocitty/preferences.py:143
+msgid "Hidden"
+msgstr "Versteek"
+
+#: velocitty/preferences.py:144
+msgid "Scroll to the bottom when you press a key"
+msgstr "Skuif na onder wanneer jy 'n sleutel druk"
+
+#: velocitty/preferences.py:145
+msgid "Scroll to the bottom when new output is printed"
+msgstr "Skuif na onder wanneer nuwe uitvoer gedruk word"
+
+#: velocitty/preferences.py:146
+msgid "Limit the number of printed lines"
+msgstr "Beperk die aantal gedrukte reëls"
+
+#: velocitty/preferences.py:148
+msgid "Lines"
+msgstr "Reëls"
+
+#: velocitty/preferences.py:153 velocitty/preferences.py:154
+#: velocitty/preferences.py:159
+msgid "Shell"
+msgstr "Dop"
+
+#: velocitty/preferences.py:155
+msgid "System Default"
+msgstr "Stelselverstek"
+
+#: velocitty/preferences.py:161
+msgid "Startup Command"
+msgstr "Aanvangopdrag"
+
+#: velocitty/preferences.py:162
+msgid "Command to run at start"
+msgstr "Opdrag om by aanvang uit te voer"
+
+#: velocitty/preferences.py:166
+msgid "Prompt"
+msgstr "Prompt"
+
+#: velocitty/preferences.py:167
+msgid "Cursor Shape"
+msgstr "Wyservorm"
+
+#: velocitty/preferences.py:168
+msgid "Block"
+msgstr "Blok"
+
+#: velocitty/preferences.py:168
+msgid "I-Beam"
+msgstr "I-balk"
+
+#: velocitty/preferences.py:168
+msgid "Underline"
+msgstr "Onderstreep"
+
+#: velocitty/preferences.py:169
+msgid "Cursor Blinking"
+msgstr "Wyser knipper"
+
+#: velocitty/preferences.py:170
+msgid "Follow System"
+msgstr "Volg stelsel"
+
+#: velocitty/preferences.py:170
+msgid "Enabled"
+msgstr "Geaktiveer"
+
+#: velocitty/preferences.py:170
+msgid "Disabled"
+msgstr "Gedeaktiveer"
+
+#: velocitty/preferences.py:174
+msgid "Only in new tabs"
+msgstr "Slegs in nuwe oortjies"
+
+#: velocitty/preferences.py:182
+msgid "Use System _Font"
+msgstr "Gebruik stelsel_font"
+
+#: velocitty/preferences.py:195
+msgid "Font"
+msgstr "Font"
+
+#: velocitty/preferences.py:202
+msgid "Select Font"
+msgstr "Kies font"
+
+#: velocitty/searchbar.py:26
+msgid "Search"
+msgstr "Soek"
+
+#: velocitty/searchbar.py:27
+msgid "Previous Match"
+msgstr "Vorige passing"
+
+#: velocitty/searchbar.py:28
+msgid "Next Match"
+msgstr "Volgende passing"
+
+#: velocitty/searchbar.py:38
+msgid "Case Sensitive"
+msgstr "Kassensitief"
+
+#: velocitty/searchbar.py:39
+msgid "Whole Word"
+msgstr "Hele woord"
+
+#: velocitty/searchbar.py:40
+msgid "Wrap Around"
+msgstr "Draai om"
+
+#: velocitty/searchbar.py:41
+msgid "Regular Expression"
+msgstr "Reguliere uitdrukking"
+
+#: velocitty/searchbar.py:43
+msgid "Search Options"
+msgstr "Soekopsies"
+
+#: velocitty/searchbar.py:48
+msgid "Close"
+msgstr "Sluit"
+
+#: velocitty/shortcuts.py:13
+msgid "General"
+msgstr "Algemeen"
+
+#: velocitty/shortcuts.py:16
+msgid "Close Tab"
+msgstr "Sluit oortjie"
+
+#: velocitty/shortcuts.py:17
+msgid "Customize Tab"
+msgstr "Pas oortjie aan"
+
+#: velocitty/shortcuts.py:18
+msgid "View Custom Tabs"
+msgstr "Bekyk pasgemaakte oortjies"
+
+#: velocitty/shortcuts.py:19
+msgid "View All Tabs"
+msgstr "Bekyk alle oortjies"
+
+#: velocitty/shortcuts.py:20
+msgid "Main Menu"
+msgstr "Hoofkieslys"
+
+#: velocitty/shortcuts.py:21
+msgid "Full Screen"
+msgstr "Volskerm"
+
+#: velocitty/shortcuts.py:23 velocitty/shortcuts.py:60 velocitty/window.py:99
+msgid "Keyboard Shortcuts"
+msgstr "Sleutelbordkortpaaie"
+
+#: velocitty/shortcuts.py:24
+msgid "Quit"
+msgstr "Sluit af"
+
+#: velocitty/shortcuts.py:27 velocitty/tab.py:498
+msgid "Copy"
+msgstr "Kopieer"
+
+#: velocitty/shortcuts.py:28 velocitty/tab.py:500
+msgid "Paste"
+msgstr "Plak"
+
+#: velocitty/shortcuts.py:30
+msgid "Find"
+msgstr "Vind"
+
+#: velocitty/shortcuts.py:31
+msgid "Context Menu"
+msgstr "Kontekskieslys"
+
+#: velocitty/shortcuts.py:32 velocitty/window.py:432
+msgid "Zoom In"
+msgstr "Zoem in"
+
+#: velocitty/shortcuts.py:33 velocitty/window.py:430
+msgid "Zoom Out"
+msgstr "Zoem uit"
+
+#: velocitty/shortcuts.py:34 velocitty/window.py:434
+msgid "Reset Zoom"
+msgstr "Herstel zoem"
+
+#: velocitty/shortcuts.py:37
+msgid "Previous Tab"
+msgstr "Vorige oortjie"
+
+#: velocitty/shortcuts.py:38
+msgid "Next Tab"
+msgstr "Volgende oortjie"
+
+#: velocitty/shortcuts.py:39
+msgid "Last Active Tab"
+msgstr "Laaste aktiewe oortjie"
+
+#: velocitty/shortcuts.py:40
+msgid "Move Tab Left"
+msgstr "Skuif oortjie links"
+
+#: velocitty/shortcuts.py:41
+msgid "Move Tab Right"
+msgstr "Skuif oortjie regs"
+
+#: velocitty/shortcuts.py:42
+msgid "Switch to Tab 1"
+msgstr "Wissel na oortjie 1"
+
+#: velocitty/shortcuts.py:43
+msgid "Switch to Tab 2"
+msgstr "Wissel na oortjie 2"
+
+#: velocitty/shortcuts.py:44
+msgid "Switch to Tab 3"
+msgstr "Wissel na oortjie 3"
+
+#: velocitty/shortcuts.py:45
+msgid "Switch to Tab 4"
+msgstr "Wissel na oortjie 4"
+
+#: velocitty/shortcuts.py:46
+msgid "Switch to Tab 5"
+msgstr "Wissel na oortjie 5"
+
+#: velocitty/shortcuts.py:47
+msgid "Switch to Tab 6"
+msgstr "Wissel na oortjie 6"
+
+#: velocitty/shortcuts.py:48
+msgid "Switch to Tab 7"
+msgstr "Wissel na oortjie 7"
+
+#: velocitty/shortcuts.py:49
+msgid "Switch to Tab 8"
+msgstr "Wissel na oortjie 8"
+
+#: velocitty/shortcuts.py:50
+msgid "Switch to Tab 9"
+msgstr "Wissel na oortjie 9"
+
+#: velocitty/shortcuts.py:51
+msgid "Switch to Tab 10"
+msgstr "Wissel na oortjie 10"
+
+#: velocitty/tab.py:491
+msgid "Open Link"
+msgstr ""
+
+#: velocitty/tab.py:499
+msgid "Copy Last Output"
+msgstr "Kopieer laaste uitvoer"
+
+#: velocitty/tab.py:504
+msgid "Find…"
+msgstr "Vind…"
+
+#: velocitty/window.py:79
+msgid "Leave Full Screen"
+msgstr "Verlaat volskerm"
+
+#: velocitty/window.py:100
+msgid "About"
+msgstr "Aangaande"
+
+#: velocitty/window.py:244
+msgid "Close Tab?"
+msgstr ""
+
+#: velocitty/window.py:258
+msgid "Some processes are still running."
+msgstr "Sommige prosesse loop nog."
+
+#: velocitty/window.py:259
+msgid "_Cancel"
+msgstr "_Kanselleer"
+
+#: velocitty/window.py:260
+msgid "_Close"
+msgstr "_Sluit"
+
+#: velocitty/window.py:404
+msgid "Follow System Style"
+msgstr "Volg stelselstyl"
+
+#: velocitty/window.py:405
+msgid "Light Style"
+msgstr "Ligte styl"
+
+#: velocitty/window.py:406
+msgid "Dark Style"
+msgstr "Donker styl"
+
+#: velocitty/window.py:610
+msgid "Close Window?"
+msgstr "Sluit venster?"

@@ -1,0 +1,519 @@
+# Chinese (Simplified) translation for linuxmint
+# Copyright (c) 2026 Rosetta Contributors and Canonical Ltd 2026
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-11-05 15:38+0000\n"
+"PO-Revision-Date: 2026-11-06 01:31+0000\n"
+"Last-Translator: 张鹏 <scbeta@qq.com>\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:02+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+
+#: data/org.x.velocitty.desktop.in:2 velocitty/application.py:274
+#: velocitty/shortcuts.py:26 velocitty/tab.py:61 velocitty/tab.py:64
+#: velocitty/tab.py:391 velocitty/window.py:49 velocitty/window.py:68
+#: velocitty/window.py:128 velocitty/window.py:175
+msgid "Terminal"
+msgstr "终端"
+
+#: data/org.x.velocitty.desktop.in:3
+msgid "Terminal Emulator"
+msgstr "终端模拟器"
+
+#: data/org.x.velocitty.desktop.in:4
+msgid "Use the command line"
+msgstr "使用命令行"
+
+#: data/org.x.velocitty.desktop.in:10
+msgid "terminal;command;prompt;shell;console;ssh;"
+msgstr "终端；命令；提示符；shell；控制台；ssh；"
+
+#: data/org.x.velocitty.desktop.in:18 velocitty/shortcuts.py:15
+#: velocitty/tab.py:495 velocitty/window.py:95
+msgid "New Window"
+msgstr "新建窗口"
+
+#: data/org.x.velocitty.desktop.in:22 velocitty/shortcuts.py:14
+#: velocitty/tab.py:494 velocitty/window.py:70 velocitty/window.py:94
+msgid "New Tab"
+msgstr "新建标签页"
+
+#: velocitty/customize.py:24
+msgid "Name"
+msgstr "名称"
+
+#: velocitty/customize.py:29
+msgid "Command to run"
+msgstr "要运行的命令"
+
+#: velocitty/customize.py:36
+msgid "No Color"
+msgstr "无色"
+
+#: velocitty/customize.py:49 velocitty/custom_tabs_page.py:87
+msgid "Startup Tab"
+msgstr "起始标签页"
+
+#: velocitty/customize.py:50 velocitty/custom_tabs_page.py:85
+msgid "Opens when the terminal launches"
+msgstr "终端启动时打开"
+
+#: velocitty/custom_tabs_page.py:19 velocitty/window.py:73
+msgid "Custom Tabs"
+msgstr "自定义标签页"
+
+#: velocitty/custom_tabs_page.py:30
+msgid "Open"
+msgstr "打开"
+
+#: velocitty/custom_tabs_page.py:32 velocitty/custom_tabs_page.py:131
+#: velocitty/shortcuts.py:29 velocitty/tab.py:503
+msgid "Select All"
+msgstr "全选"
+
+#: velocitty/custom_tabs_page.py:78
+msgid "Already open"
+msgstr "已经打开"
+
+#: velocitty/custom_tabs_page.py:90
+msgid "Remove"
+msgstr "移除"
+
+#: velocitty/custom_tabs_page.py:131
+msgid "Select None"
+msgstr "全都不选"
+
+#: velocitty/preferences.py:75 velocitty/preferences.py:85
+#: velocitty/shortcuts.py:22 velocitty/window.py:98
+msgid "Preferences"
+msgstr "首选项"
+
+#: velocitty/preferences.py:101
+msgid "Appearance"
+msgstr "外观"
+
+#: velocitty/preferences.py:103
+msgid "Palette"
+msgstr "调色板"
+
+#: velocitty/preferences.py:107
+msgid "Text"
+msgstr "文本"
+
+#: velocitty/preferences.py:109
+msgid "Line Spacing"
+msgstr "行间距"
+
+#: velocitty/preferences.py:110
+msgid "Column Spacing"
+msgstr "列间距"
+
+#: velocitty/preferences.py:111
+msgid "Bright Colors for Bold"
+msgstr "大胆亮丽的颜色"
+
+#: velocitty/preferences.py:116
+msgid "Windows and Tabs"
+msgstr "窗口和标签页"
+
+#: velocitty/preferences.py:117
+msgid "Windows"
+msgstr "窗口"
+
+#: velocitty/preferences.py:118
+msgid "Columns"
+msgstr "列"
+
+#: velocitty/preferences.py:119
+msgid "Rows"
+msgstr "行"
+
+#: velocitty/preferences.py:120
+msgid "New Terminal Opens"
+msgstr "新终端打开方式"
+
+#: velocitty/preferences.py:121
+msgid "In a Tab"
+msgstr "标签页"
+
+#: velocitty/preferences.py:121
+msgid "In a Window"
+msgstr "窗口"
+
+#: velocitty/preferences.py:122 velocitty/preferences.py:128
+#: velocitty/preferences.py:171
+msgid "Shorten Paths"
+msgstr "缩短路径"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Don't Shorten"
+msgstr "不要缩短"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Last Folder"
+msgstr "最近一个文件夹"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Last Two Folders"
+msgstr "最近两个文件夹"
+
+#: velocitty/preferences.py:124 velocitty/preferences.py:130
+#: velocitty/preferences.py:173
+msgid "Last Three Folders"
+msgstr "最近三个文件夹"
+
+#: velocitty/preferences.py:127 velocitty/shortcuts.py:36
+msgid "Tabs"
+msgstr "标签页"
+
+#: velocitty/preferences.py:131
+msgid "Highlight Running Commands"
+msgstr "突出显示正在运行的命令"
+
+#: velocitty/preferences.py:132
+msgid "Color the tab and the headerbar while a command is running"
+msgstr "在命令运行时给标签页和标题栏上色"
+
+#: velocitty/preferences.py:133
+msgid "Highlight Remote and Admin Sessions"
+msgstr "突出显示远程和管理员会话"
+
+#: velocitty/preferences.py:134
+msgid "Color the tab and the headerbar for remote and admin sessions"
+msgstr "为远程和管理员会话给标签和标题栏上色"
+
+#: velocitty/preferences.py:135
+msgid "Visual Bell"
+msgstr "视觉响铃"
+
+#: velocitty/preferences.py:136
+msgid "Flash the headerbar when a program rings the bell"
+msgstr "当程序响铃时闪烁标题栏"
+
+#: velocitty/preferences.py:140 velocitty/preferences.py:141
+msgid "Scrolling"
+msgstr "滚动"
+
+#: velocitty/preferences.py:142
+msgid "Scrollbars"
+msgstr "滚动条"
+
+#: velocitty/preferences.py:143
+msgid "Use System Scrollbars"
+msgstr "使用系统滚动条"
+
+#: velocitty/preferences.py:143
+msgid "Always Visible"
+msgstr "总是可见"
+
+#: velocitty/preferences.py:143
+msgid "Hidden"
+msgstr "隐藏"
+
+#: velocitty/preferences.py:144
+msgid "Scroll to the bottom when you press a key"
+msgstr "按下键时滚动到最底部"
+
+#: velocitty/preferences.py:145
+msgid "Scroll to the bottom when new output is printed"
+msgstr "有新输出时滚动到最底部"
+
+#: velocitty/preferences.py:146
+msgid "Limit the number of printed lines"
+msgstr "限制打印行数"
+
+#: velocitty/preferences.py:148
+msgid "Lines"
+msgstr "行数"
+
+#: velocitty/preferences.py:153 velocitty/preferences.py:154
+#: velocitty/preferences.py:159
+msgid "Shell"
+msgstr "Shell"
+
+#: velocitty/preferences.py:155
+msgid "System Default"
+msgstr "系统默认"
+
+#: velocitty/preferences.py:161
+msgid "Startup Command"
+msgstr "启动命令"
+
+#: velocitty/preferences.py:162
+msgid "Command to run at start"
+msgstr "启动时运行的命令"
+
+#: velocitty/preferences.py:166
+msgid "Prompt"
+msgstr "提示"
+
+#: velocitty/preferences.py:167
+msgid "Cursor Shape"
+msgstr "光标形状"
+
+#: velocitty/preferences.py:168
+msgid "Block"
+msgstr "区块 (Block)"
+
+#: velocitty/preferences.py:168
+msgid "I-Beam"
+msgstr "I 形"
+
+#: velocitty/preferences.py:168
+msgid "Underline"
+msgstr "下划线"
+
+#: velocitty/preferences.py:169
+msgid "Cursor Blinking"
+msgstr "光标闪烁"
+
+#: velocitty/preferences.py:170
+msgid "Follow System"
+msgstr "跟随系统"
+
+#: velocitty/preferences.py:170
+msgid "Enabled"
+msgstr "已启用"
+
+#: velocitty/preferences.py:170
+msgid "Disabled"
+msgstr "已禁用"
+
+#: velocitty/preferences.py:174
+msgid "Only in new tabs"
+msgstr "仅在新标签页中"
+
+#: velocitty/preferences.py:182
+msgid "Use System _Font"
+msgstr "使用系统字体(_F)"
+
+#: velocitty/preferences.py:195
+msgid "Font"
+msgstr "字体"
+
+#: velocitty/preferences.py:202
+msgid "Select Font"
+msgstr "选择字体"
+
+#: velocitty/searchbar.py:26
+msgid "Search"
+msgstr "搜索"
+
+#: velocitty/searchbar.py:27
+msgid "Previous Match"
+msgstr "上一个匹配项"
+
+#: velocitty/searchbar.py:28
+msgid "Next Match"
+msgstr "下一个匹配项"
+
+#: velocitty/searchbar.py:38
+msgid "Case Sensitive"
+msgstr "区分大小写"
+
+#: velocitty/searchbar.py:39
+msgid "Whole Word"
+msgstr "整个词组"
+
+#: velocitty/searchbar.py:40
+msgid "Wrap Around"
+msgstr "环绕"
+
+#: velocitty/searchbar.py:41
+msgid "Regular Expression"
+msgstr "正则表达式"
+
+#: velocitty/searchbar.py:43
+msgid "Search Options"
+msgstr "搜索选项"
+
+#: velocitty/searchbar.py:48
+msgid "Close"
+msgstr "关闭"
+
+#: velocitty/shortcuts.py:13
+msgid "General"
+msgstr "常规"
+
+#: velocitty/shortcuts.py:16
+msgid "Close Tab"
+msgstr "关闭标签页"
+
+#: velocitty/shortcuts.py:17
+msgid "Customize Tab"
+msgstr "自定义标签页"
+
+#: velocitty/shortcuts.py:18
+msgid "View Custom Tabs"
+msgstr "查看自定义标签页"
+
+#: velocitty/shortcuts.py:19
+msgid "View All Tabs"
+msgstr "查看全部标签页"
+
+#: velocitty/shortcuts.py:20
+msgid "Main Menu"
+msgstr "主菜单"
+
+#: velocitty/shortcuts.py:21
+msgid "Full Screen"
+msgstr "全屏"
+
+#: velocitty/shortcuts.py:23 velocitty/shortcuts.py:60 velocitty/window.py:99
+msgid "Keyboard Shortcuts"
+msgstr "键盘快捷键"
+
+#: velocitty/shortcuts.py:24
+msgid "Quit"
+msgstr "退出"
+
+#: velocitty/shortcuts.py:27 velocitty/tab.py:498
+msgid "Copy"
+msgstr "复制"
+
+#: velocitty/shortcuts.py:28 velocitty/tab.py:500
+msgid "Paste"
+msgstr "粘贴"
+
+#: velocitty/shortcuts.py:30
+msgid "Find"
+msgstr "查找"
+
+#: velocitty/shortcuts.py:31
+msgid "Context Menu"
+msgstr "上下文菜单"
+
+#: velocitty/shortcuts.py:32 velocitty/window.py:432
+msgid "Zoom In"
+msgstr "放大"
+
+#: velocitty/shortcuts.py:33 velocitty/window.py:430
+msgid "Zoom Out"
+msgstr "缩小"
+
+#: velocitty/shortcuts.py:34 velocitty/window.py:434
+msgid "Reset Zoom"
+msgstr "重置缩放"
+
+#: velocitty/shortcuts.py:37
+msgid "Previous Tab"
+msgstr "上一个标签页"
+
+#: velocitty/shortcuts.py:38
+msgid "Next Tab"
+msgstr "下一个标签页"
+
+#: velocitty/shortcuts.py:39
+msgid "Last Active Tab"
+msgstr "最近活跃的标签页"
+
+#: velocitty/shortcuts.py:40
+msgid "Move Tab Left"
+msgstr "左移标签页"
+
+#: velocitty/shortcuts.py:41
+msgid "Move Tab Right"
+msgstr "右移标签页"
+
+#: velocitty/shortcuts.py:42
+msgid "Switch to Tab 1"
+msgstr "切换到标签页 1"
+
+#: velocitty/shortcuts.py:43
+msgid "Switch to Tab 2"
+msgstr "切换到标签页 2"
+
+#: velocitty/shortcuts.py:44
+msgid "Switch to Tab 3"
+msgstr "切换到标签页 3"
+
+#: velocitty/shortcuts.py:45
+msgid "Switch to Tab 4"
+msgstr "切换到标签页 4"
+
+#: velocitty/shortcuts.py:46
+msgid "Switch to Tab 5"
+msgstr "切换到标签页 5"
+
+#: velocitty/shortcuts.py:47
+msgid "Switch to Tab 6"
+msgstr "切换到标签页 6"
+
+#: velocitty/shortcuts.py:48
+msgid "Switch to Tab 7"
+msgstr "切换到标签页 7"
+
+#: velocitty/shortcuts.py:49
+msgid "Switch to Tab 8"
+msgstr "切换到标签页 8"
+
+#: velocitty/shortcuts.py:50
+msgid "Switch to Tab 9"
+msgstr "切换到标签页 9"
+
+#: velocitty/shortcuts.py:51
+msgid "Switch to Tab 10"
+msgstr "切换到标签页 10"
+
+#: velocitty/tab.py:491
+msgid "Open Link"
+msgstr "打开链接"
+
+#: velocitty/tab.py:499
+msgid "Copy Last Output"
+msgstr "复制最后输出"
+
+#: velocitty/tab.py:504
+msgid "Find…"
+msgstr "查找…"
+
+#: velocitty/window.py:79
+msgid "Leave Full Screen"
+msgstr "退出全屏"
+
+#: velocitty/window.py:100
+msgid "About"
+msgstr "关于"
+
+#: velocitty/window.py:244
+msgid "Close Tab?"
+msgstr "关闭标签页？"
+
+#: velocitty/window.py:258
+msgid "Some processes are still running."
+msgstr "某些进程仍在运行。"
+
+#: velocitty/window.py:259
+msgid "_Cancel"
+msgstr "取消(_C)"
+
+#: velocitty/window.py:260
+msgid "_Close"
+msgstr "关闭(_C)"
+
+#: velocitty/window.py:404
+msgid "Follow System Style"
+msgstr "跟随系统样式"
+
+#: velocitty/window.py:405
+msgid "Light Style"
+msgstr "亮色样式"
+
+#: velocitty/window.py:406
+msgid "Dark Style"
+msgstr "暗色样式"
+
+#: velocitty/window.py:610
+msgid "Close Window?"
+msgstr "关闭窗口吗？"

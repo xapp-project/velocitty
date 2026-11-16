@@ -1,0 +1,515 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: velo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-05 15:38+0000\n"
+"PO-Revision-Date: 2026-10-29 20:03+0000\n"
+"Last-Translator: K9 <Unknown>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:02+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+"Language: lv\n"
+
+#: data/org.x.velocitty.desktop.in:2 velocitty/application.py:274
+#: velocitty/shortcuts.py:26 velocitty/tab.py:61 velocitty/tab.py:64
+#: velocitty/tab.py:391 velocitty/window.py:49 velocitty/window.py:68
+#: velocitty/window.py:128 velocitty/window.py:175
+msgid "Terminal"
+msgstr "Terminālis"
+
+#: data/org.x.velocitty.desktop.in:3
+msgid "Terminal Emulator"
+msgstr "Termināļa emulators"
+
+#: data/org.x.velocitty.desktop.in:4
+msgid "Use the command line"
+msgstr "Izmantot komandrindu"
+
+#: data/org.x.velocitty.desktop.in:10
+msgid "terminal;command;prompt;shell;console;ssh;"
+msgstr "terminālis;komanda;uzvedne;čaula;konsole;ssh;"
+
+#: data/org.x.velocitty.desktop.in:18 velocitty/shortcuts.py:15
+#: velocitty/tab.py:495 velocitty/window.py:95
+msgid "New Window"
+msgstr "Jauns logs"
+
+#: data/org.x.velocitty.desktop.in:22 velocitty/shortcuts.py:14
+#: velocitty/tab.py:494 velocitty/window.py:70 velocitty/window.py:94
+msgid "New Tab"
+msgstr "Jauna cilne"
+
+#: velocitty/customize.py:24
+msgid "Name"
+msgstr "Nosaukums"
+
+#: velocitty/customize.py:29
+msgid "Command to run"
+msgstr "Izpildāmā komanda"
+
+#: velocitty/customize.py:36
+msgid "No Color"
+msgstr "Bez krāsas"
+
+#: velocitty/customize.py:49 velocitty/custom_tabs_page.py:87
+msgid "Startup Tab"
+msgstr "Starta cilne"
+
+#: velocitty/customize.py:50 velocitty/custom_tabs_page.py:85
+msgid "Opens when the terminal launches"
+msgstr "Atveras, kad terminālis startējas"
+
+#: velocitty/custom_tabs_page.py:19 velocitty/window.py:73
+msgid "Custom Tabs"
+msgstr "Pielāgotas cilnes"
+
+#: velocitty/custom_tabs_page.py:30
+msgid "Open"
+msgstr "Atvērt"
+
+#: velocitty/custom_tabs_page.py:32 velocitty/custom_tabs_page.py:131
+#: velocitty/shortcuts.py:29 velocitty/tab.py:503
+msgid "Select All"
+msgstr "Atlasīt visu"
+
+#: velocitty/custom_tabs_page.py:78
+msgid "Already open"
+msgstr "Jau ir atvērts"
+
+#: velocitty/custom_tabs_page.py:90
+msgid "Remove"
+msgstr "Izņemt"
+
+#: velocitty/custom_tabs_page.py:131
+msgid "Select None"
+msgstr "Neatlasīt neko"
+
+#: velocitty/preferences.py:75 velocitty/preferences.py:85
+#: velocitty/shortcuts.py:22 velocitty/window.py:98
+msgid "Preferences"
+msgstr "Iestatījumi"
+
+#: velocitty/preferences.py:101
+msgid "Appearance"
+msgstr "Izskats"
+
+#: velocitty/preferences.py:103
+msgid "Palette"
+msgstr "Palete"
+
+#: velocitty/preferences.py:107
+msgid "Text"
+msgstr "Teksts"
+
+#: velocitty/preferences.py:109
+msgid "Line Spacing"
+msgstr "Rindiņu atstarpes"
+
+#: velocitty/preferences.py:110
+msgid "Column Spacing"
+msgstr "Kolonnu atstarpes"
+
+#: velocitty/preferences.py:111
+msgid "Bright Colors for Bold"
+msgstr "Spilgtas krāsas treknrakstam"
+
+#: velocitty/preferences.py:116
+msgid "Windows and Tabs"
+msgstr "Logi un cilnes"
+
+#: velocitty/preferences.py:117
+msgid "Windows"
+msgstr "Logi"
+
+#: velocitty/preferences.py:118
+msgid "Columns"
+msgstr "Kolonnas"
+
+#: velocitty/preferences.py:119
+msgid "Rows"
+msgstr "Rindiņas"
+
+#: velocitty/preferences.py:120
+msgid "New Terminal Opens"
+msgstr "Jauns terminālis atveras"
+
+#: velocitty/preferences.py:121
+msgid "In a Tab"
+msgstr "Cilnē"
+
+#: velocitty/preferences.py:121
+msgid "In a Window"
+msgstr "Logā"
+
+#: velocitty/preferences.py:122 velocitty/preferences.py:128
+#: velocitty/preferences.py:171
+msgid "Shorten Paths"
+msgstr "Saīsināt ceļus"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Don't Shorten"
+msgstr "Nesaīsināt"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Last Folder"
+msgstr "Pēdējā mapīte"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Last Two Folders"
+msgstr "Pēdējās divas mapītes"
+
+#: velocitty/preferences.py:124 velocitty/preferences.py:130
+#: velocitty/preferences.py:173
+msgid "Last Three Folders"
+msgstr "Pēdējās trīs mapītes"
+
+#: velocitty/preferences.py:127 velocitty/shortcuts.py:36
+msgid "Tabs"
+msgstr "Cilnes"
+
+#: velocitty/preferences.py:131
+msgid "Highlight Running Commands"
+msgstr "Izcelt palaistās komandas"
+
+#: velocitty/preferences.py:132
+msgid "Color the tab and the headerbar while a command is running"
+msgstr "Izkrāsot cilni un galvenes joslu, kamēr komanda darbojas"
+
+#: velocitty/preferences.py:133
+msgid "Highlight Remote and Admin Sessions"
+msgstr ""
+
+#: velocitty/preferences.py:134
+msgid "Color the tab and the headerbar for remote and admin sessions"
+msgstr ""
+
+#: velocitty/preferences.py:135
+msgid "Visual Bell"
+msgstr "Vizuālais zvans"
+
+#: velocitty/preferences.py:136
+msgid "Flash the headerbar when a program rings the bell"
+msgstr "Mirināt galvenes joslu, kad programma zvana"
+
+#: velocitty/preferences.py:140 velocitty/preferences.py:141
+msgid "Scrolling"
+msgstr "Ritināšana"
+
+#: velocitty/preferences.py:142
+msgid "Scrollbars"
+msgstr "Ritināšanas joslas"
+
+#: velocitty/preferences.py:143
+msgid "Use System Scrollbars"
+msgstr "Izmantot sistēmas ritināšanas joslas"
+
+#: velocitty/preferences.py:143
+msgid "Always Visible"
+msgstr "Vienmēr redzamas"
+
+#: velocitty/preferences.py:143
+msgid "Hidden"
+msgstr "Paslēptas"
+
+#: velocitty/preferences.py:144
+msgid "Scroll to the bottom when you press a key"
+msgstr "Ritināt uz apakšu, kad nospiež taustiņu"
+
+#: velocitty/preferences.py:145
+msgid "Scroll to the bottom when new output is printed"
+msgstr "Ritināt uz apakšu, kad tiek izvadīta jauna informācija"
+
+#: velocitty/preferences.py:146
+msgid "Limit the number of printed lines"
+msgstr "Ierobežot drukāto rindiņu skaitu"
+
+#: velocitty/preferences.py:148
+msgid "Lines"
+msgstr "Rindiņas"
+
+#: velocitty/preferences.py:153 velocitty/preferences.py:154
+#: velocitty/preferences.py:159
+msgid "Shell"
+msgstr "Čaula"
+
+#: velocitty/preferences.py:155
+msgid "System Default"
+msgstr "Sistēmas noklusējums"
+
+#: velocitty/preferences.py:161
+msgid "Startup Command"
+msgstr "Starta komanda"
+
+#: velocitty/preferences.py:162
+msgid "Command to run at start"
+msgstr "Komanda, ko palaist sākumā"
+
+#: velocitty/preferences.py:166
+msgid "Prompt"
+msgstr "Uzvedne"
+
+#: velocitty/preferences.py:167
+msgid "Cursor Shape"
+msgstr "Kursora forma"
+
+#: velocitty/preferences.py:168
+msgid "Block"
+msgstr "Bloks"
+
+#: velocitty/preferences.py:168
+msgid "I-Beam"
+msgstr "I-Stars"
+
+#: velocitty/preferences.py:168
+msgid "Underline"
+msgstr "Pasvītrojums"
+
+#: velocitty/preferences.py:169
+msgid "Cursor Blinking"
+msgstr "Kursora mirgošana"
+
+#: velocitty/preferences.py:170
+msgid "Follow System"
+msgstr "Sekot sistēmai"
+
+#: velocitty/preferences.py:170
+msgid "Enabled"
+msgstr "Iespējots"
+
+#: velocitty/preferences.py:170
+msgid "Disabled"
+msgstr "Atspējots"
+
+#: velocitty/preferences.py:174
+msgid "Only in new tabs"
+msgstr "Tikai jaunās cilnēs"
+
+#: velocitty/preferences.py:182
+msgid "Use System _Font"
+msgstr "Izmantot sistēmas _fontu"
+
+#: velocitty/preferences.py:195
+msgid "Font"
+msgstr "Fonts"
+
+#: velocitty/preferences.py:202
+msgid "Select Font"
+msgstr "Izvēlēties fontu"
+
+#: velocitty/searchbar.py:26
+msgid "Search"
+msgstr "Meklēt"
+
+#: velocitty/searchbar.py:27
+msgid "Previous Match"
+msgstr "Iepriekšējā atbilstība"
+
+#: velocitty/searchbar.py:28
+msgid "Next Match"
+msgstr "Nākamā atbilstība"
+
+#: velocitty/searchbar.py:38
+msgid "Case Sensitive"
+msgstr "Reģistrjutīgs"
+
+#: velocitty/searchbar.py:39
+msgid "Whole Word"
+msgstr "Viss vārds"
+
+#: velocitty/searchbar.py:40
+msgid "Wrap Around"
+msgstr "Atsākt meklēšanu no sākuma"
+
+#: velocitty/searchbar.py:41
+msgid "Regular Expression"
+msgstr "Regulārā izteiksme"
+
+#: velocitty/searchbar.py:43
+msgid "Search Options"
+msgstr "Meklēšanas opcijas"
+
+#: velocitty/searchbar.py:48
+msgid "Close"
+msgstr "Aizvērt"
+
+#: velocitty/shortcuts.py:13
+msgid "General"
+msgstr "Vispārīgi"
+
+#: velocitty/shortcuts.py:16
+msgid "Close Tab"
+msgstr "Aizvērt cilni"
+
+#: velocitty/shortcuts.py:17
+msgid "Customize Tab"
+msgstr "Pielāgot cilni"
+
+#: velocitty/shortcuts.py:18
+msgid "View Custom Tabs"
+msgstr "Skatīt pielāgotās cilnes"
+
+#: velocitty/shortcuts.py:19
+msgid "View All Tabs"
+msgstr "Skatīt visas cilnes"
+
+#: velocitty/shortcuts.py:20
+msgid "Main Menu"
+msgstr "Galvenā izvēlne"
+
+#: velocitty/shortcuts.py:21
+msgid "Full Screen"
+msgstr "Pilnekrāns"
+
+#: velocitty/shortcuts.py:23 velocitty/shortcuts.py:60 velocitty/window.py:99
+msgid "Keyboard Shortcuts"
+msgstr "Tastatūras īsinājumtaustiņi"
+
+#: velocitty/shortcuts.py:24
+msgid "Quit"
+msgstr "Iziet"
+
+#: velocitty/shortcuts.py:27 velocitty/tab.py:498
+msgid "Copy"
+msgstr "Kopēt"
+
+#: velocitty/shortcuts.py:28 velocitty/tab.py:500
+msgid "Paste"
+msgstr "Ielīmēt"
+
+#: velocitty/shortcuts.py:30
+msgid "Find"
+msgstr "Meklēt"
+
+#: velocitty/shortcuts.py:31
+msgid "Context Menu"
+msgstr "Konteksta izvēlne"
+
+#: velocitty/shortcuts.py:32 velocitty/window.py:432
+msgid "Zoom In"
+msgstr "Tuvināt"
+
+#: velocitty/shortcuts.py:33 velocitty/window.py:430
+msgid "Zoom Out"
+msgstr "Tālināt"
+
+#: velocitty/shortcuts.py:34 velocitty/window.py:434
+msgid "Reset Zoom"
+msgstr "Atiestatīt tuvinājumu"
+
+#: velocitty/shortcuts.py:37
+msgid "Previous Tab"
+msgstr "Iepriekšējā cilne"
+
+#: velocitty/shortcuts.py:38
+msgid "Next Tab"
+msgstr "Nākamā cilne"
+
+#: velocitty/shortcuts.py:39
+msgid "Last Active Tab"
+msgstr "Pēdējā aktīvā cilne"
+
+#: velocitty/shortcuts.py:40
+msgid "Move Tab Left"
+msgstr "Pārvietot cilni pa kreisi"
+
+#: velocitty/shortcuts.py:41
+msgid "Move Tab Right"
+msgstr "Pārvietot cilni pa labi"
+
+#: velocitty/shortcuts.py:42
+msgid "Switch to Tab 1"
+msgstr "Pārslēgties uz 1. cilni"
+
+#: velocitty/shortcuts.py:43
+msgid "Switch to Tab 2"
+msgstr "Pārslēgties uz 2. cilni"
+
+#: velocitty/shortcuts.py:44
+msgid "Switch to Tab 3"
+msgstr "Pārslēgties uz 3. cilni"
+
+#: velocitty/shortcuts.py:45
+msgid "Switch to Tab 4"
+msgstr "Pārslēgties uz 4. cilni"
+
+#: velocitty/shortcuts.py:46
+msgid "Switch to Tab 5"
+msgstr "Pārslēgties uz 5. cilni"
+
+#: velocitty/shortcuts.py:47
+msgid "Switch to Tab 6"
+msgstr "Pārslēgties uz 6. cilni"
+
+#: velocitty/shortcuts.py:48
+msgid "Switch to Tab 7"
+msgstr "Pārslēgties uz 7. cilni"
+
+#: velocitty/shortcuts.py:49
+msgid "Switch to Tab 8"
+msgstr "Pārslēgties uz 8. cilni"
+
+#: velocitty/shortcuts.py:50
+msgid "Switch to Tab 9"
+msgstr "Pārslēgties uz 9. cilni"
+
+#: velocitty/shortcuts.py:51
+msgid "Switch to Tab 10"
+msgstr "Pārslēgties uz 10. cilni"
+
+#: velocitty/tab.py:491
+msgid "Open Link"
+msgstr ""
+
+#: velocitty/tab.py:499
+msgid "Copy Last Output"
+msgstr "Kopēt pēdējo izvadi"
+
+#: velocitty/tab.py:504
+msgid "Find…"
+msgstr "Meklēt…"
+
+#: velocitty/window.py:79
+msgid "Leave Full Screen"
+msgstr "Iziet no pilnekrāna"
+
+#: velocitty/window.py:100
+msgid "About"
+msgstr "Par programmu"
+
+#: velocitty/window.py:244
+msgid "Close Tab?"
+msgstr "Aizvērt cilni?"
+
+#: velocitty/window.py:258
+msgid "Some processes are still running."
+msgstr "Daži procesi joprojām darbojas."
+
+#: velocitty/window.py:259
+msgid "_Cancel"
+msgstr "_Atcelt"
+
+#: velocitty/window.py:260
+msgid "_Close"
+msgstr "_Aizvērt"
+
+#: velocitty/window.py:404
+msgid "Follow System Style"
+msgstr "Sekot sistēmas stiliem"
+
+#: velocitty/window.py:405
+msgid "Light Style"
+msgstr "Gaišais stils"
+
+#: velocitty/window.py:406
+msgid "Dark Style"
+msgstr "Tumšais stils"
+
+#: velocitty/window.py:610
+msgid "Close Window?"
+msgstr "Aizvērt logu?"

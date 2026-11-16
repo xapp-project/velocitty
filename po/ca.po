@@ -1,0 +1,522 @@
+# Catalan translation for linuxmint
+# Copyright (c) 2026 Rosetta Contributors and Canonical Ltd 2026
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-11-05 15:38+0000\n"
+"PO-Revision-Date: 2026-11-05 22:31+0000\n"
+"Last-Translator: Isidro Pisa <isidro@pisa.red>\n"
+"Language-Team: Catalan <ca@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:02+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+
+#: data/org.x.velocitty.desktop.in:2 velocitty/application.py:274
+#: velocitty/shortcuts.py:26 velocitty/tab.py:61 velocitty/tab.py:64
+#: velocitty/tab.py:391 velocitty/window.py:49 velocitty/window.py:68
+#: velocitty/window.py:128 velocitty/window.py:175
+msgid "Terminal"
+msgstr "Terminal"
+
+#: data/org.x.velocitty.desktop.in:3
+msgid "Terminal Emulator"
+msgstr "Emulador de terminal"
+
+#: data/org.x.velocitty.desktop.in:4
+msgid "Use the command line"
+msgstr "Obriu la línia d'ordres"
+
+#: data/org.x.velocitty.desktop.in:10
+msgid "terminal;command;prompt;shell;console;ssh;"
+msgstr "terminal;command;prompt;shell;console;ssh;ordre;consola;"
+
+#: data/org.x.velocitty.desktop.in:18 velocitty/shortcuts.py:15
+#: velocitty/tab.py:495 velocitty/window.py:95
+msgid "New Window"
+msgstr "Finestra nova"
+
+#: data/org.x.velocitty.desktop.in:22 velocitty/shortcuts.py:14
+#: velocitty/tab.py:494 velocitty/window.py:70 velocitty/window.py:94
+msgid "New Tab"
+msgstr "Pestanya nova"
+
+#: velocitty/customize.py:24
+msgid "Name"
+msgstr "Nom"
+
+#: velocitty/customize.py:29
+msgid "Command to run"
+msgstr "Ordre a executar"
+
+#: velocitty/customize.py:36
+msgid "No Color"
+msgstr "Sense color"
+
+#: velocitty/customize.py:49 velocitty/custom_tabs_page.py:87
+msgid "Startup Tab"
+msgstr "Pestanya d'inici"
+
+#: velocitty/customize.py:50 velocitty/custom_tabs_page.py:85
+msgid "Opens when the terminal launches"
+msgstr "S'obre a l'iniciar la terminal"
+
+#: velocitty/custom_tabs_page.py:19 velocitty/window.py:73
+msgid "Custom Tabs"
+msgstr "Pestanyes personalitzades"
+
+#: velocitty/custom_tabs_page.py:30
+msgid "Open"
+msgstr "Obre"
+
+#: velocitty/custom_tabs_page.py:32 velocitty/custom_tabs_page.py:131
+#: velocitty/shortcuts.py:29 velocitty/tab.py:503
+msgid "Select All"
+msgstr "Selecciona-ho tot"
+
+#: velocitty/custom_tabs_page.py:78
+msgid "Already open"
+msgstr "Ja obert"
+
+#: velocitty/custom_tabs_page.py:90
+msgid "Remove"
+msgstr "Suprimeix"
+
+#: velocitty/custom_tabs_page.py:131
+msgid "Select None"
+msgstr "No seleccionis res"
+
+#: velocitty/preferences.py:75 velocitty/preferences.py:85
+#: velocitty/shortcuts.py:22 velocitty/window.py:98
+msgid "Preferences"
+msgstr "Configuració"
+
+#: velocitty/preferences.py:101
+msgid "Appearance"
+msgstr "Aparença"
+
+#: velocitty/preferences.py:103
+msgid "Palette"
+msgstr "Paleta"
+
+#: velocitty/preferences.py:107
+msgid "Text"
+msgstr "Text"
+
+#: velocitty/preferences.py:109
+msgid "Line Spacing"
+msgstr "Interlineat"
+
+#: velocitty/preferences.py:110
+msgid "Column Spacing"
+msgstr "Espaiat de columnes"
+
+#: velocitty/preferences.py:111
+msgid "Bright Colors for Bold"
+msgstr "Colors vius per destacar"
+
+#: velocitty/preferences.py:116
+msgid "Windows and Tabs"
+msgstr "Finestres i pestanyes"
+
+#: velocitty/preferences.py:117
+msgid "Windows"
+msgstr "Finestres"
+
+#: velocitty/preferences.py:118
+msgid "Columns"
+msgstr "Columnes"
+
+#: velocitty/preferences.py:119
+msgid "Rows"
+msgstr "Files"
+
+#: velocitty/preferences.py:120
+msgid "New Terminal Opens"
+msgstr "S'obre una nova terminal"
+
+#: velocitty/preferences.py:121
+msgid "In a Tab"
+msgstr "En una pestanya"
+
+#: velocitty/preferences.py:121
+msgid "In a Window"
+msgstr "En una finestra"
+
+#: velocitty/preferences.py:122 velocitty/preferences.py:128
+#: velocitty/preferences.py:171
+msgid "Shorten Paths"
+msgstr "Abreujar rutes"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Don't Shorten"
+msgstr "No abreujar"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Last Folder"
+msgstr "Última carpeta"
+
+#: velocitty/preferences.py:123 velocitty/preferences.py:129
+#: velocitty/preferences.py:172
+msgid "Last Two Folders"
+msgstr "Últimes 2 carpetes"
+
+#: velocitty/preferences.py:124 velocitty/preferences.py:130
+#: velocitty/preferences.py:173
+msgid "Last Three Folders"
+msgstr "Últimes 3 carpetes"
+
+#: velocitty/preferences.py:127 velocitty/shortcuts.py:36
+msgid "Tabs"
+msgstr "Pestanyes"
+
+#: velocitty/preferences.py:131
+msgid "Highlight Running Commands"
+msgstr "Ressaltar les ordres en execució"
+
+#: velocitty/preferences.py:132
+msgid "Color the tab and the headerbar while a command is running"
+msgstr "Pinta la pestanya i la barra de capçalera mentre s'executa una ordre"
+
+#: velocitty/preferences.py:133
+msgid "Highlight Remote and Admin Sessions"
+msgstr "Ressalta les sessions remotes i d'administració"
+
+#: velocitty/preferences.py:134
+msgid "Color the tab and the headerbar for remote and admin sessions"
+msgstr ""
+"Aplica color a la pestanya i a la barra de capçalera per a les sessions "
+"remotes i d'administració"
+
+#: velocitty/preferences.py:135
+msgid "Visual Bell"
+msgstr "Campana visual"
+
+#: velocitty/preferences.py:136
+msgid "Flash the headerbar when a program rings the bell"
+msgstr ""
+"Fes parpellejar la barra de capçalera quan un programa faci sonar el timbre"
+
+#: velocitty/preferences.py:140 velocitty/preferences.py:141
+msgid "Scrolling"
+msgstr "Desplaçament"
+
+#: velocitty/preferences.py:142
+msgid "Scrollbars"
+msgstr "Barres de desplaçament"
+
+#: velocitty/preferences.py:143
+msgid "Use System Scrollbars"
+msgstr "Barres de desplaçament del sistema"
+
+#: velocitty/preferences.py:143
+msgid "Always Visible"
+msgstr "Sempre visible"
+
+#: velocitty/preferences.py:143
+msgid "Hidden"
+msgstr "Oculta"
+
+#: velocitty/preferences.py:144
+msgid "Scroll to the bottom when you press a key"
+msgstr "Ves al final en prémer una tecla"
+
+#: velocitty/preferences.py:145
+msgid "Scroll to the bottom when new output is printed"
+msgstr "Desplaça't al final en prémer una tecla."
+
+#: velocitty/preferences.py:146
+msgid "Limit the number of printed lines"
+msgstr "Limita el nombre de línies impreses"
+
+#: velocitty/preferences.py:148
+msgid "Lines"
+msgstr "Línies"
+
+#: velocitty/preferences.py:153 velocitty/preferences.py:154
+#: velocitty/preferences.py:159
+msgid "Shell"
+msgstr "Intèrpret d'ordres"
+
+#: velocitty/preferences.py:155
+msgid "System Default"
+msgstr "Valor predeterminat del sistema"
+
+#: velocitty/preferences.py:161
+msgid "Startup Command"
+msgstr "Ordre d'inici"
+
+#: velocitty/preferences.py:162
+msgid "Command to run at start"
+msgstr "Ordre a executar a l'inici"
+
+#: velocitty/preferences.py:166
+msgid "Prompt"
+msgstr "Prompt"
+
+#: velocitty/preferences.py:167
+msgid "Cursor Shape"
+msgstr "Forma del cursor"
+
+#: velocitty/preferences.py:168
+msgid "Block"
+msgstr "Bloc"
+
+#: velocitty/preferences.py:168
+msgid "I-Beam"
+msgstr "Línia vertical"
+
+#: velocitty/preferences.py:168
+msgid "Underline"
+msgstr "Subratllat"
+
+#: velocitty/preferences.py:169
+msgid "Cursor Blinking"
+msgstr "Parpelleig del cursor"
+
+#: velocitty/preferences.py:170
+msgid "Follow System"
+msgstr "Segons el sistema"
+
+#: velocitty/preferences.py:170
+msgid "Enabled"
+msgstr "Activat"
+
+#: velocitty/preferences.py:170
+msgid "Disabled"
+msgstr "Desactivat"
+
+#: velocitty/preferences.py:174
+msgid "Only in new tabs"
+msgstr "Només en pestanyes noves"
+
+#: velocitty/preferences.py:182
+msgid "Use System _Font"
+msgstr "Utilitza la _font del sistema"
+
+#: velocitty/preferences.py:195
+msgid "Font"
+msgstr "Tipus de lletra"
+
+#: velocitty/preferences.py:202
+msgid "Select Font"
+msgstr "Trieu el tipus de lletra"
+
+#: velocitty/searchbar.py:26
+msgid "Search"
+msgstr "Cerca"
+
+#: velocitty/searchbar.py:27
+msgid "Previous Match"
+msgstr "Coincidència anterior"
+
+#: velocitty/searchbar.py:28
+msgid "Next Match"
+msgstr "Coincidència següent"
+
+#: velocitty/searchbar.py:38
+msgid "Case Sensitive"
+msgstr "Sensible a majúscules"
+
+#: velocitty/searchbar.py:39
+msgid "Whole Word"
+msgstr "Paraula completa"
+
+#: velocitty/searchbar.py:40
+msgid "Wrap Around"
+msgstr "Envolta"
+
+#: velocitty/searchbar.py:41
+msgid "Regular Expression"
+msgstr "Expressió regular"
+
+#: velocitty/searchbar.py:43
+msgid "Search Options"
+msgstr "Opcions de cerca"
+
+#: velocitty/searchbar.py:48
+msgid "Close"
+msgstr "Tanca"
+
+#: velocitty/shortcuts.py:13
+msgid "General"
+msgstr "General"
+
+#: velocitty/shortcuts.py:16
+msgid "Close Tab"
+msgstr "Tanca la pestanya"
+
+#: velocitty/shortcuts.py:17
+msgid "Customize Tab"
+msgstr "Personalitza la pestanya"
+
+#: velocitty/shortcuts.py:18
+msgid "View Custom Tabs"
+msgstr "Veure les pestanyes personalitzades"
+
+#: velocitty/shortcuts.py:19
+msgid "View All Tabs"
+msgstr "Veure totes les pestanyes"
+
+#: velocitty/shortcuts.py:20
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#: velocitty/shortcuts.py:21
+msgid "Full Screen"
+msgstr "Pantalla sencera"
+
+#: velocitty/shortcuts.py:23 velocitty/shortcuts.py:60 velocitty/window.py:99
+msgid "Keyboard Shortcuts"
+msgstr "Dreceres de teclat"
+
+#: velocitty/shortcuts.py:24
+msgid "Quit"
+msgstr "Surt"
+
+#: velocitty/shortcuts.py:27 velocitty/tab.py:498
+msgid "Copy"
+msgstr "Copia"
+
+#: velocitty/shortcuts.py:28 velocitty/tab.py:500
+msgid "Paste"
+msgstr "Enganxa"
+
+#: velocitty/shortcuts.py:30
+msgid "Find"
+msgstr "Cerca"
+
+#: velocitty/shortcuts.py:31
+msgid "Context Menu"
+msgstr "Menú contextual"
+
+#: velocitty/shortcuts.py:32 velocitty/window.py:432
+msgid "Zoom In"
+msgstr "Amplia"
+
+#: velocitty/shortcuts.py:33 velocitty/window.py:430
+msgid "Zoom Out"
+msgstr "Redueix"
+
+#: velocitty/shortcuts.py:34 velocitty/window.py:434
+msgid "Reset Zoom"
+msgstr "Reinicia l'ampliació"
+
+#: velocitty/shortcuts.py:37
+msgid "Previous Tab"
+msgstr "Pestanya anterior"
+
+#: velocitty/shortcuts.py:38
+msgid "Next Tab"
+msgstr "Pestanya següent"
+
+#: velocitty/shortcuts.py:39
+msgid "Last Active Tab"
+msgstr "Última pestanya activa"
+
+#: velocitty/shortcuts.py:40
+msgid "Move Tab Left"
+msgstr "Mou la pestanya a l'esquerra"
+
+#: velocitty/shortcuts.py:41
+msgid "Move Tab Right"
+msgstr "Mou la pestanya a la dreta"
+
+#: velocitty/shortcuts.py:42
+msgid "Switch to Tab 1"
+msgstr "Ves a la pestanya 1"
+
+#: velocitty/shortcuts.py:43
+msgid "Switch to Tab 2"
+msgstr "Ves a la pestanya 2"
+
+#: velocitty/shortcuts.py:44
+msgid "Switch to Tab 3"
+msgstr "Ves a la pestanya 3"
+
+#: velocitty/shortcuts.py:45
+msgid "Switch to Tab 4"
+msgstr "Ves a la pestanya 4"
+
+#: velocitty/shortcuts.py:46
+msgid "Switch to Tab 5"
+msgstr "Ves a la pestanya 5"
+
+#: velocitty/shortcuts.py:47
+msgid "Switch to Tab 6"
+msgstr "Ves a la pestanya 6"
+
+#: velocitty/shortcuts.py:48
+msgid "Switch to Tab 7"
+msgstr "Ves a la pestanya 7"
+
+#: velocitty/shortcuts.py:49
+msgid "Switch to Tab 8"
+msgstr "Ves a la pestanya 8"
+
+#: velocitty/shortcuts.py:50
+msgid "Switch to Tab 9"
+msgstr "Ves a la pestanya 9"
+
+#: velocitty/shortcuts.py:51
+msgid "Switch to Tab 10"
+msgstr "Ves a la pestanya 10"
+
+#: velocitty/tab.py:491
+msgid "Open Link"
+msgstr "Obre l'enllaç"
+
+#: velocitty/tab.py:499
+msgid "Copy Last Output"
+msgstr "Copia l'últim resultat"
+
+#: velocitty/tab.py:504
+msgid "Find…"
+msgstr "Cerca…"
+
+#: velocitty/window.py:79
+msgid "Leave Full Screen"
+msgstr "Surt de pantalla sencera"
+
+#: velocitty/window.py:100
+msgid "About"
+msgstr "Quant a"
+
+#: velocitty/window.py:244
+msgid "Close Tab?"
+msgstr "Tancar la pestanya?"
+
+#: velocitty/window.py:258
+msgid "Some processes are still running."
+msgstr "Alguns processos continuen executant-se."
+
+#: velocitty/window.py:259
+msgid "_Cancel"
+msgstr "_Cancel·la"
+
+#: velocitty/window.py:260
+msgid "_Close"
+msgstr "_Tanca"
+
+#: velocitty/window.py:404
+msgid "Follow System Style"
+msgstr "Segueix l'estil del sistema"
+
+#: velocitty/window.py:405
+msgid "Light Style"
+msgstr "Estil clar"
+
+#: velocitty/window.py:406
+msgid "Dark Style"
+msgstr "Estil fosc"
+
+#: velocitty/window.py:610
+msgid "Close Window?"
+msgstr "Voleu tancar la finestra?"
