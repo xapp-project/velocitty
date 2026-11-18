@@ -1,3 +1,9 @@
+velocitty (1.1.0) adrien; urgency=medium
+
+  * Focus the terminal when the menu closes or a tab is selected
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed, 18 Nov 2026 16:39:59 +0000
+
 velocitty (1.0.9) adrien; urgency=medium
 
   * l10n: Update translations
