@@ -11,6 +11,12 @@ from velocitty import APP_ID, GETTEXT_DOMAIN, SETTINGS_SCHEMA
 # which is how the desktop file is matched
 GLib.set_prgname(APP_ID)
 
+# GTK's Vulkan renderer loads every Vulkan driver, which wakes a sleeping discrete GPU and
+# stalls the first window for seconds. Removed again in do_startup, so tabs don't inherit it
+VULKAN_DISABLED = "GDK_DISABLE" not in os.environ
+if VULKAN_DISABLED:
+    os.environ["GDK_DISABLE"] = "vulkan"
+
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Adw, Gdk, Gio, Gtk
@@ -60,6 +66,8 @@ class TermApp(Adw.Application):
     def do_startup(self):
         GLib.set_prgname(APP_ID)   # parsed: the windows are made from here on
         Adw.Application.do_startup(self)
+        if VULKAN_DISABLED:
+            os.environ.pop("GDK_DISABLE", None)
         Gtk.StyleContext.add_provider_for_display(
             Gdk.Display.get_default(), self.provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
         Adw.StyleManager.get_default().connect("notify::dark", lambda *_: self.apply_scheme())
