@@ -17,6 +17,9 @@ from velocitty.tab import TermTab
 _ = l10n(GETTEXT_DOMAIN)
 
 
+OVERVIEW_CLOSE_MS = 500
+
+
 def walk(widget):
     child = widget.get_first_child()
     while child is not None:
@@ -103,12 +106,13 @@ class TermWindow(Adw.ApplicationWindow):
         popover = Gtk.PopoverMenu.new_from_model(menu)
         popover.add_child(self.build_style_controls(), "style")
         popover.add_child(self.build_zoom_controls(), "zoom")
+        popover.connect("closed", lambda *_: GLib.idle_add(self.focus_terminal))
         self.menu_button = Gtk.MenuButton(icon_name="xsi-open-menu-symbolic", popover=popover)
         self.header.pack_end(self.menu_button)
 
         self.overview = Adw.TabOverview(enable_new_tab=True, view=self.tab_view)
         self.overview.connect("create-tab", self.on_overview_create_tab)
-        self.overview.connect("notify::open", lambda *_: self.queue_restyle())
+        self.overview.connect("notify::open", self.on_overview_open_changed)
         self.header.pack_end(Adw.TabButton(view=self.tab_view, action_name="win.overview"))
 
         self.tab_bar = Adw.TabBar(view=self.tab_view, autohide=True)
@@ -337,6 +341,12 @@ class TermWindow(Adw.ApplicationWindow):
         page = self.tab_view.get_page(tab)
         if page is not None:
             self.tab_view.close_page(page)
+
+    def on_overview_open_changed(self, overview, param):
+        self.queue_restyle()
+        if not overview.get_open():
+            GLib.idle_add(self.focus_terminal)
+            GLib.timeout_add(OVERVIEW_CLOSE_MS, self.focus_terminal)
 
     def focus_terminal(self):
         tab = self.current_tab()

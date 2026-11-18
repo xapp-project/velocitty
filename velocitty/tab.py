@@ -547,6 +547,7 @@ class TermTab(Gtk.Overlay):
         if has_link:
             self.menu.remove(0)   # the link entries are only in the menu of a link
         GLib.idle_add(popover.unparent)
+        GLib.idle_add(self.window.focus_terminal)
 
     def popup_menu(self, x, y, height=1):
         self.actions.lookup_action("copy").set_enabled(self.terminal.get_has_selection())
