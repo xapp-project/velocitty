@@ -476,15 +476,23 @@ class TermTab(Gtk.Overlay):
             action.connect("activate", handler)
             self.actions.add_action(action)
         self.actions.lookup_action("copy-last").set_enabled(False)
+        self.actions.lookup_action("copy").set_enabled(False)
+        self.terminal.connect("selection-changed", lambda term: self.actions.lookup_action(
+            "copy").set_enabled(term.get_has_selection()))
         self.insert_action_group("term", self.actions)
 
         # The window can't reach the tab's actions, so the shortcuts live here
         shortcuts = Gtk.ShortcutController(propagation_phase=Gtk.PropagationPhase.CAPTURE)
-        for accel, name in (("<Ctrl><Shift>c", "copy"), ("<Ctrl><Shift>v", "paste"),
-                            ("<Ctrl><Shift>f", "find"), ("<Ctrl><Shift>a", "select-all"),
+        for accel, name in (("<Ctrl><Shift>v", "paste"), ("<Ctrl><Shift>f", "find"),
+                            ("<Ctrl><Shift>a", "select-all"),
+                            ("<Ctrl>c", "copy"), ("<Ctrl>v", "paste"),
+                            ("<Ctrl>f", "find"), ("<Ctrl>a", "select-all"),
                             ("<Shift>F10", "menu"), ("Menu", "menu")):
             shortcuts.add_shortcut(Gtk.Shortcut.new(Gtk.ShortcutTrigger.parse_string(accel),
                                                     Gtk.NamedAction.new("term." + name)))
+        shortcuts.add_shortcut(Gtk.Shortcut.new(
+            Gtk.ShortcutTrigger.parse_string("<Ctrl><Shift>c"),
+            Gtk.CallbackAction.new(lambda *_: self.terminal.copy_clipboard() or True)))
         self.add_controller(shortcuts)
 
         self.link_menu = Gio.Menu()
